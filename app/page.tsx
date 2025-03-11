@@ -18,7 +18,7 @@ export default function Home() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30" />
-        <div className="relative z-10 px-4 max-w-4xl mx-auto">
+        <div className="relative px-4 max-w-4xl mx-auto">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
               Transforming Business Through{" "}
