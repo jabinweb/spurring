@@ -17,6 +17,7 @@ import { Brain, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Logo } from "@/components/ui/logo"
+import { useState, useEffect } from "react"
 
 const services = [
   {
@@ -42,8 +43,20 @@ const services = [
 ]
 
 export function Navigation() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <div className="border-b">
+    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-background/80 backdrop-blur-md border-b' : 'bg-transparent'
+    }`}>
       <div className="flex h-16 items-center px-4 max-w-7xl mx-auto">
         <Logo size="md" />
 
@@ -52,9 +65,11 @@ export function Navigation() {
         {/* Desktop Navigation */}
           <div className="hidden md:block">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="gap-2">
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="bg-transparent hover:bg-accent data-[state=open]:bg-accent">
+                    Services
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {services.map((service) => (
@@ -62,6 +77,7 @@ export function Navigation() {
                           key={service.title}
                           title={service.title}
                           href={service.href}
+                          className="hover:bg-accent"
                         >
                           {service.description}
                         </ListItem>
@@ -71,21 +87,21 @@ export function Navigation() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/projects" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink className="bg-transparent px-4 py-2 hover:bg-accent rounded-md transition-colors">
                       Projects
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/about" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink className="bg-transparent px-4 py-2 hover:bg-accent rounded-md transition-colors">
                       About
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/contact" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink className="bg-transparent px-4 py-2 hover:bg-accent rounded-md transition-colors">
                       Contact
                     </NavigationMenuLink>
                   </Link>
