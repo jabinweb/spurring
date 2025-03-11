@@ -4,109 +4,15 @@ import { Brain, Code, LineChart, MessageSquare, Users, CheckCircle, Rocket, Awar
 import Image from "next/image"
 import Link from "next/link"
 import { FadeIn } from "@/components/animations/fade-in"
+import { Hero } from "@/components/sections/hero"
+import { Services } from "@/components/sections/services"
+import { CTA } from "@/components/sections/cta"
 
 export default function Home() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[80vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80"
-          alt="AI Technology"
-          fill
-          className="object-cover scale-105 hover:scale-100 transition-transform duration-1000"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30" />
-        <div className="relative px-4 max-w-4xl mx-auto">
-          <FadeIn>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-              Transforming Business Through{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent animate-gradient">
-                AI Innovation
-              </span>
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl mb-8 text-muted-foreground/90 leading-relaxed max-w-2xl">
-              We help businesses leverage the power of artificial intelligence to drive growth,
-              efficiency, and innovation.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.4}>
-            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
-              <Button 
-                size="lg" 
-                className="text-base px-8 py-6 rounded-full transition-all hover:scale-105 hover:shadow-lg"
-                asChild
-              >
-                <Link href="/contact">Get Started</Link>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="text-base px-8 py-6 rounded-full transition-all hover:scale-105"
-                asChild
-              >
-                <Link href="/projects">View Our Work</Link>
-              </Button>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-32 px-4">
-        <div className="max-w-7xl mx-auto">
-          <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-              Our Services
-            </h2>
-            <p className="text-muted-foreground text-xl text-center mb-16 max-w-2xl mx-auto">
-              Comprehensive AI solutions tailored to your business needs
-            </p>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Brain,
-                title: "AI Consulting",
-                description: "Strategic guidance for implementing AI solutions"
-              },
-              {
-                icon: Code,
-                title: "Generative AI",
-                description: "Custom solutions for content generation and creative tasks"
-              },
-              {
-                icon: MessageSquare,
-                title: "Smart Assistants",
-                description: "Intelligent chatbots and virtual assistants for automation"
-              },
-              {
-                icon: LineChart,
-                title: "Data Mining",
-                description: "Advanced analytics and pattern recognition solutions"
-              }
-            ].map((service, index) => (
-              <FadeIn key={index} delay={index * 0.1}>
-                <Card className="group hover:border-primary transition-colors duration-300">
-                  <CardContent className="pt-6">
-                    <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="h-10 w-10 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                    <p className="text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <Hero />
+      <Services />
       {/* Why Choose Us Section */}
       <section className="bg-muted py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -310,18 +216,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-primary text-primary-foreground py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
-          <p className="text-lg mb-8">
-            Let's discuss how AI can drive growth and innovation for your organization.
-          </p>
-          <Button size="lg" variant="secondary" asChild>
-            <Link href="/contact">Schedule a Consultation</Link>
-          </Button>
-        </div>
-      </section>
+      {/* CTA Section with gradient variant */}
+      <CTA 
+        variant="gradient"
+        title="Ready to Transform Your Business?"
+        description="Let's discuss how our AI solutions can drive your success"
+        primaryButtonText="Get Started"
+        secondaryButtonText="Learn More"
+        secondaryButtonHref="/about"
+      />
     </div>
   )
 }

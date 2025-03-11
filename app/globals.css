@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary-rgb: 0, 0, 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,14 +25,14 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --primary: 221 83% 53%; /* #3B82F6 - Vibrant blue */
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 217 91% 60%; /* #4F46E5 - Complementary blue */
+    --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 199 89% 48%; /* #0EA5E9 - Accent blue */
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%;
@@ -43,6 +44,9 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --primary-rgb: 59, 130, 246;
+    --secondary-rgb: 79, 70, 229;
+    --accent-rgb: 14, 165, 233;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -51,13 +55,13 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+    --primary: 217 91% 60%; /* Brighter blue for dark mode */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 221 83% 53%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
+    --accent: 199 89% 48%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -69,6 +73,9 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --primary-rgb: 79, 70, 229;
+    --secondary-rgb: 59, 130, 246;
+    --accent-rgb: 14, 165, 233;
   }
 }
 
@@ -78,5 +85,98 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -19px -19px;
+}
+
+.bg-grid-small-black {
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+}
+
+@layer utilities {
+  .bg-dot-black {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-dot-white {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-grid-pattern {
+    --grid-size: 150px;
+    --grid-strength: 1.5px;
+    --grid-color: rgba(var(--primary-rgb), 0.07);
+    --grid-shadow: rgba(var(--primary-rgb), 0.12);
+    
+    background-image: 
+      linear-gradient(to right, var(--grid-color) var(--grid-strength), transparent var(--grid-strength)),
+      linear-gradient(to bottom, var(--grid-color) var(--grid-strength), transparent var(--grid-strength));
+    background-size: var(--grid-size) var(--grid-size);
+    transition: all 0.5s ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bg-grid-pattern:hover {
+      --grid-color: rgba(var(--primary-rgb), 0.12);
+      filter: drop-shadow(0 0 10px var(--grid-shadow));
+    }
+  }
+
+  @keyframes grid-shine {
+    from {
+      background-position: 150% 0;
+    }
+    to {
+      background-position: -50% 0;
+    }
+  }
+
+  .grid-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--primary-rgb), 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: grid-shine 8s linear infinite;
+    pointer-events: none;
+  }
+
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, rgba(var(--primary) / 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 1s linear;
+    background-color: rgba(var(--primary-rgb), 0.05);
+  }
+
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
   }
 }
