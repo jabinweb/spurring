@@ -147,18 +147,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-primary text-primary-foreground py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Start Your Project?</h2>
-          <p className="text-lg mb-8">
-            Let's discuss how we can help transform your business with AI
-          </p>
-          <Button size="lg" variant="secondary" asChild>
-            <Link href="/contact">Get Started</Link>
-          </Button>
-        </div>
-      </section>
     </div>
   )
 }

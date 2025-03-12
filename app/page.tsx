@@ -1,81 +1,27 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Brain, ArrowRight, Users, CheckCircle, Rocket, Award, Database, CloudCog, Braces, CircuitBoard, AtomIcon, Network } from "lucide-react"
+import { Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Hero } from "@/components/sections/hero"
 import { Services } from "@/components/sections/services"
 import { CTA } from "@/components/sections/cta"
 import { Technologies } from "@/components/sections/technologies"
+import { About } from "@/components/sections/about"
+import { WhyChooseUs } from "@/components/sections/why-choose-us"
+import { Achivement } from "@/components/sections/achivements"
 
 export default function Home() {
-  const stats = [
-    { number: "500+", label: "Projects Delivered", description: "Empowering businesses with innovative AI solutions that drive growth and transformation." },
-    { number: "15+", label: "Years Experience", description: "Deep expertise in AI and technology, delivering cutting-edge solutions since 2009." },
-    { number: "200+", label: "Tech Experts", description: "A dynamic team of AI specialists, data scientists, and technology innovators." },
-    { number: "98%", label: "Client Satisfaction", description: "Consistently exceeding expectations with transformative solutions." }
-  ]
+
 
   return (
     <div>
       <Hero />
-
-      {/* Services Section */}
+      <About />
       <Services />
+      <WhyChooseUs />
 
-      {/* Why Choose Us Section */}
-      <section className="bg-muted py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center">
-              <CheckCircle className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Proven Expertise</h3>
-              <p className="text-muted-foreground">
-                Over a decade of experience in delivering cutting-edge AI solutions
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <Rocket className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Rapid Implementation</h3>
-              <p className="text-muted-foreground">
-                Swift deployment of AI solutions with minimal disruption
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <Award className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Industry Recognition</h3>
-              <p className="text-muted-foreground">
-                Award-winning solutions and industry-leading practices
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold mb-2">50+</div>
-              <div className="text-muted-foreground">Successful Projects</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">95%</div>
-              <div className="text-muted-foreground">Client Satisfaction</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">24/7</div>
-              <div className="text-muted-foreground">Support Available</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">10+</div>
-              <div className="text-muted-foreground">Years Experience</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Achivement />
 
       {/* Featured Projects Section */}
       <section className="bg-muted py-20 px-4">
@@ -178,15 +124,6 @@ export default function Home() {
       {/* Technologies Section */}
       <Technologies />
 
-      {/* CTA Section with gradient variant */}
-      <CTA 
-        variant="gradient"
-        title="Ready to Transform Your Business?"
-        description="Let's discuss how our AI solutions can drive your success"
-        primaryButtonText="Get Started"
-        secondaryButtonText="Learn More"
-        secondaryButtonHref="/about"
-      />
     </div>
   )
 }

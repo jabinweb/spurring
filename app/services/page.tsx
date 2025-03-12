@@ -228,18 +228,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-primary text-primary-foreground py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-lg mb-8">
-            Let's discuss how our AI services can transform your business
-          </p>
-          <Button size="lg" variant="secondary" asChild>
-            <Link href="/contact">Schedule a Consultation</Link>
-          </Button>
-        </div>
-      </section>
     </div>
   )
 }

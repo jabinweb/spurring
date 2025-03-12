@@ -172,23 +172,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-primary text-primary-foreground py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Join Our Journey</h2>
-          <p className="text-lg mb-8">
-            Be part of India's AI revolution. Let's create the future together.
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/contact">Contact Us</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/careers">View Careers</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

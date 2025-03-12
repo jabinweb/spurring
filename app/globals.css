@@ -179,4 +179,33 @@
       opacity: 0;
     }
   }
+
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(50px, 25px); }
+  }
+
+  @keyframes float-slow-reverse {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, -25px); }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 100%;
+    animation: gradient-x 3s linear infinite;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 15s ease-in-out infinite;
+  }
+
+  .animate-float-slow-reverse {
+    animation: float-slow-reverse 15s ease-in-out infinite;
+  }
 }
+

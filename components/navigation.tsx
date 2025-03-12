@@ -10,35 +10,58 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { ModeToggle } from "@/components/mode-toggle"
-import { Brain, Menu, X } from "lucide-react"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Logo } from "@/components/ui/logo"
 import { useState, useEffect } from "react"
 
-const services = [
+interface NavItem {
+  title: string
+  href: string
+  description?: string
+  children?: NavItem[]
+}
+
+const navigationItems: NavItem[] = [
   {
-    title: "AI Consulting",
-    href: "/services/consulting",
-    description: "Strategic guidance for AI implementation and digital transformation",
+    title: "Services",
+    href: "/services",
+    children: [
+      {
+        title: "AI Consulting",
+        href: "/services/consulting",
+        description: "Strategic guidance for AI implementation and digital transformation",
+      },
+      {
+        title: "Generative AI",
+        href: "/services/generative-ai",
+        description: "Custom generative AI solutions for content, design, and more",
+      },
+      {
+        title: "Smart Assistants",
+        href: "/services/smart-assistants",
+        description: "Intelligent virtual assistants and chatbots for business automation",
+      },
+      {
+        title: "Data Mining",
+        href: "/services/data-mining",
+        description: "Advanced data analysis and pattern recognition solutions",
+      },
+    ],
   },
   {
-    title: "Generative AI",
-    href: "/services/generative-ai",
-    description: "Custom generative AI solutions for content, design, and more",
+    title: "Projects",
+    href: "/projects",
   },
   {
-    title: "Smart Assistants",
-    href: "/services/smart-assistants",
-    description: "Intelligent virtual assistants and chatbots for business automation",
+    title: "About",
+    href: "/about",
   },
   {
-    title: "Data Mining",
-    href: "/services/data-mining",
-    description: "Advanced data analysis and pattern recognition solutions",
+    title: "Contact",
+    href: "/contact",
   },
 ]
 
@@ -61,62 +84,57 @@ export function Navigation() {
         <Logo size="md" />
 
         <div className="ml-auto flex items-center space-x-4">
-        
-        {/* Desktop Navigation */}
+          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList className="gap-2">
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent hover:bg-accent data-[state=open]:bg-accent">
-                    Services
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {services.map((service) => (
-                        <ListItem
-                          key={service.title}
-                          title={service.title}
-                          href={service.href}
-                          className="hover:bg-accent"
-                        >
-                          {service.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/projects" legacyBehavior passHref>
-                    <NavigationMenuLink className="bg-transparent px-4 py-2 hover:bg-accent rounded-md transition-colors">
-                      Projects
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/about" legacyBehavior passHref>
-                    <NavigationMenuLink className="bg-transparent px-4 py-2 hover:bg-accent rounded-md transition-colors">
-                      About
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/contact" legacyBehavior passHref>
-                    <NavigationMenuLink className="bg-transparent px-4 py-2 hover:bg-accent rounded-md transition-colors">
-                      Contact
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
+                {navigationItems.map((item) => (
+                  <NavigationMenuItem key={item.title}>
+                    {item.children ? (
+                      <>
+                        <NavigationMenuTrigger className="bg-transparent hover:bg-accent data-[state=open]:bg-accent">
+                          {item.title}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                            {item.children.map((child) => (
+                              <ListItem
+                                key={child.title}
+                                title={child.title}
+                                href={child.href}
+                                className="hover:bg-accent"
+                              >
+                                {child.description}
+                              </ListItem>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <Link href={item.href} legacyBehavior passHref>
+                        <NavigationMenuLink className="bg-transparent px-4 py-2 hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
+                          {item.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    )}
+                  </NavigationMenuItem>
+                ))}
               </NavigationMenuList>
             </NavigationMenu>
           </div>
 
-          <div className="hidden md:block">
-            <Button asChild>
-              <Link href="/contact">Contact Us</Link>
-            </Button>
+          {/* Animated CTA Button */}
+          <div className="hidden md:block relative">
+            <div className="rounded-full p-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow">
+              <Button
+                asChild
+                className="relative z-10 rounded-full bg-white text-black px-6 py-2 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300"
+              >
+                <Link href="/contact">Contact Us</Link>
+              </Button>
+            </div>
           </div>
-          <ModeToggle />
-          
+
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
@@ -127,44 +145,29 @@ export function Navigation() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-8">
-                <Link
-                  href="/services"
-                  className="text-lg font-semibold hover:text-primary"
-                >
-                  Services
-                </Link>
-                <div className="ml-4 space-y-2">
-                  {services.map((service) => (
+                {navigationItems.map((item) => (
+                  <React.Fragment key={item.title}>
                     <Link
-                      key={service.title}
-                      href={service.href}
-                      className="block text-muted-foreground hover:text-primary"
+                      href={item.href}
+                      className="text-lg font-semibold hover:text-primary"
                     >
-                      {service.title}
+                      {item.title}
                     </Link>
-                  ))}
-                </div>
-                <Link
-                  href="/projects"
-                  className="text-lg font-semibold hover:text-primary"
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-lg font-semibold hover:text-primary"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-lg font-semibold hover:text-primary"
-                >
-                  Contact
-                </Link>
-                <Button className="mt-4" asChild>
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
+                    {item.children && (
+                      <div className="ml-4 space-y-2">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.title}
+                            href={child.href}
+                            className="block text-muted-foreground hover:text-primary"
+                          >
+                            {child.title}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
               </div>
             </SheetContent>
           </Sheet>

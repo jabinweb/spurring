@@ -1,8 +1,22 @@
+"use client"
+
 import { Brain } from "lucide-react"
 import Link from "next/link"
+import { ModeToggle } from "./mode-toggle"
+import { CTA } from "./sections/cta"
 
 export function Footer() {
   return (
+      <>
+      {/* CTA Section with gradient variant */}
+      <CTA 
+      variant="gradient"
+      title="Ready to Transform Your Business?"
+      description="Let's discuss how our AI solutions can drive your success"
+      primaryButtonText="Get Started"
+      secondaryButtonText="Learn More"
+      secondaryButtonHref="/about"
+    />
     <footer className="border-t">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -42,12 +56,23 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t">
-          <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} Spurring Ventures India. All rights reserved.
-          </p>
+      </div>
+      <div className="border-t py-6">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground text-center sm:text-left">
+              © 2024 Spurring Ventures India. 
+            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-sm text-muted-foreground">
+                Made with ❤️ by <a href="https://web.jabin.org">JabinWeb</a>
+              </p>
+              <ModeToggle />
+            </div>
+          </div>
         </div>
       </div>
     </footer>
+    </>
   )
 }
