@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { Hero } from "@/components/ui/hero"
 
 export default function BlogPage() {
   const posts = [
@@ -59,23 +60,11 @@ export default function BlogPage() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80"
-          alt="Blog"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Blog</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Insights and updates from the world of AI and technology
-          </p>
-        </div>
-      </section>
+      <Hero
+        title="Our Blog"
+        description="Insights and updates from the world of AI and technology"
+        image="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80"
+      />
 
       {/* Featured Post */}
       <section className="py-20 px-4">

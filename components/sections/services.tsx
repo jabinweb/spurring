@@ -1,164 +1,161 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { useRef, useState } from "react"
-import { Brain, AtomIcon, CircuitBoard, Network, CloudCog, Database, X, ArrowUpRight, CheckCircle } from "lucide-react"
+import { Brain, Atom, Database, ArrowUpRight, CheckCircle, MessageSquare } from "lucide-react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Container } from "@/components/ui/container"
 
 const services = [
   {
     icon: <Brain className="h-10 w-10" />,
-    title: "Artificial Intelligence",
-    description: "Enterprise AI solutions that drive innovation and growth through machine learning and deep learning.",
-    features: ["Custom AI Models", "ML Pipeline Development", "AI Strategy Consulting"],
-    benefits: [
-      "30% average efficiency improvement",
-      "Reduced operational costs",
-      "Enhanced decision making",
-      "Automated workflows"
+    title: "AI Consulting",
+    description: "We provide comprehensive AI consultation to guide business through complexities of the ever-evolving AI landscape. We assess our clients AI readiness, help implement AI technology to achieve their individualized organization targets.",
+    features: [
+      "AI Assessment",
+      "AI Strategy Development",
+      "AI Integration",
+      "AI Solution Development",
+      "AI Support"
     ],
-    technologies: ["TensorFlow", "PyTorch", "scikit-learn", "OpenAI"],
+    benefits: [
+      "$13 trillion potential GDP impact by 2030",
+      "30% competitive advantage by 2025",
+      "Maximized efficiency",
+      "Improved customer experience"
+    ],
+    metrics: {
+      highlight: "$13T",
+      label: "AI impact on global GDP by 2030"
+    },
+    technologies: ["Machine Learning", "Deep Learning", "Neural Networks", "AI Analytics"],
     useCases: [
-      "Predictive Analytics",
-      "Natural Language Processing",
-      "Computer Vision",
-      "Automated Decision Systems"
+      "Business Process Optimization",
+      "Digital Transformation",
+      "AI Readiness Assessment",
+      "Technology Integration"
     ],
     color: "from-blue-600 to-violet-600",
     gradientBg: "from-blue-600/10 via-violet-600/5 to-transparent",
-    link: "/services/ai"
+    link: "/contact",
+    ctaText: "Consult our Team"
   },
   {
-    icon: <AtomIcon className="h-10 w-10" />,
+    icon: <Atom className="h-10 w-10" />, // Changed from AtomIcon to Atom
     title: "Generative AI",
-    description: "Next-gen generative AI solutions for content, design, and development automation.",
-    features: ["LLM Integration", "Content Generation", "Creative AI Tools"],
-    benefits: [
-      "Increased creativity",
-      "Faster content production",
-      "Cost-effective design solutions",
-      "Enhanced user experiences"
+    description: "We specialize in crafting AI solutions using the power of generative AI to revolutionize businesses across diverse industries. Using generative AI, we help our clients drive innovation, streamline operations and achieve scalable solutions.",
+    features: [
+      "Generative AI Consultation",
+      "Strategy Development",
+      "Performance Optimization",
+      "Data Engineering",
+      "Integration Services",
+      "Support"
     ],
-    technologies: ["GPT-3", "DALL-E", "Stable Diffusion", "MidJourney"],
+    benefits: [
+      "$2.6-4.4T annual economic impact",
+      "30% outbound marketing synthetic by 2025",
+      "Automated content creation",
+      "Accelerated design process"
+    ],
+    metrics: {
+      highlight: "30%",
+      label: "Synthetic marketing messages by 2025"
+    },
+    technologies: ["GPT", "DALL-E", "Stable Diffusion", "LLMs"],
     useCases: [
-      "Automated Content Creation",
-      "AI-Driven Design",
-      "Personalized User Experiences",
-      "Creative Assistance"
+      "Content Automation",
+      "Design Generation",
+      "Code Generation",
+      "Text Analysis"
     ],
     color: "from-purple-600 to-pink-600",
     gradientBg: "from-purple-600/10 via-pink-600/5 to-transparent",
-    link: "/services/gen-ai"
+    link: "/contact",
+    ctaText: "Consult our Team"
   },
   {
-    icon: <CircuitBoard className="h-10 w-10" />,
-    title: "IoT Solutions",
-    description: "Transform traditional systems with smart IoT operations and analytics.",
-    features: ["Device Integration", "Real-time Monitoring", "Predictive Maintenance"],
-    benefits: [
-      "Improved operational efficiency",
-      "Enhanced data insights",
-      "Reduced downtime",
-      "Remote monitoring capabilities"
+    icon: <MessageSquare className="h-10 w-10" />,
+    title: "Smart Assistance",
+    description: "Our Smart Assistant service offers a powerful, AI-driven virtual assistant for seamless workplace productivity. We help our clients stay ahead by harnessing the power of AI to transform how the organization functions and its interactions with customers.",
+    features: [
+      "Data Integration",
+      "Smart Assistance Deployment",
+      "Personalized Coaching",
+      "Continued Support"
     ],
-    technologies: ["MQTT", "Zigbee", "LoRaWAN", "AWS IoT"],
+    benefits: [
+      "40% productivity boost",
+      "20% cost reduction",
+      "Streamlined operations",
+      "Enhanced customer interaction"
+    ],
+    metrics: {
+      highlight: "40%",
+      label: "Productivity increase"
+    },
+    technologies: ["NLP", "Machine Learning", "Speech Recognition", "Chatbots"],
     useCases: [
-      "Smart Home Automation",
-      "Industrial IoT",
-      "Healthcare Monitoring",
-      "Supply Chain Optimization"
+      "Customer Service",
+      "Process Automation",
+      "Employee Support",
+      "Data Analysis"
     ],
     color: "from-green-600 to-emerald-600",
     gradientBg: "from-green-600/10 via-emerald-600/5 to-transparent",
-    link: "/services/iot"
-  },
-  {
-    icon: <Network className="h-10 w-10" />,
-    title: "Blockchain",
-    description: "Next-level automation and transparency with blockchain solutions.",
-    features: ["Smart Contracts", "Decentralized Applications", "Blockchain Integration"],
-    benefits: [
-      "Increased transparency",
-      "Enhanced security",
-      "Reduced fraud",
-      "Automated processes"
-    ],
-    technologies: ["Ethereum", "Hyperledger", "Solidity", "Chainlink"],
-    useCases: [
-      "Supply Chain Management",
-      "Financial Services",
-      "Identity Verification",
-      "Decentralized Finance"
-    ],
-    color: "from-orange-600 to-amber-600",
-    gradientBg: "from-orange-600/10 via-amber-600/5 to-transparent",
-    link: "/services/blockchain"
-  },
-  {
-    icon: <CloudCog className="h-10 w-10" />,
-    title: "Cloud Services",
-    description: "End-to-end cloud development and migration services.",
-    features: ["Cloud Strategy", "Migration Services", "Managed Cloud"],
-    benefits: [
-      "Scalability",
-      "Cost savings",
-      "Improved collaboration",
-      "Enhanced security"
-    ],
-    technologies: ["AWS", "Azure", "Google Cloud", "Kubernetes"],
-    useCases: [
-      "Cloud Migration",
-      "DevOps Automation",
-      "Disaster Recovery",
-      "Cloud-Native Development"
-    ],
-    color: "from-sky-600 to-cyan-600",
-    gradientBg: "from-sky-600/10 via-cyan-600/5 to-transparent",
-    link: "/services/cloud"
+    link: "/contact",
+    ctaText: "Consult our Team"
   },
   {
     icon: <Database className="h-10 w-10" />,
-    title: "Data Engineering",
-    description: "Scalable data pipelines and real-time analytics solutions.",
-    features: ["Data Warehousing", "ETL Processes", "Real-time Analytics"],
-    benefits: [
-      "Improved data quality",
-      "Faster data processing",
-      "Enhanced decision making",
-      "Scalable data solutions"
+    title: "Data Mining",
+    description: "We offer comprehensive data mining services, transforming raw data into actionable insights for strategic business decisions. We help our clients see patterns for informed decisions, boosting productivity and profitability.",
+    features: [
+      "Web Data Mining",
+      "Social Media Mining",
+      "Lead Data Mining",
+      "Image Data Mining",
+      "Excel Data Mining",
+      "Word Data Mining",
+      "PDF Data Mining"
     ],
-    technologies: ["Apache Spark", "Kafka", "Snowflake", "BigQuery"],
+    benefits: [
+      "Enhanced decision making",
+      "Pattern recognition",
+      "Rapid turnaround",
+      "Scalable solutions"
+    ],
+    metrics: {
+      highlight: "100%",
+      label: "Data-driven decisions"
+    },
+    technologies: ["Python", "R", "SQL", "Machine Learning"],
     useCases: [
-      "Data Integration",
       "Business Intelligence",
-      "Real-time Data Processing",
-      "Data Lake Management"
+      "Market Analysis",
+      "Customer Insights",
+      "Trend Prediction"
     ],
     color: "from-red-600 to-rose-600",
     gradientBg: "from-red-600/10 via-rose-600/5 to-transparent",
-    link: "/services/data"
+    link: "/contact",
+    ctaText: "Consult our Team"
   }
 ]
 
 export function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  })
 
   return (
     <section ref={containerRef} className="relative py-32 overflow-hidden">
-      {/* Background Effects */}
-      <motion.div className="absolute inset-0 bg-grid-pattern opacity-40"      />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      {/* Background Elements with lower z-index */}
+      <div className="absolute inset-0 -z-20 bg-grid-pattern opacity-40" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-transparent to-background" />
       
-      <motion.div 
-        className="relative max-w-7xl mx-auto px-4"
-      >
+      <Container>
         {/* Section Header */}
         <div className="text-center mb-20">
           <motion.div
@@ -192,7 +189,7 @@ export function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -223,7 +220,7 @@ export function Services() {
                     <p className="text-muted-foreground mb-6">
                       {service.description}
                     </p>
-                    {service.features && (
+                    {/* {service.features && (
                       <ul className="space-y-3 mb-6">
                         {service.features.map((feature, i) => (
                           <li key={i} className="flex items-center text-sm">
@@ -232,7 +229,7 @@ export function Services() {
                           </li>
                         ))}
                       </ul>
-                    )}
+                    )} */}
                     <motion.div
                       className="flex items-center text-primary font-medium"
                       whileHover={{ x: 5 }}
@@ -248,7 +245,7 @@ export function Services() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </Container>
 
       {/* Service Details Dialog */}
       <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
@@ -339,7 +336,7 @@ export function Services() {
             <div className="flex justify-center pt-6">
               <Button size="lg" asChild>
                 <a href={selectedService?.link}>
-                  Learn More About {selectedService?.title}
+                  {selectedService?.ctaText}
                   <ArrowUpRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>

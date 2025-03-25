@@ -8,10 +8,10 @@ import Link from "next/link"
 import Image from "next/image"
 
 interface MediaProps {
-  type: 'image' | 'video'  // Strict union type
+  type: 'image' | 'video'
   url: string
   fallback?: string
-  }
+}
 
 interface CardProps {
   title: string
@@ -29,7 +29,7 @@ const cards: CardProps[] = [
     icon: <Shield className="h-6 w-6" />,
     gradient: "from-blue-500 to-violet-500",
     media: {
-      type: 'video' as const,  // Type assertion to be explicit
+      type: 'video' as const,
       url: 'https://example.com/security.mp4'
     },
     link: "/services/security"
@@ -79,31 +79,29 @@ export function WhyChooseUs() {
     offset: ["start end", "end start"],
   })
 
-  // Only apply transforms when section is in view
-  const cardTransforms = cards.map((_, index) => ({
-    translateY: useTransform(
-      scrollYProgress,
-      [
-        index / cards.length,
-        (index + 1) / cards.length
-      ],
-      isInView ? ["0%", "-100%"] : ["0%", "0%"]
-    )
-  }))
+  // Since cards is static (4 items), we can define the transforms individually.
+  const cardTransforms = [
+    useTransform(scrollYProgress, [0 / cards.length, 1 / cards.length], ["0%", "-100%"]),
+    useTransform(scrollYProgress, [1 / cards.length, 2 / cards.length], ["0%", "-100%"]),
+    useTransform(scrollYProgress, [2 / cards.length, 3 / cards.length], ["0%", "-100%"]),
+    useTransform(scrollYProgress, [3 / cards.length, 4 / cards.length], ["0%", "-100%"]),
+  ]
+
+  const getCardStyle = (index: number) => ({
+    y: isInView ? cardTransforms[index] : 0,
+    zIndex: cards.length - index
+  })
 
   const MediaContent = ({ media }: { media: MediaProps }) => {
     if (media.type === 'video') {
       return (
-        <>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover rounded-2xl opacity-70"
-            >
-          </video>
-        </>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover rounded-2xl opacity-70"
+        />
       )
     }
     return (
@@ -145,10 +143,7 @@ export function WhyChooseUs() {
                 <motion.div
                   key={index}
                   className="absolute w-full"
-                  style={{
-                    y: cardTransforms[index].translateY,
-                    zIndex: cards.length - index // Ensures correct stacking order
-                  }}
+                  style={getCardStyle(index)}
                   initial={false}
                 >
                   {/* Card content */}

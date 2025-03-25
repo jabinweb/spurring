@@ -43,7 +43,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           Transform your enterprise with our cutting-edge AI solutions. From intelligent automation 
-          to predictive analytics, we're helping businesses across India achieve unprecedented growth 
+          to predictive analytics, we&apos;re helping businesses across India achieve unprecedented growth 
           and efficiency.
         </motion.p>
 

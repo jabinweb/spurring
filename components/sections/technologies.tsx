@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { useTheme } from "next-themes"
 import Image from "next/image"
+import { Container } from "@/components/ui/container"
 
 export function Technologies() {
   const { theme } = useTheme()
@@ -41,8 +42,8 @@ export function Technologies() {
   ]
 
   return (
-    <section className="bg-muted/50 py-20 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-muted/50 py-20">
+      <Container>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
           Technologies We Use
         </h2>
@@ -70,7 +71,7 @@ export function Technologies() {
             </Card>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

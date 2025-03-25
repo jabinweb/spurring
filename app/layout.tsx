@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { HiringPopup } from "@/components/hiring-popup";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Navigation />
           <main className="min-h-screen">{children}</main>
           <Footer />
+          <HiringPopup />
         </ThemeProvider>
       </body>
     </html>
@@ -31,4 +33,3 @@ export default function RootLayout({
 }
 
 
-     

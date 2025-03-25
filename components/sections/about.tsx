@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Brain, Cpu, Rocket, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Container } from "@/components/ui/container"
 
 export function About() {
   const features = [
@@ -31,11 +32,11 @@ export function About() {
 
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      {/* Background Elements with lower z-index */}
+      <div className="absolute inset-0 -z-20 bg-grid-pattern opacity-40" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-transparent to-background" />
       
-      <div className="relative max-w-7xl mx-auto px-4">
+      <Container>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div
@@ -106,7 +107,7 @@ export function About() {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

@@ -1,233 +1,153 @@
-import { Button } from "@/components/ui/button"
+'use client'
 import { Card, CardContent } from "@/components/ui/card"
-import { Brain, Code, LineChart, MessageSquare, Zap, Database, Cloud, Shield } from "lucide-react"
-import Image from "next/image"
+import { Brain, Code, LineChart, MessageSquare, Zap, ArrowRight } from "lucide-react"
+import { Hero } from "@/components/ui/hero"
 import Link from "next/link"
+import { Container } from "@/components/ui/container"
+import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
 
 export default function ServicesPage() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80"
-          alt="AI Services"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive AI solutions tailored to your business needs
-          </p>
+      {/* Enhanced Hero Section */}
+      <Hero
+        title="Our AI Services"
+        description="Transforming businesses with cutting-edge artificial intelligence solutions"
+        image="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80"
+        height="md"
+      >
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap justify-center gap-4 mt-8"
+        >
+          <Badge variant="outline" className="text-gray-300 bg-white/10 backdrop-blur-sm">
+            Enterprise AI Solutions
+          </Badge>
+          <Badge variant="outline" className="text-gray-300 bg-white/10 backdrop-blur-sm">
+            Custom Development
+          </Badge>
+          <Badge variant="outline" className="text-gray-300 bg-white/10 backdrop-blur-sm">
+            24/7 Support
+          </Badge>
+        </motion.div>
+      </Hero>
+
+      {/* Main Services Grid */}
+      <Container className="py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {[
+            {
+              title: "AI Consulting",
+              icon: <Brain className="h-8 w-8" />,
+              description: "Strategic guidance for implementing AI solutions in your business. We help you identify opportunities, plan implementation, and measure success.",
+              features: ["AI Readiness Assessment", "Implementation Strategy", "ROI Analysis"],
+              href: "/services/ai-consulting",
+              gradient: "from-blue-500 to-indigo-500"
+            },
+            {
+              title: "Generative AI",
+              icon: <Code className="h-8 w-8" />,
+              description: "Custom solutions for content generation, creative tasks, and automated content production using state-of-the-art AI models.",
+              features: ["Text Generation", "Image Synthesis", "Code Generation"],
+              href: "/services/generative-ai",
+              gradient: "from-purple-500 to-pink-500"
+            },
+            {
+              title: "Smart Assistants",
+              icon: <MessageSquare className="h-8 w-8" />,
+              description: "Intelligent chatbots and virtual assistants that automate customer service and internal processes.",
+              features: ["Customer Service Bots", "Process Automation", "Virtual Assistants"],
+              href: "/services/smart-assistants",
+              gradient: "from-green-500 to-emerald-500"
+            },
+            {
+              title: "Data Mining",
+              icon: <LineChart className="h-8 w-8" />,
+              description: "Advanced analytics and pattern recognition solutions that turn your data into actionable insights.",
+              features: ["Predictive Analytics", "Pattern Recognition", "Data Visualization"],
+              href: "/services/data-mining",
+              gradient: "from-orange-500 to-red-500"
+            }
+          ].map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Link href={service.href}>
+                <Card className="h-full transition-all duration-300 hover:shadow-lg group">
+                  <CardContent className="p-6">
+                    <div className="mb-4">
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.gradient} p-2.5 text-white`}>
+                        {service.icon}
+                      </div>
+                    </div>
+                    <h2 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h2>
+                    <p className="text-muted-foreground mb-6">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-center">
+                          <Zap className="h-5 w-5 text-primary mr-2" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex items-center text-primary font-medium">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </motion.div>
+          ))}
         </div>
-      </section>
-
-      {/* Main Services */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="flex items-center mb-4">
-                  <Brain className="h-8 w-8 text-primary mr-3" />
-                  <h2 className="text-2xl font-bold">AI Consulting</h2>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Strategic guidance for implementing AI solutions in your business.
-                  We help you identify opportunities, plan implementation, and
-                  measure success.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>AI Readiness Assessment</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Implementation Strategy</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>ROI Analysis</span>
-                  </li>
-                </ul>
-                <Button asChild>
-                  <Link href="/contact">Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="flex items-center mb-4">
-                  <Code className="h-8 w-8 text-primary mr-3" />
-                  <h2 className="text-2xl font-bold">Generative AI</h2>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Custom solutions for content generation, creative tasks, and
-                  automated content production using state-of-the-art AI models.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Text Generation</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Image Synthesis</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Code Generation</span>
-                  </li>
-                </ul>
-                <Button asChild>
-                  <Link href="/contact">Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="flex items-center mb-4">
-                  <MessageSquare className="h-8 w-8 text-primary mr-3" />
-                  <h2 className="text-2xl font-bold">Smart Assistants</h2>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Intelligent chatbots and virtual assistants that automate
-                  customer service and internal processes.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Customer Service Bots</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Process Automation</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Virtual Assistants</span>
-                  </li>
-                </ul>
-                <Button asChild>
-                  <Link href="/contact">Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="p-0">
-                <div className="flex items-center mb-4">
-                  <LineChart className="h-8 w-8 text-primary mr-3" />
-                  <h2 className="text-2xl font-bold">Data Mining</h2>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Advanced analytics and pattern recognition solutions that
-                  turn your data into actionable insights.
-                </p>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Predictive Analytics</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Pattern Recognition</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Zap className="h-5 w-5 text-primary mr-2" />
-                    <span>Data Visualization</span>
-                  </li>
-                </ul>
-                <Button asChild>
-                  <Link href="/contact">Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Services */}
-      <section className="bg-muted py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Additional Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center">
-              <Database className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Big Data Processing</h3>
-              <p className="text-muted-foreground">
-                Scalable solutions for processing and analyzing large datasets
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <Cloud className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Cloud Integration</h3>
-              <p className="text-muted-foreground">
-                Seamless integration of AI solutions with cloud platforms
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <Shield className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">AI Security</h3>
-              <p className="text-muted-foreground">
-                Ensuring your AI systems are secure and compliant
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </Container>
 
       {/* Process Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Process</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Discovery</h3>
-              <p className="text-muted-foreground">
-                Understanding your needs and objectives
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Planning</h3>
-              <p className="text-muted-foreground">
-                Developing a tailored solution strategy
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Implementation</h3>
-              <p className="text-muted-foreground">
-                Executing the solution with precision
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items- center justify-center mx-auto mb-4">
-                4
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Optimization</h3>
-              <p className="text-muted-foreground">
-                Continuous improvement and refinement
-              </p>
-            </div>
+      <section className="py-20 bg-muted/50">
+        <Container>
+          <div className="text-center mb-12">
+            <Badge className="mb-4">Our Process</Badge>
+            <h2 className="text-3xl font-bold mb-4">How We Work</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              A systematic approach to implementing AI solutions
+            </p>
           </div>
-        </div>
-      </section>
 
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              { step: "1", title: "Discovery", description: "Understanding your needs and objectives" },
+              { step: "2", title: "Planning", description: "Developing a tailored solution strategy" },
+              { step: "3", title: "Implementation", description: "Executing the solution with precision" },
+              { step: "4", title: "Optimization", description: "Continuous improvement and refinement" }
+            ].map((phase, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4">
+                  {phase.step}
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{phase.title}</h3>
+                <p className="text-muted-foreground">{phase.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </section>
     </div>
   )
 }

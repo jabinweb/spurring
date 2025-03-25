@@ -1,15 +1,23 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { useLightText } from "@/hooks/use-light-text"
 
+// Add variant prop to Logo component
 interface LogoProps {
-  size?: "sm" | "md" | "lg"
+  size?: "sm" | "md" | "lg";
+  variant?: "default" | "light";
 }
 
-export function Logo({ size = "md" }: LogoProps) {
+export function Logo({ size = "md", variant = "default" }: LogoProps) {
   const [isMounted, setIsMounted] = useState(false)
+  const { isLightText } = useLightText()
+
+  // Use isLightText to determine variant if not explicitly provided
+  const logoVariant = variant === "default" ? (isLightText ? "light" : "default") : variant
 
   useEffect(() => {
     setIsMounted(true)
@@ -24,7 +32,11 @@ export function Logo({ size = "md" }: LogoProps) {
   // Static version for SSR
   if (!isMounted) {
     return (
-      <Link href="/" className="flex items-center gap-3">
+      <Link href="/" className={cn(
+        "font-bold tracking-tight flex items-center gap-2",
+        sizes[size],
+        logoVariant === "light" ? "text-white" : "text-foreground"
+      )}>
         <div className={`relative ${sizes[size]} aspect-square`}>
           <svg viewBox="0 0 100 100" className="text-primary">
             <circle cx="50" cy="50" r="48" fill="currentColor" fillOpacity="0.1" />
@@ -37,15 +49,29 @@ export function Logo({ size = "md" }: LogoProps) {
           </svg>
         </div>
         <div className="font-semibold tracking-tight">
-          <div className="text-lg leading-none">Spurring</div>
-          <div className="text-sm text-muted-foreground">Ventures India</div>
+          <div className={cn(
+            "text-lg leading-none",
+            logoVariant === "light" ? "text-white" : "bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+          )}>
+            Spurring
+          </div>
+          <div className={cn(
+            "text-sm",
+            logoVariant === "light" ? "text-white/80" : "text-muted-foreground"
+          )}>
+            Ventures India
+          </div>
         </div>
       </Link>
     )
   }
 
   return (
-    <Link href="/" className="flex items-center gap-3">
+    <Link href="/" className={cn(
+      "font-bold tracking-tight flex items-center gap-2",
+      sizes[size],
+      logoVariant === "light" ? "text-white" : "text-foreground"
+    )}>
       <motion.div
         className={`relative ${sizes[size]} aspect-square`}
         whileHover={{ scale: 1.05 }}
@@ -113,10 +139,16 @@ export function Logo({ size = "md" }: LogoProps) {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <div className="text-lg leading-none bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+        <div className={cn(
+          "text-lg leading-none",
+          logoVariant === "light" ? "text-white" : "bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+        )}>
           Spurring
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className={cn(
+          "text-sm",
+          logoVariant === "light" ? "text-white/80" : "text-muted-foreground"
+        )}>
           Ventures India
         </div>
       </motion.div>

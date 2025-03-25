@@ -4,27 +4,16 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import Image from "next/image"
+import { Hero } from "@/components/ui/hero"
 
 export default function ContactPage() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&q=80"
-          alt="Contact Us"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Get in touch with our team to discuss your AI needs
-          </p>
-        </div>
-      </section>
+      <Hero
+        title="Contact Us"
+        description="Get in touch with our team to discuss your AI needs"
+        image="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&q=80"
+      />
 
       {/* Contact Information */}
       <section className="py-20 px-4">
@@ -121,7 +110,7 @@ export default function ContactPage() {
                         <h3 className="font-semibold mb-2">Email Us</h3>
                         <p className="text-muted-foreground">
                           info@spurringventures.com<br />
-                          support@spurringventures.com
+                          spurring.ventures.in@gmail.com 
                         </p>
                       </div>
                     </div>

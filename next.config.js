@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  eslint: {
-    ignoreDuringBuilds: true,
+  output: 'standalone',
+  images: {
+    domains: [
+      'images.unsplash.com',
+      'cdn.worldvectorlogo.com',
+      'pytorch.org',
+      'upload.wikimedia.org',
+      'www.vectorlogo.zone'
+    ],
   },
-  images: { unoptimized: true },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

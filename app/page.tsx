@@ -1,15 +1,12 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
 import { Hero } from "@/components/sections/hero"
 import { Services } from "@/components/sections/services"
-import { CTA } from "@/components/sections/cta"
 import { Technologies } from "@/components/sections/technologies"
 import { About } from "@/components/sections/about"
 import { WhyChooseUs } from "@/components/sections/why-choose-us"
 import { Achivement } from "@/components/sections/achivements"
+import { Testimonials } from "@/components/sections/testimonials"
 
 export default function Home() {
 
@@ -21,10 +18,10 @@ export default function Home() {
       <Services />
       <WhyChooseUs />
 
-      <Achivement />
+      {/* <Achivement /> */}
 
       {/* Featured Projects Section */}
-      <section className="bg-muted py-20 px-4">
+      {/* <section className="bg-muted py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Featured Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -93,33 +90,10 @@ export default function Home() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <Card key={i}>
-                <CardContent className="pt-6">
-                  <div className="flex items-center mb-4">
-                    <Users className="h-8 w-8 text-primary mr-2" />
-                    <div>
-                      <div className="font-semibold">Client Name</div>
-                      <div className="text-sm text-muted-foreground">Company {i}</div>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground">
-                    "Spurring Ventures has been instrumental in our AI transformation journey.
-                    Their expertise and dedication to our success made all the difference."
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* Technologies Section */}
       <Technologies />
