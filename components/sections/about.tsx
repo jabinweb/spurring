@@ -68,7 +68,7 @@ export function About() {
                   <Link href="/contact">Schedule a Consultation</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full" asChild>
-                  <Link href="/about">Discover Our Story</Link>
+                  <Link href="/about">Learn More</Link>
                 </Button>
               </div>
             </motion.div>

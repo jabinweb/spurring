@@ -7,6 +7,7 @@ import { About } from "@/components/sections/about"
 import { WhyChooseUs } from "@/components/sections/why-choose-us"
 import { Achivement } from "@/components/sections/achivements"
 import { Testimonials } from "@/components/sections/testimonials"
+import { IntegratedPlatform } from "@/components/platform/integrated-platform"
 
 export default function Home() {
 
@@ -15,6 +16,7 @@ export default function Home() {
     <div>
       <Hero />
       <About />
+      <IntegratedPlatform />
       <Services />
       <WhyChooseUs />
 
@@ -93,7 +95,7 @@ export default function Home() {
       </section> */}
 
       {/* Testimonials Section */}
-      <Testimonials />
+      {/* <Testimonials /> */}
 
       {/* Technologies Section */}
       <Technologies />

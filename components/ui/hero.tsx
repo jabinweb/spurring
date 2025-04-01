@@ -17,7 +17,7 @@ export function Hero({
   title,
   description,
   image,
-  height = "md",
+  height = "sm",
   children,
   className
 }: HeroProps) {

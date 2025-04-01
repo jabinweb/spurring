@@ -10,6 +10,8 @@ export const LIGHT_TEXT_PAGES = [
   '/about/',
   '/services',
   '/services/',
+  '/contact',
+  '/contact/',
 ] as const
 
 export type LightTextPage = typeof LIGHT_TEXT_PAGES[number]
