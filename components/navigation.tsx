@@ -19,15 +19,15 @@ import { useLightText } from "@/hooks/use-light-text"
 import { GetStartedButton } from "./get-started-button"
 import type { LucideIcon } from 'lucide-react'
 
-// Update or add interface
+// Define interface for navigation items
 interface NavigationItem {
   title: string
   description: string
   icon: LucideIcon
-  href?: string
+  href: string
 }
 
-// Update services data array
+// Create services data with proper types
 const services: NavigationItem[] = [
   {
     title: "AI Consulting",
