@@ -55,7 +55,7 @@ const services: NavigationItem[] = [
   },
 ]
 
-const industries = ["Healthcare", "Finance", "Manufacturing", "Retail"].map(title => ({ title, description: `AI solutions for ${title.toLowerCase()} sector`, icon: Building2 }))
+const industries = ["Healthcare", "Finance", "Manufacturing", "Retail"].map(title => ({ title, description: `AI solutions for ${title.toLowerCase()} sector`, icon: Building2, href: `/industries/${title.toLowerCase()}` }))
 
 const navigationItems = [
   { title: "About", href: "/about" },
