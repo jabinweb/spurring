@@ -11,18 +11,47 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { Menu, Brain, Code, MessageSquare, LineChart, Building2, ArrowRight } from "lucide-react"
+import { Menu, Brain, Code, MessageSquare, LineChart, Building2, ArrowRight, Sparkles, Bot, Database } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Logo } from "@/components/ui/logo"
 import { useLightText } from "@/hooks/use-light-text"
 import { GetStartedButton } from "./get-started-button"
 
-const services = [
-  { title: "AI Consulting", description: "Strategic guidance for AI implementation", icon: Brain, href: "/services/ai-consulting" },
-  { title: "Generative AI", description: "Custom solutions using state-of-the-art AI models", icon: Code, href: "/services/generative-ai" },
-  { title: "Smart Assistants", description: "AI-powered virtual assistants and chatbots", icon: MessageSquare, href: "/services/smart-assistants" },
-  { title: "Data Mining", description: "Extract valuable insights from your data", icon: LineChart, href: "/services/data-mining" }
+// Update or add interface
+interface NavigationItem {
+  title: string
+  description: string
+  icon: LucideIcon
+  href?: string
+}
+
+// Update services data array
+const services: NavigationItem[] = [
+  {
+    title: "AI Consulting",
+    description: "Expert guidance in leveraging artificial intelligence solutions",
+    icon: Brain,
+    href: "/services/ai-consulting"
+  },
+  {
+    title: "Generative AI",
+    description: "Cutting-edge generative AI solutions and implementations",
+    icon: Sparkles,
+    href: "/services/generative-ai"
+  },
+  {
+    title: "Smart Assistants",
+    description: "Intelligent virtual assistants and chatbot solutions",
+    icon: Bot,
+    href: "/services/smart-assistants"
+  },
+  {
+    title: "Data Mining",
+    description: "Advanced data analytics and mining solutions",
+    icon: Database,
+    href: "/services/data-mining"
+  },
 ]
 
 const industries = ["Healthcare", "Finance", "Manufacturing", "Retail"].map(title => ({ title, description: `AI solutions for ${title.toLowerCase()} sector`, icon: Building2 }))
@@ -46,7 +75,7 @@ export function Navigation() {
                 <NavigationMenuItem key={label}>
                   <NavigationMenuTrigger>{label}</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className={`grid w-[${width}] grid-cols-2 gap-4 p-6`}>
+                    <div className="grid w-[600px] grid-cols-2 gap-4 p-6">
                       {data.map(({ title, description, icon: Icon, href }) => (
                         <NavigationMenuLink key={title} href={href || "#"} className="block select-none space-y-1 rounded-md p-3 transition-colors hover:bg-accent hover:text-accent-foreground">
                           <div className="flex items-center gap-2 text-sm font-medium">
