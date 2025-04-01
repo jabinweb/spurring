@@ -17,6 +17,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Logo } from "@/components/ui/logo"
 import { useLightText } from "@/hooks/use-light-text"
 import { GetStartedButton } from "./get-started-button"
+import type { LucideIcon } from 'lucide-react'
 
 // Update or add interface
 interface NavigationItem {
