@@ -8,6 +8,7 @@ import { WhyChooseUs } from "@/components/sections/why-choose-us"
 import { Achivement } from "@/components/sections/achivements"
 import { Testimonials } from "@/components/sections/testimonials"
 import { IntegratedPlatform } from "@/components/platform/integrated-platform"
+import { IndustrySolutions } from "@/components/sections/industry-solutions"
 
 export default function Home() {
 
@@ -18,7 +19,9 @@ export default function Home() {
       <About />
       <IntegratedPlatform />
       <Services />
-      <WhyChooseUs />
+      <IndustrySolutions />
+
+      {/* <WhyChooseUs /> */}
 
       {/* <Achivement /> */}
 
