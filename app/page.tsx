@@ -1,5 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Users } from "lucide-react"
 import { Hero } from "@/components/sections/hero"
 import { Services } from "@/components/sections/services"
 import { Technologies } from "@/components/sections/technologies"

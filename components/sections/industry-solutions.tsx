@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
-import { Stethoscope, BadgeDollarSign, Factory, Store, FileText, Brain } from "lucide-react"
+import { Stethoscope, BadgeDollarSign, Factory, Store, Brain } from "lucide-react"
 
 const industries = [
   {

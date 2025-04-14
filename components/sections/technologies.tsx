@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 import { Container } from "@/components/ui/container"
+import { motion } from "framer-motion"
 
 export function Technologies() {
   const { theme } = useTheme()
@@ -44,12 +45,35 @@ export function Technologies() {
   return (
     <section className="bg-muted/50 py-20">
       <Container>
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-          Technologies We Use
-        </h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto text-lg">
-          We leverage cutting-edge technologies and frameworks to deliver powerful AI solutions
-        </p>
+         {/* Section Header */}
+         <div className="text-center mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+          >
+            Tech
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl font-bold mb-4"
+          >
+            Technologies We Use
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+          >
+            We leverage cutting-edge technologies and frameworks to deliver powerful AI solutions
+          </motion.p>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {technologies.map((tech, index) => (
             <Card 
