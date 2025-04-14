@@ -1,31 +1,55 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { MessageSquare, ArrowRight, Bot, Zap } from "lucide-react"
-import Link from "next/link"
+import { Features } from "@/components/services/features"
 import { Hero } from "@/components/ui/hero"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
+
+const features = [
+  {
+    title: "Intelligent Automation",
+    description: "Automate tasks with AI-powered assistants",
+    subFeatures: [
+      {
+        title: "Task Automation",
+        description: "Automate repetitive tasks and workflows",
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80"
+      },
+      {
+        title: "Smart Scheduling",
+        description: "Intelligent calendar and meeting management",
+        image: "https://images.unsplash.com/photo-1483389127117-b6a2102724ae?auto=format&fit=crop&q=80"
+      },
+      {
+        title: "Document Processing",
+        description: "Automated document analysis and processing",
+        image: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?auto=format&fit=crop&q=80"
+      }
+    ]
+  },
+  {
+    title: "Virtual Assistance",
+    description: "AI-powered assistance for various needs",
+    subFeatures: [
+      {
+        title: "Customer Support",
+        description: "24/7 automated customer service solutions",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80"
+      },
+      {
+        title: "Personal Assistant",
+        description: "AI companion for daily tasks and reminders",
+        image: "https://images.unsplash.com/photo-1596558450268-9c27524ba856?auto=format&fit=crop&q=80"
+      },
+      {
+        title: "Business Assistant",
+        description: "Intelligent support for business operations",
+        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80"
+      }
+    ]
+  }
+]
 
 export default function SmartAssistantsPage() {
-  const features = [
-    {
-      title: "Data Integration",
-      description: "Seamless integration with your existing data sources and systems"
-    },
-    {
-      title: "Smart Assistance Deployment",
-      description: "End-to-end deployment of AI-powered virtual assistants"
-    },
-    {
-      title: "Personalized Coaching",
-      description: "AI-driven personalized recommendations and guidance"
-    },
-    {
-      title: "Continued Support",
-      description: "Ongoing maintenance and optimization of smart assistance systems"
-    }
-  ]
-
   return (
     <div>
       <Hero
@@ -74,48 +98,11 @@ export default function SmartAssistantsPage() {
           </div>
         </div>
       </section>
-
-      {/* Features Section */}
-      <section className="bg-muted/50 py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="bg-primary/10 text-primary border-primary/20 mb-4">
-              Our Services
-            </Badge>
-            <h2 className="text-3xl font-bold mb-4">Smart Assistant Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Streamline operations and enhance customer interactions with intelligent AI assistants
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <Bot className="h-8 w-8 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Enhance Your Operations?</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Let&apos;s discuss how our smart assistant solutions can transform your business
-          </p>
-          <Button size="lg" asChild>
-            <Link href="/contact">
-              Schedule a Demo
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+    <Features
+      title="Smart Assistant Solutions"
+      subtitle="Enhance productivity and user experience with intelligent digital assistants"
+      features={features}
+    />
     </div>
   )
 }

@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: [
       'images.unsplash.com',
+      'source.unsplash.com',
       'cdn.worldvectorlogo.com',
       'pytorch.org',
       'upload.wikimedia.org',

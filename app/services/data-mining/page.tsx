@@ -1,40 +1,52 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Database, ArrowRight, LineChart, BarChart } from "lucide-react"
-import Link from "next/link"
+import { Features } from "@/components/services/features"
 import { Hero } from "@/components/ui/hero"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
 
 export default function DataMiningPage() {
   const features = [
     {
-      title: "Web Data Mining",
-      description: "Extract valuable insights from web-based data sources"
+      title: "Data Collection & Processing",
+      description: "Gather and process data from multiple sources efficiently",
+      subFeatures: [
+        {
+          title: "Automated Data Collection",
+          description: "Smart systems that automatically gather data from diverse sources",
+          image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80"
+        },
+        {
+          title: "Data Cleaning & Preprocessing", 
+          description: "Clean and prepare data for analysis using advanced techniques",
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
+        },
+        {
+          title: "Quality Assurance",
+          description: "Ensure data quality and accuracy through rigorous validation",
+          image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80"
+        }
+      ]
     },
     {
-      title: "Social Media Mining",
-      description: "Analyze social media data for market insights and trends"
-    },
-    {
-      title: "Lead Data Mining",
-      description: "Identify and qualify potential business opportunities"
-    },
-    {
-      title: "Image Data Mining",
-      description: "Extract insights from visual data and images"
-    },
-    {
-      title: "Excel Data Mining",
-      description: "Process and analyze spreadsheet-based data"
-    },
-    {
-      title: "Word Data Mining",
-      description: "Extract insights from text documents"
-    },
-    {
-      title: "PDF Data Mining",
-      description: "Analyze and extract data from PDF documents"
+      title: "Advanced Analytics",
+      description: "Extract valuable insights using cutting-edge analytical techniques",
+      subFeatures: [
+        {
+          title: "Pattern Recognition",
+          description: "Identify hidden patterns and trends in complex datasets",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&q=80"
+        },
+        {
+          title: "Predictive Analytics",
+          description: "Forecast future trends using historical data patterns",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
+        },
+        {
+          title: "Real-time Analytics",
+          description: "Process and analyze data in real-time for immediate insights",
+          image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80"
+        }
+      ]
     }
   ]
 
@@ -87,48 +99,11 @@ export default function DataMiningPage() {
           </div>
         </div>
       </section>
-
-      {/* Features Section */}
-      <section className="bg-muted/50 py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="bg-primary/10 text-primary border-primary/20 mb-4">
-              Our Services
-            </Badge>
-            <h2 className="text-3xl font-bold mb-4">Comprehensive Data Mining Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              High-quality, reliable, and scalable data mining solutions with rapid turnaround
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <LineChart className="h-8 w-8 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Leverage Your Data?</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Let&apos;s discuss how our data mining solutions can unlock insights for your business
-          </p>
-          <Button size="lg" asChild>
-            <Link href="/contact">
-              Start Mining Insights
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+    <Features
+      title="Data Mining Solutions"
+      subtitle="Uncover valuable insights from your data with advanced mining and analysis techniques"
+      features={features}
+    />
     </div>
   )
 }
