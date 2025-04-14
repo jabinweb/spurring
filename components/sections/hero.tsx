@@ -79,7 +79,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <video
-              src="https://videos.pexels.com/video-files/3141210/3141210-uhd_2560_1440_25fps.mp4"
+              src="https://static.vecteezy.com/system/resources/previews/041/727/692/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4"
               autoPlay
               muted
               loop
