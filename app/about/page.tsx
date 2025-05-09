@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Target, Globe, TrendingUp, Building } from "lucide-react"
 import Image from "next/image"
 import { Hero } from "@/components/ui/hero"
+import { WorldMap } from "@/components/world-map"
 
 export default function AboutPage() {
   return (
@@ -23,10 +24,7 @@ export default function AboutPage() {
             </div>
             <h2 className="text-3xl font-bold">Who We Are</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Spurring Ventures is a Bangalore-based startup operating within a global network 
-              of companies across Australia and other countries. We leverage our international 
-              expertise to build intelligent AI systems that tackle complex business challenges 
-              using advanced machine learning technologies.
+              At Spurring Ventures, we’re redefining the future of business with AI that works for you. Based in Bangalore, our startup taps into a global network to craft intelligent, machine learning-powered solutions that don’t just tackle business problems—they turn data into a competitive advantage. We go beyond theory, working hand-in-hand with our clients to create practical, actionable insights that fuel smarter decisions, save time, and elevate business performance.
             </p>
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="space-y-2">
@@ -42,13 +40,44 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="relative h-[400px] rounded-2xl overflow-hidden">
-            <Image
+            {/* <Image
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
               alt="Global Technology Network"
               fill
               className="object-cover"
-            />
+            /> */}
+            <WorldMap showLegend={false} />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+          </div>
+        </div>
+      </section>
+
+            {/* Mission & Vision */}
+            <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <div className="flex items-center mb-6">
+                <Target className="h-8 w-8 text-primary mr-3" />
+                <h2 className="text-3xl font-bold">Our Mission</h2>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                To empower businesses across India with cutting-edge AI solutions that drive
+                innovation, efficiency, and sustainable growth. We&apos;re committed to making
+                advanced technology accessible and practical for organizations of all sizes.
+              </p>
+            </div>
+            <div>
+              <div className="flex items-center mb-6">
+                <Brain className="h-8 w-8 text-primary mr-3" />
+                <h2 className="text-3xl font-bold">Our Vision</h2>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                To be India&apos;s leading AI solutions provider, recognized globally for our
+                innovative approaches, technical excellence, and the transformative impact
+                we create for our clients and society at large.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -85,35 +114,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <div className="flex items-center mb-6">
-                <Target className="h-8 w-8 text-primary mr-3" />
-                <h2 className="text-3xl font-bold">Our Mission</h2>
-              </div>
-              <p className="text-lg text-muted-foreground">
-                To empower businesses across India with cutting-edge AI solutions that drive
-                innovation, efficiency, and sustainable growth. We&apos;re committed to making
-                advanced technology accessible and practical for organizations of all sizes.
-              </p>
-            </div>
-            <div>
-              <div className="flex items-center mb-6">
-                <Brain className="h-8 w-8 text-primary mr-3" />
-                <h2 className="text-3xl font-bold">Our Vision</h2>
-              </div>
-              <p className="text-lg text-muted-foreground">
-                To be India&apos;s leading AI solutions provider, recognized globally for our
-                innovative approaches, technical excellence, and the transformative impact
-                we create for our clients and society at large.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Services Overview */}
       <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/50">

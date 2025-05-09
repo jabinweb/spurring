@@ -16,17 +16,17 @@ export function About() {
     {
       icon: <Cpu className="h-6 w-6" />,
       title: "Deep Tech Expertise",
-      description: "Industry-leading expertise in machine learning and neural networks"
+      description: "Industry-leading specialisation in machine learning and neural networks"
     },
     {
       icon: <Rocket className="h-6 w-6" />,
       title: "Rapid Innovation",
-      description: "Fast-track digital transformation with proven AI frameworks"
+      description: "Fast-track digital transformation with optimised AI frameworks"
     },
     {
       icon: <Target className="h-6 w-6" />,
       title: "Strategic Impact",
-      description: "Drive measurable outcomes through strategic AI implementation"
+      description: "Drive measurable outcomes through specialised AI implementation"
     }
   ]
 

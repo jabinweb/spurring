@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Brain, ArrowRight, CheckCircle, TrendingUp } from "lucide-react"
+import { Brain, ArrowRight, CheckCircle, TrendingUp, LineChart } from "lucide-react"
 import Link from "next/link"
 import { Hero } from "@/components/ui/hero"
 import { Container } from "@/components/ui/container"
@@ -53,55 +53,142 @@ const features = [
   }
 ]
 
+const services = [
+  {
+    title: "AI Consulting Services",
+    items: [
+      { title: "Unlock AI Opportunities", description: "Realise the vast potential of AI for your organisation" },
+      { title: "Tailored AI Solutions", description: "Get customised use cases for your unique industry" },
+      { title: "End-to-End AI Services", description: "From strategy to scalable infrastructure and deployment" },
+      { title: "Fast-Track AI with PoC", description: "Validate AI value quickly with reliable MVPs" },
+      { title: "Guaranteed AI Performance", description: "Benefit from model validation, quality control, and post-implementation assurance" }
+    ]
+  },
+  {
+    title: "AI Readiness Assessment",
+    items: [
+      { title: "Optimise for AI", description: "Refine data handling and ensure seamless connectivity across systems" },
+      { title: "Evaluate AI Readiness", description: "Assess your organisation's capacity to adopt and integrate AI" },
+      { title: "Identify Key Factors", description: "Understand critical considerations and potential risks" },
+      { title: "Inventory AI Assets", description: "Catalogue your existing AI tools and models" },
+      { title: "Gauge Adoption Readiness", description: "Determine your preparedness for AI integration" }
+    ]
+  },
+  {
+    title: "AI Strategic Planning",
+    items: [
+      { title: "Targeted AI Strategies", description: "Address your specific industry and business challenges with AI plans" },
+      { title: "Aligned with Objectives", description: "Tailor AI strategies to your unique organisational goals" },
+      { title: "Maximise AI Value", description: "Focus on strategies that deliver the greatest return on your AI investments" },
+      { title: "Feasible AI Prioritisation", description: "Define how AI supports your business goals and prioritise top AI opportunities" },
+      { title: "Strategic Roadmap", description: "Create a clear path for AI implementation and growth" }
+    ]
+  },
+  {
+    title: "AI Adoption",
+    items: [
+      { title: "Adapt for AI", description: "Transform your workforce and business for AI, boosting efficiency" },
+      { title: "Manage Change", description: "Develop a workforce strategy with clear communication" },
+      { title: "Cultivate AI Talent", description: "Attract, train, and retain the skills needed for AI implementation" },
+      { title: "Client-Focused AI Partner", description: "We're an AI consulting company centred on your needs" },
+      { title: "Seamless Integration", description: "Ensure smooth adoption across your organisation" }
+    ]
+  },
+  {
+    title: "AI Solution Innovation",
+    items: [
+      { title: "Track & Evolve", description: "Continuously monitor results to fuel new AI applications" },
+      { title: "Interactive AI Vision", description: "Engage stakeholders in workshops to explore AI possibilities" },
+      { title: "Envision Business Impact", description: "Understand how AI can transform your current processes" },
+      { title: "Set Achievable AI Goals", description: "Define realistic targets for AI integration and ROI" },
+      { title: "Future-Proof Solutions", description: "Develop scalable AI solutions that grow with your needs" }
+    ]
+  },
+  {
+    title: "AI Assistance",
+    items: [
+      { title: "24/7 AI Support", description: "Get round-the-clock assistance for your AI systems" },
+      { title: "Expert AI Specialists", description: "Access our dedicated team of AI experts" },
+      { title: "Continuous Monitoring", description: "Proactive system monitoring and maintenance" },
+      { title: "Regular Updates", description: "Keep your AI solutions current and optimised" },
+      { title: "Performance Optimisation", description: "Continuous improvement of AI systems" }
+    ]
+  }
+]
+
+const industryStats = [
+  { label: "Global GDP Impact by 2030", value: "$13T" },
+  { label: "AI-Enabled Organisation Performance by 2025", value: "30%" },
+  { label: "Reduction in Operational Costs", value: "45%" },
+  { label: "Increase in Productivity", value: "40%" }
+]
+
 export default function AIConsultingPage() {
   return (
     <div>
       <Hero
         title="AI Consulting Services"
         description="Strategic guidance through the complexities of AI implementation"
-        image="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80" // Replace with AI-focused hero image
+        video="https://player.vimeo.com/external/451556922.hd.mp4?s=500c4724a68a5d55055c57e61ddd9ca378f32821&profile_id=175"
       />
 
-      {/* Overview Section */}
-      <section className="py-20 px-4">
+      {/* Overview with Stats */}
+      <section className="py-20 relative">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <Badge className="bg-primary/10 text-primary border-primary/20">
-                Strategic AI Solutions
-              </Badge>
-              <h2 className="text-3xl font-bold">Transform Your Business with AI</h2>
+              <Badge>Strategic AI Solutions</Badge>
+              <h2 className="text-3xl font-bold">Transform Your Organisation with AI</h2>
               <p className="text-lg text-muted-foreground">
-                We provide comprehensive AI consultation to guide businesses through complexities 
-                of the ever-evolving AI landscape. Our experts assess your AI readiness and help 
-                implement technology to achieve your individualized organizational targets.
+                Our AI consultants expertly blend industry experience and technical knowledge to create dynamic human-AI collaborations that solve your biggest business challenges. We offer comprehensive AI consultation, guiding you through the AI landscape to identify optimal use cases, establish effective governance, and empower your team.
               </p>
-              <div className="grid grid-cols-2 gap-4 pt-6">
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="text-2xl font-bold text-primary">30%</div>
-                    <p className="text-sm text-muted-foreground">Competitive advantage by 2025</p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="text-2xl font-bold text-primary">$13T</div>
-                    <p className="text-sm text-muted-foreground">Global GDP impact by 2030</p>
-                  </CardContent>
-                </Card>
+              
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {industryStats.map((stat, index) => (
+                  <Card key={index}>
+                    <CardContent className="p-6">
+                      <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                      <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
-            <div className="relative h-[400px] rounded-2xl overflow-hidden">
-              <video
-                src="https://player.vimeo.com/external/451556922.hd.mp4?s=500c4724a68a5d55055c57e61ddd9ca378f32821&profile_id=175"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+
+            {/* Graph Visualization */}
+            <div className="relative rounded-2xl overflow-hidden bg-muted/5 border p-6">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+              <LineChart className="w-16 h-16 text-primary mb-4" />
+              <h3 className="text-xl font-semibold mb-4">AI Growth Trajectory</h3>
+              <p className="text-muted-foreground">
+                By 2030, AI could potentially add $13 trillion to the global GDP. AI-enabled organisations will outperform their competition by 30% by 2025. Our consultants provide tailored strategies, reducing risks and maximising AI&apos;s impact on business growth.
+              </p>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-20 bg-muted/50">
+        <Container>
+          <div className="grid gap-12">
+            {services.map((service, index) => (
+              <div key={index} className="space-y-6">
+                <h3 className="text-2xl font-bold">{service.title}</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {service.items.map((item, itemIndex) => (
+                    <Card key={itemIndex}>
+                      <CardContent className="p-6">
+                        <CheckCircle className="h-5 w-5 text-primary mb-4" />
+                        <h4 className="font-semibold mb-2">{item.title}</h4>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>

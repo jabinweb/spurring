@@ -8,83 +8,83 @@ import { Stethoscope, BadgeDollarSign, Factory, Store, Brain } from "lucide-reac
 
 const industries = [
   {
-    id: "healthcare",
-    name: "Healthcare",
-    icon: Stethoscope,
-    description: "Transform patient care with AI-powered diagnostics and personalized treatment plans.",
+    id: "farming",
+    name: "Farming",
+    icon: Factory,
+    description: "Transform agricultural operations with AI-powered automation and precision farming solutions.",
     solutions: [
       {
-        title: "Early Disease Detection",
-        description: "AI algorithms for early diagnosis and risk assessment",
-        metric: "95% accuracy in early detection"
+        title: "Crop Optimisation",
+        description: "AI-driven crop monitoring and yield optimisation",
+        metric: "40% increased yield"
       },
       {
-        title: "Patient Care Optimization",
-        description: "Smart scheduling and resource allocation",
-        metric: "30% reduction in wait times"
+        title: "Smart Irrigation",
+        description: "Intelligent water resource management",
+        metric: "35% water conservation"
       }
     ],
-    video: "https://videos.pexels.com/video-files/30593273/13100531_2560_1440_30fps.mp4",
-    color: "from-blue-500 to-cyan-500"
+    video: "https://static.vecteezy.com/system/resources/previews/007/923/664/mp4/agriculture-drone-flight-over-organic-farm-ai-technology-free-video.mp4",
+    color: "from-green-500 to-emerald-500"
   },
   {
-    id: "finance",
-    name: "Finance",
-    icon: BadgeDollarSign,
-    description: "Enhance financial operations with AI-driven insights and fraud detection.",
+    id: "construction",
+    name: "Construction",
+    icon: Store,
+    description: "Enhance construction site safety and efficiency with AI-powered monitoring.",
     solutions: [
       {
-        title: "Fraud Detection",
-        description: "Real-time monitoring and risk assessment",
-        metric: "60% reduction in fraud cases"
+        title: "Safety Analytics",
+        description: "Real-time risk assessment and safety monitoring",
+        metric: "60% risk reduction"
       },
       {
-        title: "Investment Analysis",
-        description: "AI-powered market analysis and predictions",
-        metric: "40% better returns"
+        title: "Project Optimisation",
+        description: "AI-driven project planning and resource utilisation",
+        metric: "45% better efficiency"
       }
     ],
-    video: "https://static.vecteezy.com/system/resources/previews/002/273/297/mp4/digital-animation-of-business-stock-market-price-chart-free-video.mp4",
-    color: "from-green-500 to-emerald-500"
+    video: "https://static.vecteezy.com/system/resources/previews/007/157/239/mp4/worker-at-construction-site-with-safety-equipment-concept-of-industrial-safety-and-occupational-health-free-video.mp4",
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    id: "machinery",
+    name: "Machinery",
+    icon: Factory,
+    description: "Optimise equipment performance with intelligent monitoring and predictive maintenance.",
+    solutions: [
+      {
+        title: "Predictive Maintenance",
+        description: "AI-powered equipment health monitoring",
+        metric: "70% less downtime"
+      },
+      {
+        title: "Performance Optimisation",
+        description: "Smart operational efficiency enhancement",
+        metric: "40% productivity gain"
+      }
+    ],
+    video: "https://static.vecteezy.com/system/resources/previews/041/727/692/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4",
+    color: "from-blue-500 to-cyan-500"
   },
   {
     id: "manufacturing",
     name: "Manufacturing",
     icon: Factory,
-    description: "Optimize production with intelligent automation and quality control.",
+    description: "Transform production lines with intelligent automation and quality control.",
     solutions: [
       {
-        title: "Quality Control",
-        description: "AI-powered defect detection system",
-        metric: "90% defect detection rate"
+        title: "Quality Assurance",
+        description: "AI-powered defect recognition system",
+        metric: "95% detection rate"
       },
       {
-        title: "Predictive Maintenance",
-        description: "Smart equipment monitoring",
-        metric: "50% reduced downtime"
+        title: "Process Optimisation",
+        description: "Smart production line monitoring",
+        metric: "50% efficiency gain"
       }
     ],
-    video: "https://static.vecteezy.com/system/resources/previews/041/727/692/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4",
-    color: "from-orange-500 to-red-500"
-  },
-  {
-    id: "retail",
-    name: "Retail",
-    icon: Store,
-    description: "Personalize shopping experiences with AI-driven recommendations.",
-    solutions: [
-      {
-        title: "Smart Inventory",
-        description: "AI-driven inventory management",
-        metric: "35% reduced stockouts"
-      },
-      {
-        title: "Customer Analytics",
-        description: "Personalized shopping experience",
-        metric: "45% increased engagement"
-      }
-    ],
-    video: "https://static.vecteezy.com/system/resources/previews/016/783/262/mp4/women-are-paying-online-by-credit-card-and-shopping-for-the-things-they-like-on-their-computers-at-home-online-shopping-free-video.mp4",
+    video: "https://static.vecteezy.com/system/resources/previews/011/892/765/mp4/robots-welding-in-a-car-factory-free-video.mp4",
     color: "from-purple-500 to-pink-500"
   }
 ]

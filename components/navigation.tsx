@@ -41,12 +41,12 @@ const services: NavigationItem[] = [
     icon: Sparkles,
     href: "/services/generative-ai"
   },
-  {
-    title: "Smart Assistants",
-    description: "Intelligent virtual assistants and chatbot solutions",
-    icon: Bot,
-    href: "/services/smart-assistants"
-  },
+  // {
+  //   title: "Smart Assistants",
+  //   description: "Intelligent virtual assistants and chatbot solutions",
+  //   icon: Bot,
+  //   href: "/services/smart-assistants"
+  // },
   {
     title: "Data Mining",
     description: "Advanced data analytics and mining solutions",
@@ -72,7 +72,7 @@ export function Navigation() {
         <div className="ml-auto flex items-center space-x-4">
           <NavigationMenu className="hidden md:block">
             <NavigationMenuList className="gap-2">
-              {[{ label: "Services", data: services, width: "600px" }, { label: "Industries", data: industries, width: "400px" }].map(({ label, data, width }) => (
+              {[{ label: "Services", data: services, width: "600px" }].map(({ label, data, width }) => (
                 <NavigationMenuItem key={label}>
                   <NavigationMenuTrigger>{label}</NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -130,14 +130,14 @@ export function Navigation() {
                 </div>
 
                 {/* Industries Section */}
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <p className="text-sm font-semibold text-gray-500 uppercase">Industries</p>
                   {industries.map(({ title }) => (
                     <Link key={title} href={`/industries/${title.toLowerCase()}`} className="block text-lg font-semibold hover:text-primary mt-2">
                       {title}
                     </Link>
                   ))}
-                </div>
+                </div> */}
 
                 {/* Other Navigation Items */}
                 {navigationItems.map(({ title, href }) => (

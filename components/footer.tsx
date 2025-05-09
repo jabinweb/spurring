@@ -26,7 +26,7 @@ export function Footer() {
               <Logo size="md" />
             </div>
             <p className="text-sm text-muted-foreground">
-              Leading the future of AI development and innovation in India
+            Leading the AI revolution in India
             </p>
           </div>
           <div>
@@ -34,7 +34,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li><Link href="/services/ai-consulting" className="text-sm text-muted-foreground hover:text-foreground">AI Consulting</Link></li>
               <li><Link href="/services/generative-ai" className="text-sm text-muted-foreground hover:text-foreground">Generative AI</Link></li>
-              <li><Link href="/services/smart-assistants" className="text-sm text-muted-foreground hover:text-foreground">Smart Assistants</Link></li>
+              {/* <li><Link href="/services/smart-assistants" className="text-sm text-muted-foreground hover:text-foreground">Smart Assistants</Link></li> */}
               <li><Link href="/services/data-mining" className="text-sm text-muted-foreground hover:text-foreground">Data Mining</Link></li>
             </ul>
           </div>
@@ -52,7 +52,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li><a href="https://www.linkedin.com/company/spurring-ventures-india" className="text-sm text-muted-foreground hover:text-foreground">LinkedIn</a></li>
               {/* <li><a href="https://twitter.com" className="text-sm text-muted-foreground hover:text-foreground">Twitter</a></li>  */}
-              <li><a href="mailto:spurring.ventures.in@gmail.com" className="text-sm text-muted-foreground hover:text-foreground">Email</a></li>
+              <li><a href="mailto:spurringventuresindia@gmail.com " className="text-sm text-muted-foreground hover:text-foreground">Email</a></li>
             </ul>
           </div>
         </div>

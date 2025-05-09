@@ -8,6 +8,7 @@ import { Testimonials } from "@/components/sections/testimonials"
 import { IntegratedPlatform } from "@/components/platform/integrated-platform"
 import { IndustrySolutions } from "@/components/sections/industry-solutions"
 import { OurCustomers } from "@/components/sections/our-customers";
+import { ConstructionSafetyCaseStudy } from "@/components/case-studies/construction-safety"
 
 export default function Home() {
 
@@ -17,7 +18,8 @@ export default function Home() {
       <Hero />
       <OurCustomers />
       <About />
-      <IntegratedPlatform />
+      <ConstructionSafetyCaseStudy />
+      {/* <IntegratedPlatform /> */}
       <Services />
       <IndustrySolutions />
 

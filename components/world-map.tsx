@@ -3,6 +3,10 @@
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
+interface WorldMapProps {
+  showLegend?: boolean
+}
+
 const locations = [
   {
     id: "india",
@@ -65,7 +69,7 @@ const projectToSVG = (coordinates: number[]) => {
   return [x, normalizedY]
 }
 
-export function WorldMap() {
+export function WorldMap({ showLegend = true }: WorldMapProps) {
   return (
     <div className="relative w-full max-w-5xl mx-auto overflow-hidden">
       <svg
@@ -164,21 +168,23 @@ export function WorldMap() {
         })}
       </svg>
 
-      {/* Legend */}
-      <div className="absolute bottom-4 right-4 flex items-center gap-4 bg-background/80 backdrop-blur-sm p-2 rounded-lg border border-border">
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-primary" />
-          <span className="text-xs">Headquarters</span>
+      {/* Optional Legend */}
+      {showLegend && (
+        <div className="absolute bottom-4 right-4 flex items-center gap-4 bg-background/80 backdrop-blur-sm p-2 rounded-lg border border-border">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-primary" />
+            <span className="text-xs">Headquarters</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-primary" />
+            <span className="text-xs">Office</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-primary/70" />
+            <span className="text-xs">Partner</span>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-primary" />
-          <span className="text-xs">Office</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-primary/70" />
-          <span className="text-xs">Partner</span>
-        </div>
-      </div>
+      )}
     </div>
   )
 }

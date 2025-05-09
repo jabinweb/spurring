@@ -55,14 +55,14 @@ export default function ServicesPage() {
               href: "/services/generative-ai",
               gradient: "from-purple-500 to-pink-500"
             },
-            {
-              title: "Smart Assistants",
-              icon: <MessageSquare className="h-8 w-8" />,
-              description: "Intelligent chatbots and virtual assistants that automate customer service and internal processes.",
-              features: ["Customer Service Bots", "Process Automation", "Virtual Assistants"],
-              href: "/services/smart-assistants",
-              gradient: "from-green-500 to-emerald-500"
-            },
+            // {
+            //   title: "Smart Assistants",
+            //   icon: <MessageSquare className="h-8 w-8" />,
+            //   description: "Intelligent chatbots and virtual assistants that automate customer service and internal processes.",
+            //   features: ["Customer Service Bots", "Process Automation", "Virtual Assistants"],
+            //   href: "/services/smart-assistants",
+            //   gradient: "from-green-500 to-emerald-500"
+            // },
             {
               title: "Data Mining",
               icon: <LineChart className="h-8 w-8" />,
