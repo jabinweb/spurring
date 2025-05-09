@@ -7,56 +7,62 @@ const locations = [
   {
     id: "india",
     name: "India",
-    coordinates: [78.9629, 20.5937],
+    coordinates: [77.2090, 28.6139], // New Delhi coordinates
     type: "headquarters"
   },
   {
     id: "australia",
     name: "Australia",
-    coordinates: [133.7751, -25.2744], // Adjusted to center of Australia
+    coordinates: [151.2093, -33.8688], // Sydney coordinates
     type: "office"
   },
   {
     id: "thailand",
     name: "Thailand",
-    coordinates: [100.9925, 15.8700], // Adjusted to center of Thailand
+    coordinates: [100.5018, 13.7563], // Bangkok coordinates
     type: "partner"
   },
   {
     id: "uae",
     name: "UAE",
-    coordinates: [53.8478, 23.4241], // Adjusted to center of UAE
+    coordinates: [55.2708, 25.2048], // Dubai coordinates
     type: "office"
   },
   {
     id: "europe",
     name: "Europe",
-    coordinates: [15.2551, 54.5260], // Adjusted to center of Europe
+    coordinates: [4.9041, 52.3676], // Amsterdam coordinates
     type: "partner"
   },
   {
     id: "usa",
     name: "United States",
-    coordinates: [-95.7129, 37.0902], // Adjusted to center of USA
+    coordinates: [-122.4194, 37.7749], // San Francisco coordinates
     type: "office"
   }
 ]
 
-// Update viewBox parameters to match SVG
 const projectToSVG = (coordinates: number[]) => {
   const [longitude, latitude] = coordinates
+  // Mercator projection parameters
   const viewBox = {
-    minLon: -169.110266,
-    maxLon: 190.486279,
-    minLat: -58.508473,
-    maxLat: 83.600842,
+    minLon: -180,
+    maxLon: 180,
+    minLat: -55, // Adjusted to focus on populated areas
+    maxLat: 80,  // Adjusted to focus on populated areas
     width: 1009.6727,
     height: 665.96301
   }
 
+  // Mercator projection formula
+  const y = Math.log(Math.tan((90 + latitude) * Math.PI / 360)) / (Math.PI / 180)
+  const ymin = Math.log(Math.tan((90 + viewBox.minLat) * Math.PI / 360)) / (Math.PI / 180)
+  const ymax = Math.log(Math.tan((90 + viewBox.maxLat) * Math.PI / 360)) / (Math.PI / 180)
+  
   const x = ((longitude - viewBox.minLon) / (viewBox.maxLon - viewBox.minLon)) * viewBox.width
-  const y = ((viewBox.maxLat - latitude) / (viewBox.maxLat - viewBox.minLat)) * viewBox.height
-  return [x, y]
+  const normalizedY = ((ymax - y) / (ymax - ymin)) * viewBox.height
+
+  return [x, normalizedY]
 }
 
 export function WorldMap() {
@@ -68,8 +74,18 @@ export function WorldMap() {
         style={{ background: 'transparent' }}
       >
         {/* Base Map */}
-        <g className="fill-muted/10 stroke-muted-foreground/20 dark:fill-muted/20 dark:stroke-muted-foreground/30">
-          <image href="/world-map.svg" width="100%" height="100%" style={{color: 'currentColor'}} />
+        <g>
+          <path
+            d={`M 0 0 H ${1009.6727} V ${665.96301} H 0 Z`}
+            className="fill-background"
+          />
+          <image 
+            href="/world-map.svg" 
+            width="100%" 
+            height="100%" 
+            className="opacity-[0.5] dark:opacity-[0.5] [filter:invert(1)_opacity(0.8)_brightness(2)_contrast(0.5)] dark:[filter:brightness(2)_contrast(0.5)]"
+            preserveAspectRatio="xMidYMid meet"
+          />
         </g>
 
         {/* Connections */}

@@ -50,8 +50,8 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Connect</h3>
             <ul className="space-y-2">
-              {/* <li><a href="https://linkedin.com" className="text-sm text-muted-foreground hover:text-foreground">LinkedIn</a></li>
-              <li><a href="https://twitter.com" className="text-sm text-muted-foreground hover:text-foreground">Twitter</a></li> */}
+              <li><a href="https://www.linkedin.com/company/spurring-ventures-india" className="text-sm text-muted-foreground hover:text-foreground">LinkedIn</a></li>
+              {/* <li><a href="https://twitter.com" className="text-sm text-muted-foreground hover:text-foreground">Twitter</a></li>  */}
               <li><a href="mailto:spurring.ventures.in@gmail.com" className="text-sm text-muted-foreground hover:text-foreground">Email</a></li>
             </ul>
           </div>

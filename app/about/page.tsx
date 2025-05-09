@@ -9,7 +9,8 @@ export default function AboutPage() {
       <Hero
         title="About Spurring Ventures"
         description="Leading the AI revolution in India with innovative solutions and expert consulting"
-        image="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
+        video="https://videos.ctfassets.net/bx9krvy0u3sx/9UFKzsGidZdhexn9ebev9/a9b771a2d2d8b13a1055e547b1f7defd/About_US_Hero_Video.mp4"
+        height="lg"
       />
 
       {/* Company Overview */}

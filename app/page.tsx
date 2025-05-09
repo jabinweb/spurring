@@ -7,6 +7,7 @@ import { Achivement } from "@/components/sections/achivements"
 import { Testimonials } from "@/components/sections/testimonials"
 import { IntegratedPlatform } from "@/components/platform/integrated-platform"
 import { IndustrySolutions } from "@/components/sections/industry-solutions"
+import { OurCustomers } from "@/components/sections/our-customers";
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
+      <OurCustomers />
       <About />
       <IntegratedPlatform />
       <Services />
