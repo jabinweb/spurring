@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 import { Container } from "@/components/ui/container"
-import { Brain, Database, LineChart, Search, BarChart } from "lucide-react"
+import { Brain, Database, LineChart, Search, BarChart, HelpCircle } from "lucide-react"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const services = [
   {
@@ -50,58 +51,91 @@ const services = [
 ]
 
 const techStack = [
-  { name: "Machine Learning", description: "Advanced algorithms for pattern recognition" },
-  { name: "Deep Learning", description: "Neural networks for complex analysis" },
-  { name: "Statistical Analysis", description: "Robust statistical methods" },
-  { name: "Big Data Processing", description: "Handling large-scale datasets" }
+  {
+    category: "Programming Languages",
+    items: [
+      { name: "Python", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
+      { name: "Java", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" },
+      { name: "R", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/r/r-original.svg" },
+      { name: "JavaScript", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" }
+    ]
+  },
+  {
+    category: "Databases & Storage",
+    items: [
+      { name: "PostgreSQL", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" },
+      { name: "MongoDB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" },
+      { name: "Redis", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original.svg" },
+      { name: "Amazon S3", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" }
+    ]
+  },
+  {
+    category: "Big Data",
+    items: [
+      { name: "Apache Spark", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/apache/apache-original.svg" },
+      { name: "Hadoop", logo: "https://cdn.worldvectorlogo.com/logos/hadoop.svg" },
+      { name: "Databricks", logo: "https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg" },
+      { name: "Snowflake", logo: "https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg" }
+    ]
+  },
+  {
+    category: "Libraries & Frameworks",
+    items: [
+      { name: "TensorFlow", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" },
+      { name: "PyTorch", logo: "https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg" },
+      { name: "scikit-learn", logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" },
+      { name: "Pandas", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" }
+    ]
+  },
+  {
+    category: "Data Visualization",
+    items: [
+      { name: "Tableau", logo: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg" },
+      { name: "Power BI", logo: "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" },
+      { name: "D3.js", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/d3js/d3js-original.svg" },
+      { name: "Plotly", logo: "https://www.vectorlogo.zone/logos/plot_ly/plot_ly-icon.svg" }
+    ]
+  }
+]
+
+const industryApplications = [
+  {
+    title: "Financial Services",
+    description: "Uncover patterns in financial data for fraud detection and risk assessment.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Healthcare Analytics",
+    description: "Analyze patient data to improve care outcomes and operational efficiency.",
+    image: "https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Retail Intelligence",
+    description: "Optimize inventory and personalize customer experiences through data.",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80"
+  }
+]
+
+const faqItems = [
+  {
+    question: "What is Data Mining and how can it benefit my business?",
+    answer: "Data Mining is the process of discovering patterns and relationships in large datasets. It can benefit your business by uncovering valuable insights, improving decision-making, and identifying opportunities for growth and optimization."
+  },
+  {
+    question: "How secure is my data during the mining process?",
+    answer: "We implement robust security measures including encryption, access controls, and compliance with industry regulations. Your data security is our top priority throughout the entire mining process."
+  },
+  {
+    question: "What kind of ROI can I expect from Data Mining?",
+    answer: "ROI varies by implementation, but businesses typically see 25-40% improvement in decision accuracy, 30% reduction in operational costs, and significant increases in revenue through optimized strategies."
+  },
+  {
+    question: "How long does it take to implement Data Mining solutions?",
+    answer: "Implementation timelines vary based on data complexity and project scope. Basic implementations can take 2-4 weeks, while comprehensive solutions may require 2-3 months for full integration."
+  }
 ]
 
 export default function DataMiningPage() {
-  const features = [
-    {
-      title: "Data Collection & Processing",
-      description: "Gather and process data from multiple sources efficiently",
-      subFeatures: [
-        {
-          title: "Automated Data Collection",
-          description: "Smart systems that automatically gather data from diverse sources",
-          image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80"
-        },
-        {
-          title: "Data Cleaning & Preprocessing", 
-          description: "Clean and prepare data for analysis using advanced techniques",
-          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
-        },
-        {
-          title: "Quality Assurance",
-          description: "Ensure data quality and accuracy through rigorous validation",
-          image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80"
-        }
-      ]
-    },
-    {
-      title: "Advanced Analytics",
-      description: "Extract valuable insights using cutting-edge analytical techniques",
-      subFeatures: [
-        {
-          title: "Pattern Recognition",
-          description: "Identify hidden patterns and trends in complex datasets",
-          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&q=80"
-        },
-        {
-          title: "Predictive Analytics",
-          description: "Forecast future trends using historical data patterns",
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
-        },
-        {
-          title: "Real-time Analytics",
-          description: "Process and analyze data in real-time for immediate insights",
-          image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80"
-        }
-      ]
-    }
-  ]
-
   return (
     <div>
       <Hero
@@ -150,8 +184,49 @@ export default function DataMiningPage() {
         </Container>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 bg-muted/50">
+      {/* Tech Stack Section */}
+      <section className="py-24">
+        <Container>
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Technologies</Badge>
+            <h2 className="text-3xl font-bold mb-4">Technologies and Methods We Use for Data Mining</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Leverage our comprehensive tech stack for powerful data mining solutions
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {techStack.map((category, index) => (
+              <div key={index} className="space-y-6">
+                <h3 className="text-2xl font-bold text-center">{category.category}</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {category.items.map((tech, techIndex) => (
+                    <Card key={techIndex} className="group hover:shadow-lg transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="relative w-12 h-12">
+                            <Image
+                              src={tech.logo}
+                              alt={`${tech.name} logo`}
+                              fill
+                              className="object-contain"
+                              sizes="48px"
+                            />
+                          </div>
+                          <h4 className="font-bold text-lg">{tech.name}</h4>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Services Grid - Updated Styling */}
+      <section className="py-24 bg-muted/50">
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Our Service Scope</h2>
@@ -183,11 +258,81 @@ export default function DataMiningPage() {
         </Container>
       </section>
 
-      <Features
-        title="Data Mining Solutions"
-        subtitle="Uncover valuable insights from your data with advanced mining and analysis techniques"
-        features={features}
-      />
+      {/* Industry Applications */}
+      <section className="py-24">
+        <Container>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">Data Mining Across Industries</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Transform your industry with powerful data mining solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {industryApplications.map((industry, index) => (
+              <Card key={index} className="group hover:shadow-lg transition-shadow overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={industry.image}
+                    alt={industry.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transform transition-transform duration-500 ease-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90" />
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-3">{industry.title}</h3>
+                  <p className="text-muted-foreground">{industry.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-muted/50">
+        <Container>
+          <div className="text-center mb-16">
+            <Badge className="mb-4">FAQ</Badge>
+            <h2 className="text-3xl font-bold mb-4">Common Questions About Data Mining</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Get answers to frequently asked questions about our Data Mining solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* First Column */}
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.slice(0, Math.ceil(faqItems.length / 2)).map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            {/* Second Column */}
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.slice(Math.ceil(faqItems.length / 2)).map((item, index) => (
+                <AccordionItem key={index} value={`item-${index + Math.ceil(faqItems.length / 2)}`}>
+                  <AccordionTrigger className="text-left">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </Container>
+      </section>
     </div>
   )
 }

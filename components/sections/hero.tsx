@@ -6,18 +6,41 @@ import { motion } from "framer-motion"
 import { InteractiveGrid } from "./interactive-grid"
 import { ArrowRight } from "lucide-react"
 import { Container } from "../ui/container"
+import { useEffect, useState } from "react"
 
-export function Hero() {
+interface HeroProps {
+  videos?: string[]
+}
+
+export function Hero({ 
+  videos = [
+    "https://cdn.pixabay.com/video/2024/09/21/232561_large.mp4",
+    "https://cdn.pixabay.com/video/2021/09/11/88223-606079076_large.mp4",
+    "https://static.vecteezy.com/system/resources/previews/041/727/692/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4"
+  ] 
+}: HeroProps) {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+    }, 8000); // Change video every 8 seconds
+
+    return () => clearInterval(interval);
+  }, [videos.length]);
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 -z-20">
         <video
-          src="https://static.vecteezy.com/system/resources/previews/041/727/692/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4"
+          key={videos[currentVideoIndex]} // Key helps force remount
+          src={videos[currentVideoIndex]}
           autoPlay
           muted
-          loop
+          loop={videos.length === 1}
           playsInline
+          onEnded={() => videos.length > 1 && setCurrentVideoIndex((prev) => (prev + 1) % videos.length)}
           className="object-cover w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-background/50 to-background/50" />

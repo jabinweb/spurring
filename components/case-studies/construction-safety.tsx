@@ -70,12 +70,12 @@ export function ConstructionSafetyCaseStudy() {
               ))}
             </div>
 
-            <Button size="lg" className="mt-8" asChild>
+            {/* <Button size="lg" className="mt-8" asChild>
               <Link href="/contact">
                 Learn More
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-            </Button>
+            </Button> */}
           </motion.div>
 
           {/* Image */}
