@@ -158,7 +158,7 @@ export default function GenerativeAiPage() {
       <Hero
         title="Generative AI Solutions"
         description="Transform your business with cutting-edge generative AI technology"
-        video="https://static.vecteezy.com/system/resources/previews/011/106/039/mp4/abstract-background-of-digital-data-free-video.mp4"
+        video="https://cdn.pixabay.com/video/2023/04/15/159053-818026314_tiny.mp4"
       />
       {/* Overview with Stats */}
       <section className="py-20 relative">

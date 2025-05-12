@@ -78,7 +78,7 @@ export function Navigation() {
                   <NavigationMenuContent>
                     <div className="grid w-[600px] grid-cols-2 gap-4 p-6">
                       {data.map(({ title, description, icon: Icon, href }) => (
-                        <NavigationMenuLink key={title} href={href || "#"} className="block select-none space-y-1 rounded-md p-3 transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <NavigationMenuLink key={title} href={href || "#"} className="block select-none space-y-1 rounded-md p-3 transition-colors hover:bg-primary hover:text-accent-foreground">
                           <div className="flex items-center gap-2 text-sm font-medium">
                             <Icon className="h-5 w-5" /> {title}
                           </div>

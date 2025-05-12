@@ -69,7 +69,7 @@ const projectToSVG = (coordinates: number[]) => {
   return [x, normalizedY]
 }
 
-export function WorldMap({ showLegend = true }: WorldMapProps) {
+export function WorldMap({ showLegend = false }: WorldMapProps) {
   return (
     <div className="relative w-full max-w-5xl mx-auto overflow-hidden">
       <svg

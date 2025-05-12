@@ -4,6 +4,7 @@ import { Brain, CheckCircle, LineChart, Sparkles, ShieldCheck, Users, Lightbulb,
 import { Hero } from "@/components/ui/hero"
 import { Container } from "@/components/ui/container"
 import Image from "next/image"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const services = [
   {
@@ -114,13 +115,32 @@ const industryConsulting = [
   }
 ]
 
+const faqItems = [
+  {
+    question: "What makes your AI consulting services unique?",
+    answer: "Our approach combines deep technical expertise with practical business acumen. We focus on delivering customised AI solutions that align with your specific industry needs, ensuring measurable ROI and sustainable implementation."
+  },
+  {
+    question: "How do you ensure AI solutions are ethical and compliant?",
+    answer: "We follow strict ethical guidelines and compliance frameworks in all our AI implementations. This includes data privacy protection, bias detection and mitigation, and adherence to industry-specific regulations."
+  },
+  {
+    question: "What is your typical consulting process?",
+    answer: "Our process begins with a thorough assessment of your current capabilities, followed by strategy development, solution design, implementation planning, and ongoing support. We ensure knowledge transfer and capability building throughout."
+  },
+  {
+    question: "How long does it take to see results from AI implementation?",
+    answer: "Timeline varies by project scope, but we typically deliver initial results within 3-6 months. We use an agile approach with regular milestones to ensure continuous value delivery throughout the engagement."
+  }
+]
+
 export default function AIConsultingPage() {
   return (
     <div>
       <Hero
         title="AI Consulting Services"
         description="Strategic guidance through the complexities of AI implementation"
-        video="https://player.vimeo.com/external/451556922.hd.mp4?s=500c4724a68a5d55055c57e61ddd9ca378f32821&profile_id=175"
+        video="https://cdn.pixabay.com/video/2019/12/15/30200-380473759_tiny.mp4"
       />
 
       {/* Overview with Stats */}
@@ -229,6 +249,49 @@ export default function AIConsultingPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-muted/50">
+        <Container>
+          <div className="text-center mb-16">
+            <Badge className="mb-4">FAQ</Badge>
+            <h2 className="text-3xl font-bold mb-4">Common Questions About AI Consulting</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Get answers to frequently asked questions about our AI consulting services
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* First Column */}
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.slice(0, Math.ceil(faqItems.length / 2)).map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            {/* Second Column */}
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.slice(Math.ceil(faqItems.length / 2)).map((item, index) => (
+                <AccordionItem key={index} value={`item-${index + Math.ceil(faqItems.length / 2)}`}>
+                  <AccordionTrigger className="text-left">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </Container>
       </section>

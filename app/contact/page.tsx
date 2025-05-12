@@ -141,20 +141,7 @@ export default function ContactPage() {
         <WorldMap />
       </Container>
 
-      {/* Map Section */}
-      {/* <section className="pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative h-[400px] rounded-lg overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80"
-              alt="Location Map"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-background/20" />
-          </div>
-        </div>
-      </section> */}
+
     </div>
   )
 }

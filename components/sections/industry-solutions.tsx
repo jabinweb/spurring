@@ -24,7 +24,7 @@ const industries = [
         metric: "35% water conservation"
       }
     ],
-    video: "https://static.vecteezy.com/system/resources/previews/007/923/664/mp4/agriculture-drone-flight-over-organic-farm-ai-technology-free-video.mp4",
+    video: "https://videos.pexels.com/video-files/31999640/13637442_640_360_60fps.mp4",
     color: "from-green-500 to-emerald-500"
   },
   {
@@ -44,7 +44,7 @@ const industries = [
         metric: "45% better efficiency"
       }
     ],
-    video: "https://static.vecteezy.com/system/resources/previews/007/157/239/mp4/worker-at-construction-site-with-safety-equipment-concept-of-industrial-safety-and-occupational-health-free-video.mp4",
+    video: "https://videos.pexels.com/video-files/5567711/5567711-sd_640_360_30fps.mp4",
     color: "from-orange-500 to-red-500"
   },
   {
@@ -64,7 +64,7 @@ const industries = [
         metric: "40% productivity gain"
       }
     ],
-    video: "https://static.vecteezy.com/system/resources/previews/041/727/692/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4",
+    video: "https://static.vecteezy.com/system/resources/previews/041/727/694/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4",
     color: "from-blue-500 to-cyan-500"
   },
   {
@@ -84,7 +84,7 @@ const industries = [
         metric: "50% efficiency gain"
       }
     ],
-    video: "https://static.vecteezy.com/system/resources/previews/011/892/765/mp4/robots-welding-in-a-car-factory-free-video.mp4",
+    video: "https://static.vecteezy.com/system/resources/previews/049/642/799/mp4/robots-welding-metal-in-a-factory-free-video.mp4",
     color: "from-purple-500 to-pink-500"
   }
 ]

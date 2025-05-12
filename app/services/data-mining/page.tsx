@@ -141,7 +141,7 @@ export default function DataMiningPage() {
       <Hero
         title="Data Mining Solutions"
         description="Transform raw data into actionable business insights"
-        video="https://static.vecteezy.com/system/resources/previews/002/308/032/mp4/digital-network-loop-background-free-video.mp4"
+        video="https://videos.pexels.com/video-files/3130284/3130284-sd_640_360_30fps.mp4"
       />
 
       {/* Overview Section */}
