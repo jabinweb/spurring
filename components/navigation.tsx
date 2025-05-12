@@ -59,6 +59,7 @@ const industries = ["Healthcare", "Finance", "Manufacturing", "Retail"].map(titl
 
 const navigationItems = [
   { title: "About", href: "/about" },
+  { title: "Careers", href: "/careers" },
   { title: "Contact", href: "/contact" }
 ]
 
