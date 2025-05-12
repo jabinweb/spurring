@@ -62,9 +62,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold">Our Mission</h2>
               </div>
               <p className="text-lg text-muted-foreground">
-                To empower businesses across India with cutting-edge AI solutions that drive
-                innovation, efficiency, and sustainable growth. We&apos;re committed to making
-                advanced technology accessible and practical for organizations of all sizes.
+              We deliver cutting-edge technology in an accessible and practical way for businesses of all sizes, across India and beyond.
               </p>
             </div>
             <div>
@@ -73,9 +71,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold">Our Vision</h2>
               </div>
               <p className="text-lg text-muted-foreground">
-                To be India&apos;s leading AI solutions provider, recognized globally for our
-                innovative approaches, technical excellence, and the transformative impact
-                we create for our clients and society at large.
+              To lead the AI revolution in India, delivering transformative results for clients and society worldwide.
               </p>
             </div>
           </div>

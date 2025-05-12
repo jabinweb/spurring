@@ -5,6 +5,7 @@ import { Brain, Cpu, Rocket, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Container } from "@/components/ui/container"
+import { Calendly, openCalendly } from "@/components/ui/calendly"
 
 export function About() {
   const features = [
@@ -64,13 +65,21 @@ export function About() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="rounded-full" asChild>
-                  <Link href="/contact">Schedule a Consultation</Link>
+                <Button 
+                  size="lg" 
+                  className="rounded-full"
+                  onClick={() => openCalendly('https://calendly.com/spurringventuresindia/30min')}
+                >
+                  Schedule a Consultation
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full" asChild>
                   <Link href="/about">Learn More</Link>
                 </Button>
               </div>
+
+              {/* Add Calendly component */}
+              <Calendly url="https://calendly.com/spurringventuresindia/30min" />
+
             </motion.div>
           </div>
 

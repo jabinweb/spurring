@@ -7,6 +7,7 @@ import { InteractiveGrid } from "./interactive-grid"
 import { ArrowRight } from "lucide-react"
 import { Container } from "../ui/container"
 import { useEffect, useState } from "react"
+import { GetStartedButton } from "../get-started-button"
 
 interface HeroProps {
   videos?: string[]
@@ -81,12 +82,7 @@ export function Hero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Button size="lg" className="rounded-full px-8" asChild>
-              <Link href="/contact">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <GetStartedButton />
             <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
               <Link href="/services">Explore Solutions</Link>
             </Button>

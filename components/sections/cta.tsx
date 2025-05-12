@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { GetStartedButton } from "@/components/get-started-button"
 
 interface CTAProps {
   title?: string
@@ -12,6 +13,7 @@ interface CTAProps {
   secondaryButtonText?: string
   secondaryButtonHref?: string
   variant?: "default" | "gradient" | "subtle"
+  onSecondaryClick?: () => void
 }
 
 export function CTA({
@@ -21,15 +23,44 @@ export function CTA({
   primaryButtonHref = "/contact",
   secondaryButtonText,
   secondaryButtonHref,
-  variant = "default"
+  variant = "default",
+  onSecondaryClick
 }: CTAProps) {
   const variants = {
-    default: "bg-primary/10 dark:bg-primary/20 text-foreground",
-    gradient: "bg-gradient-to-r from-background to-muted relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/20 before:to-secondary/20 before:opacity-50",
-    subtle: "bg-muted/50 dark:bg-muted/10"
+    default: {
+      container: "bg-primary/10 dark:bg-primary/20 text-foreground",
+      primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+      secondary: "bg-background/80 hover:bg-background text-foreground"
+    },
+    gradient: {
+      container: "bg-gradient-to-r from-background to-muted relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/20 before:to-secondary/20 before:opacity-50",
+      primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+      secondary: "bg-background/80 hover:bg-background text-foreground"
+    },
+    subtle: {
+      container: "bg-muted/50 dark:bg-muted/10",
+      primary: "bg-foreground text-background hover:bg-foreground/90 dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/90",
+      secondary: "border-foreground/20 hover:bg-foreground/5 dark:border-primary/20 dark:hover:bg-primary/10"
+    }
   }
 
-  const containerClasses = `relative overflow-hidden py-20 px-4 ${variants[variant]}`
+  const containerClasses = `relative overflow-hidden py-20 px-4 ${variants[variant].container}`
+
+  const SecondaryButton = () => (
+    <Button 
+      variant="outline" 
+      size="lg" 
+      className={`rounded-full ${variants[variant].secondary}`}
+      onClick={onSecondaryClick}
+      {...(secondaryButtonHref ? { asChild: true } : {})}
+    >
+      {secondaryButtonHref ? (
+        <Link href={secondaryButtonHref}>{secondaryButtonText}</Link>
+      ) : (
+        secondaryButtonText
+      )}
+    </Button>
+  )
 
   return (
     <section className={containerClasses}>
@@ -95,23 +126,8 @@ export function CTA({
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Button 
-            size="lg" 
-            className="px-8 bg-primary hover:bg-primary/90 text-primary-foreground"
-            asChild
-          >
-            <Link href={primaryButtonHref}>{primaryButtonText}</Link>
-          </Button>
-          {secondaryButtonText && (
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="px-8 border-primary/20 hover:bg-primary/10 text-foreground"
-              asChild
-            >
-              <Link href={secondaryButtonHref || "#"}>{secondaryButtonText}</Link>
-            </Button>
-          )}
+          <GetStartedButton />
+          {secondaryButtonText && <SecondaryButton />}
         </motion.div>
       </div>
     </section>

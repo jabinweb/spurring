@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ModeToggle } from "./mode-toggle"
 import { CTA } from "./sections/cta"
 import { Logo } from "@/components/ui/logo"
+import { openCalendly } from "@/components/ui/calendly"
 
 export function Footer() {
   return (
@@ -15,8 +16,8 @@ export function Footer() {
       title="Ready to Transform Your Business?"
       description="Let's discuss how our AI solutions can drive your success"
       primaryButtonText="Get Started"
-      secondaryButtonText="Learn More"
-      secondaryButtonHref="/about"
+      secondaryButtonText="Let's Talk"
+      onSecondaryClick={() => openCalendly('https://calendly.com/spurringventuresindia/30min')}
     />
     <footer className="border-t">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
