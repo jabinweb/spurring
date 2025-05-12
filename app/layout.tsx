@@ -9,7 +9,7 @@ import { HiringPopup } from "@/components/hiring-popup";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Spurring Ventures India - AI Development Services',
+  title: 'Spurring Ventures India - AI Development Company',
   description: 'Leading AI development and consulting services in India. We specialize in generative AI, data mining, and AI integration solutions.',
 };
 
