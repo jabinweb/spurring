@@ -112,7 +112,6 @@ export default function ContactPage() {
                           <h3 className="font-semibold mb-2">Email Us</h3>
                           <p className="text-muted-foreground">
                             info@spurringventures.com<br />
-                            spurringventuresindia@gmail.com  
                           </p>
                         </div>
                       </div>
