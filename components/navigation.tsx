@@ -67,7 +67,11 @@ export function Navigation() {
   const { isLightText, isScrolled } = useLightText()
 
   return (
-    <div className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent", isLightText && "text-white")}>  
+    <div className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+      isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent",
+      isLightText && "text-white"
+    )}>  
       <div className="flex h-16 items-center px-4 max-w-7xl mx-auto">
         <Logo size="md" variant={isLightText ? "light" : "default"} />
         <div className="ml-auto flex items-center space-x-4">
@@ -75,15 +79,26 @@ export function Navigation() {
             <NavigationMenuList className="gap-2">
               {[{ label: "Services", data: services, width: "600px" }].map(({ label, data, width }) => (
                 <NavigationMenuItem key={label}>
-                  <NavigationMenuTrigger>{label}</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className={cn(
+                    "!px-4 !py-2 rounded-md transition-colors",
+                    !isScrolled
+                      ? "text-white hover:bg-white/10 data-[state=open]:bg-white/10" // Always white when not scrolled
+                      : "hover:bg-accent data-[state=open]:bg-accent" // Default theme colors when scrolled
+                  )}>
+                    {label}
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid w-[600px] grid-cols-2 gap-4 p-6">
+                    <div className="grid w-[600px] grid-cols-2 gap-4 p-6 bg-background/95 backdrop-blur-md border rounded-lg shadow-lg">
                       {data.map(({ title, description, icon: Icon, href }) => (
-                        <NavigationMenuLink key={title} href={href || "#"} className="block select-none space-y-1 rounded-md p-3 transition-colors hover:bg-primary">
-                          <div className="flex items-center gap-2 text-sm font-medium">
+                        <NavigationMenuLink 
+                          key={title} 
+                          href={href || "#"} 
+                          className="block select-none space-y-1 rounded-md p-3 transition-colors hover:bg-accent"
+                        >
+                          <div className="flex items-center gap-2 text-sm font-medium leading-none text-foreground">
                             <Icon className="h-5 w-5" /> {title}
                           </div>
-                          <p className="line-clamp-2 text-sm">{description}</p>
+                          <p className="line-clamp-2 text-sm text-muted-foreground pt-1">{description}</p>
                         </NavigationMenuLink>
                       ))}
                       {services.length > 0 && (
@@ -100,7 +115,16 @@ export function Navigation() {
               {navigationItems.map(({ title, href }) => (
                 <NavigationMenuItem key={title}>
                   <Link href={href} legacyBehavior passHref>
-                    <NavigationMenuLink className={cn("px-4 py-2 rounded-md transition-colors", isLightText ? "text-white hover:bg-white/10" : "hover:bg-accent hover:text-accent-foreground")}>{title}</NavigationMenuLink>
+                    <NavigationMenuLink 
+                      className={cn(
+                        "px-4 py-2 rounded-md transition-colors",
+                        !isScrolled 
+                          ? "text-white hover:bg-white/10" // Always white when not scrolled (dark bg)
+                          : "hover:bg-accent hover:text-accent-foreground" // Default theme colors when scrolled
+                      )}
+                    >
+                      {title}
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
               ))}
@@ -122,9 +146,9 @@ export function Navigation() {
               <div className="flex flex-col space-y-4 mt-8">
                 {/* Services Section */}
                 <div>
-                  <p className="text-sm font-semibold text-gray-500 uppercase">Services</p>
+                  <p className="text-sm font-semibold text-muted-foreground uppercase">Services</p>
                   {services.map(({ title, href }) => (
-                    <Link key={title} href={href} className="block text-lg font-semibold hover:text-primary mt-2">
+                    <Link key={title} href={href} className="block text-lg font-semibold text-foreground hover:text-primary mt-2">
                       {title}
                     </Link>
                   ))}
@@ -142,7 +166,7 @@ export function Navigation() {
 
                 {/* Other Navigation Items */}
                 {navigationItems.map(({ title, href }) => (
-                  <Link key={title} href={href} className="text-lg font-semibold hover:text-primary mt-4">
+                  <Link key={title} href={href} className="text-lg font-semibold text-foreground hover:text-primary mt-4">
                     {title}
                   </Link>
                 ))}

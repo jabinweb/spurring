@@ -63,7 +63,7 @@ export function ConstructionSafetyCaseStudy() {
           <div className="relative rounded-2xl overflow-hidden bg-muted/5 border p-6">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Spurring Ventures is collaborating with Cornerstone Analytics to develop an AI-powered vision analysis platform designed to transform the construction industry. By leveraging advanced computer vision and deep learning algorithms, we are creating a solution that allows teams to detect and assess project risks, even in complex and dynamic environments.
+              Spurring Ventures focuses on developing AI-powered vision analysis platform designed to transform the construction industry. By leveraging advanced computer vision and deep learning algorithms, we are creating a solution that allows teams to detect and assess project risks, even in complex and dynamic environments.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               This cutting-edge AI technology provides data-driven insights that enhance decision-making, optimise resource allocation, and automate risk mitigation. With this new technology, construction project managers are equipped with the tools they need to drive operational efficiency and deliver superior project outcomes.

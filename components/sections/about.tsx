@@ -68,7 +68,7 @@ export function About() {
                 <Button 
                   size="lg" 
                   className="rounded-full"
-                  onClick={() => openCalendly('https://calendly.com/spurringventuresindia/30min')}
+                  onClick={() => openCalendly('https://calendly.com/spurringventures-info/30min')}
                 >
                   Schedule a Consultation
                 </Button>
@@ -78,7 +78,7 @@ export function About() {
               </div>
 
               {/* Add Calendly component */}
-              <Calendly url="https://calendly.com/spurringventuresindia/30min" />
+              <Calendly url="https://calendly.com/spurringventures-info/30min" />
 
             </motion.div>
           </div>

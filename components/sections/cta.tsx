@@ -19,8 +19,6 @@ interface CTAProps {
 export function CTA({
   title = "Ready to Transform Your Business?",
   description = "Let's discuss how AI can drive growth and innovation for your organization.",
-  primaryButtonText = "Get Started",
-  primaryButtonHref = "/contact",
   secondaryButtonText,
   secondaryButtonHref,
   variant = "default",

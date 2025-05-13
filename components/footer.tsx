@@ -17,7 +17,7 @@ export function Footer() {
       description="Let's discuss how our AI solutions can drive your success"
       primaryButtonText="Get Started"
       secondaryButtonText="Let's Talk"
-      onSecondaryClick={() => openCalendly('https://calendly.com/spurringventuresindia/30min')}
+      onSecondaryClick={() => openCalendly('https://calendly.com/spurringventures-info/30min')}
     />
     <footer className="border-t">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -53,7 +53,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li><a href="https://www.linkedin.com/company/spurring-ventures-india" className="text-sm text-muted-foreground hover:text-foreground">LinkedIn</a></li>
               {/* <li><a href="https://twitter.com" className="text-sm text-muted-foreground hover:text-foreground">Twitter</a></li>  */}
-              <li><a href="mailto:spurringventuresindia@gmail.com " className="text-sm text-muted-foreground hover:text-foreground">Email</a></li>
+              <li><a href="mailto:info@spurringventures.com" className="text-sm text-muted-foreground hover:text-foreground">Email</a></li>
             </ul>
           </div>
         </div>
