@@ -73,11 +73,11 @@ const workCulture = [
     title: "Learning Culture",
     description: "Regular workshops, training sessions, and knowledge sharing"
   },
-  {
-    icon: <Gift />,
-    title: "Great Benefits",
-    description: "Competitive salary, health insurance, and stock options"
-  }
+  // {
+  //   icon: <Gift />,
+  //   title: "Great Benefits",
+  //   description: "Competitive salary, health insurance, and stock options"
+  // }
 ]
 
 export default function CareersPage() {
@@ -190,7 +190,7 @@ export default function CareersPage() {
               We believe in creating an environment where innovation thrives and people grow
             </p>
           </div>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {workCulture.map((item, i) => (
               <Card key={i} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">

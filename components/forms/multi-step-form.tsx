@@ -39,14 +39,6 @@ const industries = [
   { id: "other", name: "All Others", icon: Globe },
 ]
 
-const fleetSizes = [
-  "1-10 vehicles",
-  "11-50 vehicles",
-  "51-200 vehicles",
-  "201-500 vehicles",
-  "500+ vehicles",
-]
-
 interface MultiStepFormProps {
   onComplete?: () => void
 }
@@ -133,36 +125,6 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
             )}
 
             {step === 2 && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="space-y-4"
-              >
-                <h2 className="text-2xl font-bold mb-6 text-center">
-                  How many vehicles or assets do you operate?
-                </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 place-items-center max-w-2xl mx-auto">
-                  {fleetSizes.map((size) => (
-                    <button
-                      key={size}
-                      type="button"
-                      onClick={() => {
-                        form.setValue("fleetSize", size)
-                        nextStep()
-                      }}
-                      className={`w-full p-6 rounded-lg border-2 hover:border-primary transition-colors text-center ${
-                        form.watch("fleetSize") === size ? "border-primary bg-primary/5" : "border-muted"
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-
-            {step === 3 && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}

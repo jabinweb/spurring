@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Container } from "@/components/ui/container"
 import { Card, CardContent } from "@/components/ui/card"
 import { Shield, Clock, Target } from "lucide-react"
+import Link from "next/link"
 
 export function ConstructionSafetyCaseStudy() {
   const metrics = [
@@ -41,7 +42,7 @@ export function ConstructionSafetyCaseStudy() {
               Featured Case Study
             </span>
           </div>
-          <h2 className="text-4xl font-bold mb-4">Success Story</h2>
+          <h2 className="text-4xl font-bold mb-4">Construction Vision AI Improves Safety</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Discover how our AI solutions are transforming industries and delivering measurable results
           </p>
@@ -63,7 +64,7 @@ export function ConstructionSafetyCaseStudy() {
           <div className="relative rounded-2xl overflow-hidden bg-muted/5 border p-6">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Spurring Ventures focuses on developing AI-powered vision analysis platform designed to transform the construction industry. By leveraging advanced computer vision and deep learning algorithms, we are creating a solution that allows teams to detect and assess project risks, even in complex and dynamic environments.
+              Spurring Ventures is working with Cornerstone Analytics, <Link href="https://timelapsesea.com/" className="text-primary hover:underline">Timelapse South East Asia</Link> and <Link href="https://buildcam.io" className="text-primary hover:underline">Buildcam</Link> to develop an AI-powered vision analysis platform designed to transform the construction industry. By leveraging advanced computer vision and deep learning algorithms, we are creating a solution that allows teams to detect and assess project risks, even in complex and dynamic environments.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               This cutting-edge AI technology provides data-driven insights that enhance decision-making, optimise resource allocation, and automate risk mitigation. With this new technology, construction project managers are equipped with the tools they need to drive operational efficiency and deliver superior project outcomes.
@@ -72,7 +73,7 @@ export function ConstructionSafetyCaseStudy() {
 
 
             {/* Metrics */}
-            <div className="grid grid-cols-3 gap-6 pt-6">
+            {/* <div className="grid grid-cols-3 gap-6 pt-6">
               {metrics.map((metric, index) => (
                 <Card key={index}>
                   <CardContent className="p-4 text-center space-y-2">
@@ -82,7 +83,7 @@ export function ConstructionSafetyCaseStudy() {
                   </CardContent>
                 </Card>
               ))}
-            </div>
+            </div> */}
 
             {/* <Button size="lg" className="mt-8" asChild>
               <Link href="/contact">

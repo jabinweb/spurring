@@ -118,7 +118,7 @@ export default function ContactPage() {
                     </CardContent>
                   </Card>
 
-                  <Card>
+                  {/* <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start">
                         <Clock className="h-6 w-6 text-primary mr-4 mt-1" />
@@ -132,7 +132,7 @@ export default function ContactPage() {
                         </div>
                       </div>
                     </CardContent>
-                  </Card>
+                  </Card> */}
                 </div>
               </div>
             </div>

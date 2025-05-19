@@ -21,9 +21,9 @@ const locations = [
     type: "office"
   },
   {
-    id: "thailand",
-    name: "Thailand",
-    coordinates: [100.5018, 13.7563], // Bangkok coordinates
+    id: "vietnam",
+    name: "Vietnam",
+    coordinates: [106.6297, 10.8231], // Ho Chi Minh City coordinates
     type: "partner"
   },
   {
@@ -31,12 +31,6 @@ const locations = [
     name: "UAE",
     coordinates: [55.2708, 25.2048], // Dubai coordinates
     type: "office"
-  },
-  {
-    id: "europe",
-    name: "Europe",
-    coordinates: [4.9041, 52.3676], // Amsterdam coordinates
-    type: "partner"
   },
   {
     id: "usa",

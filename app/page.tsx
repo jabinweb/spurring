@@ -20,7 +20,7 @@ export default function Home() {
       <About />
       <ConstructionSafetyCaseStudy />
       {/* <IntegratedPlatform /> */}
-      <Services />
+      {/* <Services /> */}
       <IndustrySolutions />
 
       {/* <WhyChooseUs /> */}
@@ -103,7 +103,7 @@ export default function Home() {
       {/* <Testimonials /> */}
 
       {/* Technologies Section */}
-      <Technologies />
+      {/* <Technologies /> */}
 
     </div>
   )

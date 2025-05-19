@@ -12,12 +12,12 @@ export function Footer() {
       <>
       {/* CTA Section with gradient variant */}
       <CTA 
-      variant="gradient"
-      title="Ready to Transform Your Business?"
-      description="Let's discuss how our AI solutions can drive your success"
-      primaryButtonText="Get Started"
-      secondaryButtonText="Let's Talk"
-      onSecondaryClick={() => openCalendly('https://calendly.com/spurringventures-info/30min')}
+        variant="gradient"
+        title="Ready to Transform Your Business?"
+        description="Let's discuss how our AI solutions can drive your success"
+        primaryButtonText="Get Started"
+        secondaryButtonText="Let's Talk"
+        onSecondaryClick={() => openCalendly('https://calendly.com/spurringventures-info/30min')}
     />
     <footer className="border-t">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -34,9 +34,9 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li><Link href="/services/ai-consulting" className="text-sm text-muted-foreground hover:text-foreground">AI Consulting</Link></li>
-              <li><Link href="/services/generative-ai" className="text-sm text-muted-foreground hover:text-foreground">Generative AI</Link></li>
+              {/* <li><Link href="/services/generative-ai" className="text-sm text-muted-foreground hover:text-foreground">Generative AI</Link></li> */}
               {/* <li><Link href="/services/smart-assistants" className="text-sm text-muted-foreground hover:text-foreground">Smart Assistants</Link></li> */}
-              <li><Link href="/services/data-mining" className="text-sm text-muted-foreground hover:text-foreground">Data Mining</Link></li>
+              <li><Link href="/services/computer-vision" className="text-sm text-muted-foreground hover:text-foreground">Computer Vision</Link></li>
             </ul>
           </div>
           <div>

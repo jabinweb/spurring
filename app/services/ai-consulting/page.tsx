@@ -19,17 +19,6 @@ const services = [
     ]
   },
   {
-    title: "AI Readiness Assessment",
-    icon: ShieldCheck,
-    items: [
-      { title: "Optimise for AI", description: "Refine data handling and ensure seamless connectivity across systems" },
-      { title: "Evaluate AI Readiness", description: "Assess your organisation's capacity to adopt and integrate AI" },
-      { title: "Identify Key Factors", description: "Understand critical considerations and potential risks" },
-      { title: "Inventory AI Assets", description: "Catalogue your existing AI tools and models" },
-      { title: "Gauge Adoption Readiness", description: "Determine your preparedness for AI integration" }
-    ]
-  },
-  {
     title: "AI Strategic Planning",
     icon: Lightbulb,
     items: [
@@ -41,22 +30,11 @@ const services = [
     ]
   },
   {
-    title: "AI Adoption",
-    icon: Users,
-    items: [
-      { title: "Adapt for AI", description: "Transform your workforce and business for AI, boosting efficiency" },
-      { title: "Manage Change", description: "Develop a workforce strategy with clear communication" },
-      { title: "Cultivate AI Talent", description: "Attract, train, and retain the skills needed for AI implementation" },
-      { title: "Client-Focused AI Partner", description: "We're an AI consulting company centred on your needs" },
-      { title: "Seamless Integration", description: "Ensure smooth adoption across your organisation" }
-    ]
-  },
-  {
     title: "AI Solution Innovation",
     icon: Sparkles,
     items: [
       { title: "Track & Evolve", description: "Continuously monitor results to fuel new AI applications" },
-      { title: "Interactive AI Vision", description: "Engage stakeholders in workshops to explore AI possibilities" },
+      { title: "Consultative AI Development", description: "Engage stakeholders regularly to explore and refine AI opportunities" },
       { title: "Envision Business Impact", description: "Understand how AI can transform your current processes" },
       { title: "Set Achievable AI Goals", description: "Define realistic targets for AI integration and ROI" },
       { title: "Future-Proof Solutions", description: "Develop scalable AI solutions that grow with your needs" }
@@ -66,71 +44,10 @@ const services = [
     title: "AI Assistance",
     icon: Headphones,
     items: [
-      { title: "24/7 AI Support", description: "Get round-the-clock assistance for your AI systems" },
-      { title: "Expert AI Specialists", description: "Access our dedicated team of AI experts" },
       { title: "Continuous Monitoring", description: "Proactive system monitoring and maintenance" },
       { title: "Regular Updates", description: "Keep your AI solutions current and optimised" },
       { title: "Performance Optimisation", description: "Continuous improvement of AI systems" }
     ]
-  }
-]
-
-const industryStats = [
-  { label: "Global GDP Impact by 2030", value: "$13T" },
-  { label: "AI-Enabled Organisation Performance by 2025", value: "30%" },
-  { label: "Reduction in Operational Costs", value: "45%" },
-  { label: "Increase in Productivity", value: "40%" }
-]
-
-const industryConsulting = [
-  {
-    title: "Supply Chain",
-    description: "Elevate your customer experience to differentiate your organisation by intelligently applying AI technology.",
-    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80"
-  },
-  {
-    title: "Marketing",
-    description: "Modify your strategy and content based on AI technology that identifies customer behaviour, preferences and sales trends.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
-  },
-  {
-    title: "Customer Service",
-    description: "Optimise your workforce with our AI-augmented HR solutions and expertise.",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80"
-  },
-  {
-    title: "Cybersecurity",
-    description: "Discover how our cybersecurity services use our proprietary AI to both transform your business and manage your risk.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80"
-  },
-  {
-    title: "IT Operations",
-    description: "Step up IT automation and operations with generative AI, aligning every aspect of your IT infrastructure with business priorities.",
-    image: "https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&q=80"
-  },
-  {
-    title: "Finance",
-    description: "Use AI-powered insights for better performance measurement, forecasting and more confident decision making.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80"
-  }
-]
-
-const faqItems = [
-  {
-    question: "What makes your AI consulting services unique?",
-    answer: "Our approach combines deep technical expertise with practical business acumen. We focus on delivering customised AI solutions that align with your specific industry needs, ensuring measurable ROI and sustainable implementation."
-  },
-  {
-    question: "How do you ensure AI solutions are ethical and compliant?",
-    answer: "We follow strict ethical guidelines and compliance frameworks in all our AI implementations. This includes data privacy protection, bias detection and mitigation, and adherence to industry-specific regulations."
-  },
-  {
-    question: "What is your typical consulting process?",
-    answer: "Our process begins with a thorough assessment of your current capabilities, followed by strategy development, solution design, implementation planning, and ongoing support. We ensure knowledge transfer and capability building throughout."
-  },
-  {
-    question: "How long does it take to see results from AI implementation?",
-    answer: "Timeline varies by project scope, but we typically deliver initial results within 3-6 months. We use an agile approach with regular milestones to ensure continuous value delivery throughout the engagement."
   }
 ]
 
@@ -143,7 +60,7 @@ export default function AIConsultingPage() {
         video="https://cdn.pixabay.com/video/2019/12/15/30200-380473759_tiny.mp4"
       />
 
-      {/* Overview with Stats */}
+      {/* Overview Section */}
       <section className="py-20 relative">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -151,29 +68,17 @@ export default function AIConsultingPage() {
               <Badge>Strategic AI Solutions</Badge>
               <h2 className="text-3xl font-bold">Transform Your Organisation with AI</h2>
               <p className="text-lg text-muted-foreground">
-                Our AI consultants expertly blend industry experience and technical knowledge to create dynamic human-AI collaborations that solve your biggest business challenges. We offer comprehensive AI consultation, guiding you through the AI landscape to identify optimal use cases, establish effective governance, and empower your team.
+                Our AI consultants combine deep industry expertise and technical proficiency to develop customized AI solutions that address your unique business challenges. We guide you through the process of creating and implementing AI systems, ensuring seamless integration, fostering innovation, and empowering your team to drive results.
               </p>
-              
-              {/* Stats Grid */}
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                {industryStats.map((stat, index) => (
-                  <Card key={index}>
-                    <CardContent className="p-6">
-                      <div className="text-2xl font-bold text-primary">{stat.value}</div>
-                      <p className="text-sm text-muted-foreground">{stat.label}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
             </div>
 
-            {/* Graph Visualization */}
+            {/* Growth Trajectory */}
             <div className="relative rounded-2xl overflow-hidden bg-muted/5 border p-6">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
               <LineChart className="w-16 h-16 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-4">AI Growth Trajectory</h3>
               <p className="text-muted-foreground">
-                By 2030, AI could potentially add $13 trillion to the global GDP. AI-enabled organisations will outperform their competition by 30% by 2025. Our consultants provide tailored strategies, reducing risks and maximising AI&apos;s impact on business growth.
+                According to a recent IDC study, artificial intelligence is projected to contribute $19.9 trillion to the global economy by 2030, accounting for 3.5% of global GDP. This growth is driven by increased business spending on AI adoption, automation of routine tasks, and the creation of new efficiencies across industries.
               </p>
             </div>
           </div>
@@ -212,86 +117,6 @@ export default function AIConsultingPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Industry Solutions */}
-      <section className="py-24">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">AI Consulting In Different Industries</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Tailored AI solutions for diverse industry needs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {industryConsulting.map((industry, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-shadow">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={industry.image}
-                    alt={industry.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transform transition-transform duration-500 ease-out group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90" />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">
-                    AI Consulting for {industry.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {industry.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-24 bg-muted/50">
-        <Container>
-          <div className="text-center mb-16">
-            <Badge className="mb-4">FAQ</Badge>
-            <h2 className="text-3xl font-bold mb-4">Common Questions About AI Consulting</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Get answers to frequently asked questions about our AI consulting services
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* First Column */}
-            <Accordion type="single" collapsible className="w-full">
-              {faqItems.slice(0, Math.ceil(faqItems.length / 2)).map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-
-            {/* Second Column */}
-            <Accordion type="single" collapsible className="w-full">
-              {faqItems.slice(Math.ceil(faqItems.length / 2)).map((item, index) => (
-                <AccordionItem key={index} value={`item-${index + Math.ceil(faqItems.length / 2)}`}>
-                  <AccordionTrigger className="text-left">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
           </div>
         </Container>
       </section>

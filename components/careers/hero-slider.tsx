@@ -15,22 +15,22 @@ const slides = [
     badge: "Join Our Team",
     title: "Build the Future with AI Innovation",
     description: "Be part of a team that's revolutionizing industries through artificial intelligence",
-    stats: ["50+ Team Members", "4.8★ Rating", "12+ Countries"]
+    stats: []
   },
-  {
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80",
-    badge: "Work Culture",
-    title: "Innovation Meets Growth",
-    description: "Experience a culture that values creativity, learning, and personal development",
-    stats: ["Flexible Work", "Global Team", "Fast Growth"]
-  },
-  {
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
-    badge: "Benefits",
-    title: "Thrive With Us",
-    description: "Enjoy competitive compensation and benefits that support your wellbeing",
-    stats: ["Competitive Pay", "Health Benefits", "Learning Budget"]
-  }
+  // {
+  //   image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80",
+  //   badge: "Work Culture",
+  //   title: "Innovation Meets Growth",
+  //   description: "Experience a culture that values creativity, learning, and personal development",
+  //   stats: ["Flexible Work", "Global Team", "Fast Growth"]
+  // },
+  // {
+  //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
+  //   badge: "Benefits",
+  //   title: "Thrive With Us",
+  //   description: "Enjoy competitive compensation and benefits that support your wellbeing",
+  //   stats: ["Competitive Pay", "Health Benefits", "Learning Budget"]
+  // }
 ]
 
 export function CareerHeroSlider() {
@@ -44,7 +44,7 @@ export function CareerHeroSlider() {
   }, [])
 
   return (
-    <section className="relative min-h-[80vh] overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Background Slides */}
       <AnimatePresence initial={false}>
         <motion.div
@@ -68,7 +68,7 @@ export function CareerHeroSlider() {
       </AnimatePresence>
 
       {/* Content */}
-      <Container className="relative h-full flex items-center pt-24">
+      <Container className="relative h-full flex items-center py-28">
         <div className="max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -88,7 +88,7 @@ export function CareerHeroSlider() {
               <p className="text-xl text-white mb-8 drop-shadow-md">
                 {slides[currentSlide].description}
               </p>
-              <div className="flex gap-4 mb-12">
+              <div className="flex gap-4">
                 <Button size="lg" asChild>
                   <Link href="#positions">
                     View Positions
@@ -116,18 +116,20 @@ export function CareerHeroSlider() {
           </AnimatePresence>
         </div>
 
-        {/* Slide Indicators - Updated styling */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/20"
-              }`}
-            />
-          ))}
-        </div>
+        {/* Hide Slide Indicators when only one slide */}
+        {slides.length > 1 && (
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`h-2 rounded-full transition-all ${
+                  index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/20"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </Container>
     </section>
   )

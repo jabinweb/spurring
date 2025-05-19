@@ -35,23 +35,29 @@ const services: NavigationItem[] = [
     icon: Brain,
     href: "/services/ai-consulting"
   },
-  {
-    title: "Generative AI",
-    description: "Cutting-edge generative AI solutions and implementations",
-    icon: Sparkles,
-    href: "/services/generative-ai"
-  },
+  // {
+  //   title: "Generative AI",
+  //   description: "Cutting-edge generative AI solutions and implementations",
+  //   icon: Sparkles,
+  //   href: "/services/generative-ai"
+  // },
   // {
   //   title: "Smart Assistants",
   //   description: "Intelligent virtual assistants and chatbot solutions",
   //   icon: Bot,
   //   href: "/services/smart-assistants"
   // },
-  {
-    title: "Data Mining",
-    description: "Advanced data analytics and mining solutions",
+  // {
+  //   title: "Data Mining",
+  //   description: "Advanced data analytics and mining solutions",
+  //   icon: Database,
+  //   href: "/services/data-mining"
+  // },
+    {
+    title: "Computer Vision",
+    description: "Next-Generation Vision AI Solutions",
     icon: Database,
-    href: "/services/data-mining"
+    href: "/services/computer-vision"
   },
 ]
 
