@@ -20,3 +20,15 @@ export interface DashboardStats {
   getStartedResponses: number
   recentResponses: FormResponse[]
 }
+
+export interface SmtpSettings {
+  host: string
+  port: number
+  user: string
+  password: string
+  from: string
+  fromName: string
+  [key: string]: string | number // Index signature for Prisma JSON
+}
+
+export type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue }

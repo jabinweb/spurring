@@ -3,15 +3,7 @@
 import prisma from "@/lib/db"
 import nodemailer from "nodemailer"
 import { z } from "zod"
-
-interface SmtpSettings {
-  host: string
-  port: number
-  user: string
-  password: string
-  from: string
-  fromName: string
-}
+import { SmtpSettings, JsonValue } from '@/types/form'
 
 const schema = z.object({
   host: z.string().min(1),
@@ -26,10 +18,10 @@ export async function updateSmtpSettings(data: SmtpSettings) {
   try {
     await prisma.settings.upsert({
       where: { key: 'smtp' },
-      update: { value: data },
+      update: { value: data as JsonValue },
       create: {
         key: 'smtp',
-        value: data
+        value: data as JsonValue
       }
     })
     return { success: true }
