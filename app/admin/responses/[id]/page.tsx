@@ -13,7 +13,14 @@ export default async function ResponsePage({ params }: { params: { id: string } 
     where: { id: params.id }
   })
 
-  if (!response) return notFound()
+  if (!response || !response.data) return notFound()
+
+  // Type assertion for data
+  const data = response.data as { email: string; firstName?: string; name?: string }
+
+  const mailtoLink = `mailto:${data.email}?subject=RE: ${
+    response.formType === 'contact' ? 'Contact Form' : 'Get Started Form'
+  } Submission&body=Dear ${data.firstName || data.name || 'User'},`
 
   const renderField = (key: string, value: any) => {
     if (key === 'createdAt' || key === 'id') return null
@@ -34,10 +41,6 @@ export default async function ResponsePage({ params }: { params: { id: string } 
       </div>
     )
   }
-
-  const mailtoLink = `mailto:${response.data.email}?subject=RE: ${
-    response.formType === 'contact' ? 'Contact Form' : 'Get Started Form'
-  } Submission&body=Dear ${response.data.firstName || response.data.name},`
 
   return (
     <div className="flex min-h-screen">
