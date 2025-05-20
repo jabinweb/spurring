@@ -13,7 +13,7 @@ interface HeroProps {
 
 export function Hero({ 
   videos = [
-   "https://videos.pexels.com/video-files/3141208/3141208-sd_640_360_25fps.mp4"
+   "https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4"
   ] 
 }: HeroProps) {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);

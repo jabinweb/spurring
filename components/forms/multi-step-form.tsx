@@ -18,11 +18,14 @@ import {
   Truck,
   Building,
   Globe,
+  Check,
+  AlertCircle,
+  Loader2,
 } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 const formSchema = z.object({
   industry: z.string().min(1, "Please select an industry"),
-  fleetSize: z.string().min(1, "Please select a fleet size"),
   firstName: z.string().min(2, "First name is required"),
   lastName: z.string().min(2, "Last name is required"),
   phone: z.string().min(10, "Valid phone number is required"),
@@ -45,6 +48,8 @@ interface MultiStepFormProps {
 
 export function MultiStepForm({ onComplete }: MultiStepFormProps) {
   const [step, setStep] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const { toast } = useToast()
   const router = useRouter()
   
@@ -52,7 +57,6 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       industry: "",
-      fleetSize: "",
       firstName: "",
       lastName: "",
       phone: "",
@@ -61,36 +65,94 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
     },
   })
 
+  const nextStep = () => {
+    // Validate fields for current step before proceeding
+    if (step === 1) {
+      if (!form.getValues('industry')) {
+        toast({
+          title: "Required",
+          description: "Please select an industry",
+          variant: "destructive",
+        })
+        return
+      }
+    }
+    setStep(step + 1)
+  }
+
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    try {
-      // Here you would typically send the data to your API
-      console.log(data)
-      
+    console.log('Form submitted with data:', data) // Debug log
+    
+    // Validate form data
+    const isValid = await form.trigger()
+    if (!isValid) {
+      console.log('Form validation failed:', form.formState.errors)
       toast({
-        title: "Success!",
-        description: "Thank you for your interest. We'll be in touch soon!",
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive",
+      })
+      return
+    }
+
+    setLoading(true)
+    setStatus('loading')
+
+    try {
+      console.log('Submitting form data:', data) // Debug log
+      const res = await fetch('/api/forms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'getStarted',
+          data
+        })
       })
 
-      // Call onComplete callback instead of redirecting
+      if (!res.ok) throw new Error('Failed to submit form')
+
+      setStatus('success')
+      toast({
+        title: "Successfully submitted!",
+        description: "We'll review your information and get back to you shortly.",
+      })
+
       if (onComplete) {
         setTimeout(onComplete, 2000)
       }
     } catch (error) {
+      console.error('Form submission error:', error) // Debug log
+      setStatus('error')
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
         variant: "destructive",
       })
+    } finally {
+      setLoading(false)
     }
   }
 
-  const nextStep = () => setStep(step + 1)
   const prevStep = () => setStep(step - 1)
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-3xl mx-auto">
       <Card>
         <CardContent className="pt-6">
+          {status === 'success' && (
+            <Alert className="mb-6 bg-green-50 text-green-600 border-green-200">
+              <Check className="h-4 w-4" />
+              <AlertDescription>Form submitted successfully! We&apos;ll be in touch soon.</AlertDescription>
+            </Alert>
+          )}
+          
+          {status === 'error' && (
+            <Alert className="mb-6 bg-red-50 text-red-600 border-red-200">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>Failed to submit form. Please try again.</AlertDescription>
+            </Alert>
+          )}
+
           <AnimatePresence mode="wait">
             {step === 1 && (
               <motion.div
@@ -140,6 +202,11 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
                       {...form.register("firstName")}
                       placeholder="John"
                     />
+                    {form.formState.errors.firstName && (
+                      <p className="text-sm text-red-500 mt-1">
+                        {form.formState.errors.firstName.message}
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
@@ -148,6 +215,11 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
                       {...form.register("lastName")}
                       placeholder="Doe"
                     />
+                    {form.formState.errors.lastName && (
+                      <p className="text-sm text-red-500 mt-1">
+                        {form.formState.errors.lastName.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -157,6 +229,11 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
                     {...form.register("companyName")}
                     placeholder="Acme Inc."
                   />
+                  {form.formState.errors.companyName && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {form.formState.errors.companyName.message}
+                    </p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Company Email</Label>
@@ -166,6 +243,11 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
                     {...form.register("email")}
                     placeholder="john@company.com"
                   />
+                  {form.formState.errors.email && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {form.formState.errors.email.message}
+                    </p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
@@ -174,6 +256,11 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
                     {...form.register("phone")}
                     placeholder="+1 (555) 000-0000"
                   />
+                  {form.formState.errors.phone && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {form.formState.errors.phone.message}
+                    </p>
+                  )}
                 </div>
                 <p className="text-sm text-muted-foreground">
                   By clicking Get Started, I acknowledge receipt of the{" "}
@@ -188,17 +275,43 @@ export function MultiStepForm({ onComplete }: MultiStepFormProps) {
 
           <div className="flex justify-between mt-8">
             {step > 1 && (
-              <Button type="button" variant="outline" onClick={prevStep}>
+              <Button 
+                type="button" 
+                variant="outline" 
+                onClick={prevStep}
+                disabled={loading || status === 'success'}
+              >
                 Previous
               </Button>
             )}
-            {step < 3 ? (
-              <Button type="button" onClick={nextStep} className="ml-auto">
+            {step < 2 ? (
+              <Button 
+                type="button" 
+                onClick={nextStep} 
+                className="ml-auto"
+                disabled={loading || status === 'success'}
+              >
                 Next
               </Button>
             ) : (
-              <Button type="submit" className="ml-auto">
-                Get Started
+              <Button 
+                type="submit" 
+                className="ml-auto"
+                disabled={loading || status === 'success'}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : status === 'success' ? (
+                  <>
+                    <Check className="mr-2 h-4 w-4" />
+                    Submitted
+                  </>
+                ) : (
+                  "Get Started"
+                )}
               </Button>
             )}
           </div>

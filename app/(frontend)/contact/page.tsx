@@ -7,6 +7,7 @@ import Image from "next/image"
 import { Hero } from "@/components/ui/hero"
 import { Container } from "@/components/ui/container"
 import { WorldMap } from "@/components/world-map"
+import { ContactForm } from "@/components/forms/contact-form"
 
 export default function ContactPage() {
   return (
@@ -24,48 +25,7 @@ export default function ContactPage() {
               {/* Contact Form */}
               <div>
                 <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
-                <Card>
-                  <CardContent className="p-6">
-                    <form className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-sm font-medium mb-2 block">
-                            First Name
-                          </label>
-                          <Input placeholder="John" />
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium mb-2 block">
-                            Last Name
-                          </label>
-                          <Input placeholder="Doe" />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">
-                          Email
-                        </label>
-                        <Input type="email" placeholder="john@example.com" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">
-                          Phone
-                        </label>
-                        <Input placeholder="+91 98765 43210" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">
-                          Message
-                        </label>
-                        <Textarea
-                          placeholder="Tell us about your project..."
-                          className="min-h-[150px]"
-                        />
-                      </div>
-                      <Button className="w-full">Send Message</Button>
-                    </form>
-                  </CardContent>
-                </Card>
+                <ContactForm />
               </div>
 
               {/* Contact Information */}

@@ -2,18 +2,28 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: [
-      'images.unsplash.com',
-      'source.unsplash.com',
-      'cdn.worldvectorlogo.com',
-      'pytorch.org',
-      'upload.wikimedia.org',
-      'www.vectorlogo.zone',
-      'www.gstatic.com',
-      'seeklogo.com',
-      'custom.typingmind.com',
-      'registry.npmmirror.com'
-    ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'custom.typingmind.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'registry.npmmirror.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.pixabay.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.vecteezy.com',
+      }
+    ]
   },
 }
 

@@ -181,7 +181,7 @@ export default function CareersPage() {
       </section>
 
       {/* Work Culture Section */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <Container>
           <div className="text-center mb-12">
             <Badge className="mb-4">Work Culture</Badge>
@@ -204,10 +204,10 @@ export default function CareersPage() {
             ))}
           </div>
         </Container>
-      </section>
+      </section> */}
 
       {/* Benefits Section */}
-      <section className="py-20 px-4 bg-muted/50">
+      {/* <section className="py-20 px-4 bg-muted/50">
         <Container>
           <div className="text-center mb-12">
             <Badge className="mb-4">Benefits</Badge>
@@ -232,7 +232,7 @@ export default function CareersPage() {
             ))}
           </div>
         </Container>
-      </section>
+      </section> */}
 
       {/* Open Positions with Categories */}
       <section id="positions" className="py-20 bg-muted/50">
