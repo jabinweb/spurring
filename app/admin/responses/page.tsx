@@ -12,12 +12,16 @@ import {
 } from "@/components/ui/table"
 import { useState, useEffect } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/components/ui/button"
+import { EyeIcon } from "lucide-react"
+import Link from "next/link"
 
 interface FormData {
   firstName?: string
   lastName?: string
   name?: string
   email: string
+  message?: string
   [key: string]: any // For other dynamic form fields
 }
 
@@ -112,6 +116,11 @@ function ResponsesTable({ responses, loading, filter }: ResponsesTableProps) {
   if (loading) return <div>Loading...</div>
   if (!responses.length) return <div>No responses found.</div>
 
+  const truncateMessage = (message?: string) => {
+    if (!message) return ''
+    return message.length > 100 ? `${message.slice(0, 100)}...` : message
+  }
+
   return (
     <Card>
       <Table>
@@ -121,7 +130,8 @@ function ResponsesTable({ responses, loading, filter }: ResponsesTableProps) {
             <TableHead>Form Type</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
-            <TableHead>Details</TableHead>
+            <TableHead>Message</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -135,10 +145,18 @@ function ResponsesTable({ responses, loading, filter }: ResponsesTableProps) {
                   : response.data.name}
               </TableCell>
               <TableCell>{response.data.email}</TableCell>
+              <TableCell className="max-w-xs">
+                <p className="truncate text-sm text-muted-foreground">
+                  {truncateMessage(response.data.message)}
+                </p>
+              </TableCell>
               <TableCell>
-                <pre className="text-xs">
-                  {JSON.stringify(response.data, null, 2)}
-                </pre>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href={`/admin/responses/${response.id}`}>
+                    <EyeIcon className="h-4 w-4 mr-2" />
+                    View
+                  </Link>
+                </Button>
               </TableCell>
             </TableRow>
           ))}

@@ -70,3 +70,4 @@ export async function deleteUser(id: string) {
     where: { id }
   })
 }
+

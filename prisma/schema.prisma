@@ -60,3 +60,8 @@ model FormResponse {
   data      Json
   createdAt DateTime @default(now())
 }
+
+model Settings {
+  key   String @id
+  value Json
+}
