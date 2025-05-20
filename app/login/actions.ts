@@ -11,30 +11,35 @@ interface LoginData {
 interface LoginResponse {
   error?: string
   success?: boolean
+  url?: string
 }
 
 export async function loginAction(formData: LoginData): Promise<LoginResponse> {
   try {
-    console.log("Attempting login for:", formData.email)
+    console.log('Starting login attempt for:', formData.email)
+    
     const result = await signIn("credentials", {
       email: formData.email,
       password: formData.password,
       redirect: false
     })
 
-    console.log("Login result:", result)
+    console.log('Raw auth result:', result)
 
-    if (!result?.ok) {
-      console.log("Login failed:", result?.error)
-      return { error: "Invalid credentials" }
+    if (!result) {
+      return { error: "Authentication failed" }
     }
 
-    return { success: true }
+    if (result.error) {
+      return { error: result.error }
+    }
+
+    return { 
+      success: true,
+      url: '/admin'
+    }
   } catch (error) {
-    console.error("Login error:", error)
-    if (error instanceof AuthError) {
-      return { error: "Invalid credentials" }
-    }
-    return { error: "Something went wrong" }
+    console.error('Login action error:', error)
+    return { error: "An unexpected error occurred" }
   }
 }

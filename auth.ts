@@ -16,36 +16,48 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         try {
           const parsedCredentials = schema.safeParse(credentials)
           if (!parsedCredentials.success) {
-            console.log("Invalid credentials format:", parsedCredentials.error)
+            console.log("Validation error:", parsedCredentials.error)
             return null
           }
 
           const { email, password } = parsedCredentials.data
-          
-          const user = await prisma.user.findUnique({
-            where: { email }
+          const user = await prisma.user.findUnique({ 
+            where: { email },
+            select: {
+              id: true,
+              email: true,
+              password: true,
+              name: true,
+              isAdmin: true
+            }
           })
 
           if (!user) {
             console.log("User not found:", email)
             return null
           }
-          
-          const isValid = await verifyPassword(password, user.password)
-          if (!isValid) {
-            console.log("Invalid password for user:", email)
-            return null
+
+          const isValidPassword = await verifyPassword(password, user.password)
+          console.log('Password check:', { 
+            email,
+            inputPassword: password.substring(0, 3) + '...',
+            hashedPassword: user.password.substring(0, 10) + '...',
+            isValid: isValidPassword 
+          })
+
+          if (isValidPassword) {
+            const userData = {
+              id: user.id,
+              email: user.email,
+              name: user.name,
+              isAdmin: user.isAdmin
+            }
+            console.log('Auth successful, returning:', userData)
+            return userData
           }
-          
-          console.log("Login successful for user:", email)
-          return {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            isAdmin: user.isAdmin
-          }
-        } catch (error) {
-          console.error("Auth error:", error)
+          return null
+        } catch (error: unknown) {
+          console.error('Auth error:', error)
           return null
         }
       }
@@ -54,18 +66,29 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: "/login"
   },
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60 // 30 days
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.isAdmin = user.isAdmin
+        token.userId = user.id
       }
       return token
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.isAdmin = token.isAdmin as boolean
+        session.user.id = token.userId as string
       }
       return session
+    },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith(baseUrl)) return url
+      if (url.startsWith('/')) return `${baseUrl}${url}`
+      return baseUrl
     }
   }
 })

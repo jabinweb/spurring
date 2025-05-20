@@ -7,12 +7,16 @@ import { loginAction } from "./actions"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Eye, EyeOff } from "lucide-react"
 import { Logo } from "@/components/ui/logo"
+import { useRouter } from 'next/navigation'
 
 interface LoginResult {
   error?: string
+  success?: boolean
+  url?: string
 }
 
 export default function LoginPage() {
+  const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -25,9 +29,13 @@ export default function LoginPage() {
     setError(null)
     
     try {
-      const result: LoginResult = await loginAction({ email, password })
-      if (result?.error) {
+      const result = await loginAction({ email, password })
+      console.log('Login result:', result)
+      
+      if (result.error) {
         setError(result.error)
+      } else if (result.success) {
+        router.replace(result.url || '/admin')
       }
     } catch (error) {
       setError("An unexpected error occurred")
