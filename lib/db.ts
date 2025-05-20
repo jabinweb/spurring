@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { FormResponse } from "@/types/form"
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
@@ -10,6 +11,42 @@ export const prisma = globalForPrisma.prisma ?? new PrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 export default prisma
+
+export interface DashboardStats {
+  totalUsers: number
+  totalResponses: number
+  contactResponses: number
+  getStartedResponses: number
+  recentResponses: FormResponse[]
+}
+
+export async function getDashboardStats(): Promise<DashboardStats> {
+  const [userCount, formResponses] = await Promise.all([
+    prisma.user.count(),
+    prisma.formResponse.findMany({
+      orderBy: { createdAt: 'desc' }
+    })
+  ])
+
+interface ContactFormResponse extends FormResponse {
+    formType: 'contact'
+}
+const contactFormCount: number = formResponses.filter((r: FormResponse): r is ContactFormResponse => r.formType === 'contact').length
+interface GetStartedFormResponse extends FormResponse {
+    formType: 'getStarted'
+}
+const getStartedCount: number = formResponses.filter(
+    (r: FormResponse): r is GetStartedFormResponse => r.formType === 'getStarted'
+).length
+
+  return {
+    totalUsers: userCount,
+    totalResponses: formResponses.length,
+    contactResponses: contactFormCount,
+    getStartedResponses: getStartedCount,
+    recentResponses: formResponses.slice(0, 5)
+  }
+}
 
 export async function getFirstAdmin() {
   return await prisma.user.findFirst({

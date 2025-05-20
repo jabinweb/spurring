@@ -4,26 +4,8 @@ import { AdminSidebar } from "@/components/admin/sidebar"
 import prisma from "@/lib/db"
 import { Users, MessageSquare, BarChart } from "lucide-react"
 import { FormResponse, DashboardStats } from "@/types/form"
+import { getDashboardStats } from "@/lib/db"
 
-export async function getDashboardStats() {
-  const [userCount, formResponses] = await Promise.all([
-    prisma.user.count(),
-    prisma.formResponse.findMany({
-      orderBy: { createdAt: 'desc' }
-    })
-  ]) as [number, FormResponse[]]
-
-  const contactFormCount = formResponses.filter((r: FormResponse) => r.formType === 'contact').length
-  const getStartedCount = formResponses.filter((r: FormResponse) => r.formType === 'getStarted').length
-
-  return {
-    totalUsers: userCount,
-    totalResponses: formResponses.length,
-    contactResponses: contactFormCount,
-    getStartedResponses: getStartedCount,
-    recentResponses: formResponses.slice(0, 5)
-  }
-}
 
 
 export default async function AdminPage() {
