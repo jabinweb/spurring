@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { z } from "zod"
-import { getUserByEmail } from "@/lib/db"
+import prisma from "@/lib/db"
 import { verifyPassword } from "@/lib/crypto"
 
 const schema = z.object({
