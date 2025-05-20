@@ -21,7 +21,7 @@ export default function Home() {
       <ConstructionSafetyCaseStudy />
       {/* <IntegratedPlatform /> */}
       {/* <Services /> */}
-      <IndustrySolutions />
+      {/* <IndustrySolutions /> */}
 
       {/* <WhyChooseUs /> */}
 

@@ -13,9 +13,7 @@ interface HeroProps {
 
 export function Hero({ 
   videos = [
-    "https://cdn.pixabay.com/video/2024/09/21/232561_large.mp4",
-    "https://cdn.pixabay.com/video/2021/09/11/88223-606079076_large.mp4",
-    "https://static.vecteezy.com/system/resources/previews/041/727/692/mp4/autonomous-vehicles-lidar-scanning-delivering-goods-in-warehouse-free-video.mp4"
+   "https://videos.pexels.com/video-files/3141208/3141208-sd_640_360_25fps.mp4"
   ] 
 }: HeroProps) {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);

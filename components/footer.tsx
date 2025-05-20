@@ -17,7 +17,8 @@ export function Footer() {
         description="Let's discuss how our AI solutions can drive your success"
         primaryButtonText="Get Started"
         secondaryButtonText="Let's Talk"
-        onSecondaryClick={() => openCalendly('https://calendly.com/spurringventures-info/30min')}
+        // onSecondaryClick={() => openCalendly('https://calendly.com/spurringventures-info/30min')}
+        secondaryButtonHref="contact"
     />
     <footer className="border-t">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
