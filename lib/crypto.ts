@@ -1,19 +1,36 @@
 import bcrypt from 'bcryptjs'
 
 export async function hashPassword(password: string): Promise<string> {
-  const salt = await bcrypt.genSalt(12)
-  return bcrypt.hash(password, salt)
+  try {
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
+    console.log('Password hashing:', {
+      originalLength: password.length,
+      hashedLength: hashedPassword.length,
+      type: 'bcrypt'
+    })
+    return hashedPassword
+  } catch (error) {
+    console.error('Hash error:', error)
+    throw error
+  }
 }
 
 export async function verifyPassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
   try {
-    console.log('Verifying password:', {
-      plainLength: plainPassword.length,
-      hashedLength: hashedPassword.length
+    if (!hashedPassword.startsWith('$2')) {
+      console.error('Invalid hash format, expecting bcrypt')
+      return false
+    }
+    const isValid = await bcrypt.compare(plainPassword, hashedPassword)
+    console.log('Verification details:', {
+      isValid,
+      hashType: 'bcrypt',
+      hashStart: hashedPassword.substring(0, 7)
     })
-    return await bcrypt.compare(plainPassword, hashedPassword)
+    return isValid
   } catch (error) {
-    console.error('Password verification error:', error)
+    console.error('Verification error:', error)
     return false
   }
 }
