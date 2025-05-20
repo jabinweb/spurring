@@ -6,9 +6,11 @@ export interface FormData {
   [key: string]: any
 }
 
+export type FormType = 'contact' | 'getStarted'
+
 export interface FormResponse {
   id: string
-  formType: 'contact' | 'getStarted'
+  formType: FormType
   data: FormData
   createdAt: Date
 }
