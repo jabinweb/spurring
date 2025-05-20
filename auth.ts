@@ -13,22 +13,40 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        const parsedCredentials = schema.safeParse(credentials)
-        if (!parsedCredentials.success) return null
+        try {
+          const parsedCredentials = schema.safeParse(credentials)
+          if (!parsedCredentials.success) {
+            console.log("Invalid credentials format:", parsedCredentials.error)
+            return null
+          }
 
-        const { email, password } = parsedCredentials.data
-        
-        const user = await getUserByEmail(email)
-        if (!user) return null
-        
-        const passwordsMatch = await verifyPassword(password, user.password)
-        if (!passwordsMatch) return null
-        
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          isAdmin: user.isAdmin
+          const { email, password } = parsedCredentials.data
+          
+          const user = await prisma.user.findUnique({
+            where: { email }
+          })
+
+          if (!user) {
+            console.log("User not found:", email)
+            return null
+          }
+          
+          const isValid = await verifyPassword(password, user.password)
+          if (!isValid) {
+            console.log("Invalid password for user:", email)
+            return null
+          }
+          
+          console.log("Login successful for user:", email)
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            isAdmin: user.isAdmin
+          }
+        } catch (error) {
+          console.error("Auth error:", error)
+          return null
         }
       }
     })
