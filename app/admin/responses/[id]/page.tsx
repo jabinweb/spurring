@@ -7,13 +7,14 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { ResponseActions } from "@/components/responses/response-actions"
 import styles from '@/styles/print.module.css'
+import { FormResponse } from "@/types/form"
 
 export default async function ResponsePage({ params }: { params: { id: string } }) {
   const response = await prisma.formResponse.findUnique({
     where: { id: params.id }
-  })
+  }) as FormResponse | null
 
-  if (!response || !response.data) return notFound()
+  if (!response) return notFound()
 
   // Type assertion for data
   const data = response.data as { email: string; firstName?: string; name?: string }
@@ -56,7 +57,7 @@ export default async function ResponsePage({ params }: { params: { id: string } 
               Back to Responses
             </Link>
 
-            <ResponseActions response={response} />
+            <ResponseActions response={response as FormResponse} />
           </div>
 
           <Card className={styles.printContent}>

@@ -1,5 +1,8 @@
 export interface FormData {
   email: string
+  firstName?: string
+  name?: string
+  message?: string
   [key: string]: any
 }
 
@@ -7,7 +10,7 @@ export interface FormResponse {
   id: string
   formType: 'contact' | 'getStarted'
   data: FormData
-  createdAt: string
+  createdAt: Date
 }
 
 export interface DashboardStats {
