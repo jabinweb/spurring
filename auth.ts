@@ -32,20 +32,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
           })
 
-          if (!user) {
-            console.log("User not found:", email)
+          console.log('Found user:', { 
+            email, 
+            hasPassword: !!user?.password,
+            isAdmin: user?.isAdmin 
+          })
+
+          if (!user?.password) {
+            console.log('No password found for user')
             return null
           }
 
-          const isValidPassword = await verifyPassword(password, user.password)
+          const isValid = await verifyPassword(password, user.password)
+          console.log('Password verification result:', { isValid, email })
+
+          if (!isValid) {
+            return null
+          }
+
           console.log('Password check:', { 
             email,
             inputPassword: password.substring(0, 3) + '...',
             hashedPassword: user.password.substring(0, 10) + '...',
-            isValid: isValidPassword 
+            isValid: isValid 
           })
 
-          if (isValidPassword) {
+          if (isValid) {
             const userData = {
               id: user.id,
               email: user.email,
@@ -57,7 +69,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
           return null
         } catch (error: unknown) {
-          console.error('Auth error:', error)
+          const err = error as Error;
+          console.error('Detailed auth error:', {
+            name: err.name,
+            message: err.message,
+            stack: err.stack
+          })
           return null
         }
       }

@@ -1,12 +1,17 @@
 import bcrypt from 'bcryptjs'
 
 export async function hashPassword(password: string): Promise<string> {
-  return bcrypt.hash(password, 12)
+  const salt = await bcrypt.genSalt(12)
+  return bcrypt.hash(password, salt)
 }
 
-export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
+export async function verifyPassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
   try {
-    return await bcrypt.compare(password, hashedPassword)
+    console.log('Verifying password:', {
+      plainLength: plainPassword.length,
+      hashedLength: hashedPassword.length
+    })
+    return await bcrypt.compare(plainPassword, hashedPassword)
   } catch (error) {
     console.error('Password verification error:', error)
     return false
