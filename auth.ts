@@ -1,8 +1,8 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { z } from "zod"
-import bcrypt from "bcryptjs"
 import { getUserByEmail } from "@/lib/db"
+import { verifyPassword } from "@/lib/crypto"
 
 const schema = z.object({
   email: z.string().email(),
@@ -21,7 +21,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const user = await getUserByEmail(email)
         if (!user) return null
         
-        const passwordsMatch = await bcrypt.compare(password, user.password)
+        const passwordsMatch = await verifyPassword(password, user.password)
         if (!passwordsMatch) return null
         
         return {

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
-import bcrypt from "bcryptjs"
 import { z } from "zod"
+import { hashPassword } from "@/lib/crypto"
 import { getFirstAdmin, createAdmin } from "@/lib/db"
 
 const schema = z.object({
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       return new NextResponse("Admin already exists", { status: 400 })
     }
     
-    const hashedPassword = await bcrypt.hash(body.password, 12)
+    const hashedPassword = await hashPassword(body.password)
     const admin = await createAdmin(body.email, hashedPassword)
     
     return NextResponse.json({ user: admin }, { status: 201 })
