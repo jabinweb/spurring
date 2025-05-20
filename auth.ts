@@ -37,9 +37,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
 
           const isValid = await verifyPassword(password, user.password)
-          
+          console.log('Auth attempt:', { email, isValid })
+
           if (!isValid) {
-            throw new AuthError("Invalid credentials")
+            console.log('Password verification failed')
+            return null
           }
 
           return {
@@ -49,9 +51,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             isAdmin: user.isAdmin
           }
         } catch (error) {
-          console.error("Auth error:", error)
-          // Convert all errors to AuthError with generic message
-          throw new AuthError("Invalid credentials")
+          console.error('Auth error details:', {
+            error: error instanceof Error ? error.message : String(error),
+            email: credentials?.email
+          })
+          return null
         }
       }
     })
