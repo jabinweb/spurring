@@ -3,25 +3,26 @@
 import prisma from "@/lib/db"
 import nodemailer from "nodemailer"
 import { z } from "zod"
-import { SmtpSettings, JsonValue } from '@/types/form'
+import { SmtpSettings, JsonValue, InputJsonValue } from '@/types/form'
 
+// Define the schema for SmtpSettings validation
 const schema = z.object({
-  host: z.string().min(1),
-  port: z.number().min(1),
-  user: z.string().min(1),
-  password: z.string().min(1),
-  from: z.string().min(1),
-  fromName: z.string().min(1),
+  host: z.string(),
+  port: z.number(),
+  user: z.string(),
+  password: z.string(),
+  // Add other fields as needed based on SmtpSettings definition
 })
 
 export async function updateSmtpSettings(data: SmtpSettings) {
   try {
+    const validatedData: InputJsonValue = schema.parse(data)
     await prisma.settings.upsert({
       where: { key: 'smtp' },
-      update: { value: data as JsonValue },
+      update: { value: validatedData },
       create: {
         key: 'smtp',
-        value: data as JsonValue
+        value: validatedData
       }
     })
     return { success: true }

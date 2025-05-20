@@ -21,6 +21,14 @@ export interface DashboardStats {
   recentResponses: FormResponse[]
 }
 
+export type InputJsonValue =
+  | string
+  | number
+  | boolean
+  | { [key: string]: InputJsonValue }
+  | InputJsonValue[]
+  | null;
+
 export interface SmtpSettings {
   host: string
   port: number
@@ -28,7 +36,7 @@ export interface SmtpSettings {
   password: string
   from: string
   fromName: string
-  [key: string]: string | number // Index signature for Prisma JSON
+  [key: string]: InputJsonValue
 }
 
 export type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue }
