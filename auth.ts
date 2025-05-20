@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials"
 import { z } from "zod"
 import prisma from "@/lib/db"
 import { verifyPassword } from "@/lib/crypto"
+import { AuthError } from "next-auth"
 
 const schema = z.object({
   email: z.string().email(),
@@ -16,8 +17,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         try {
           const parsedCredentials = schema.safeParse(credentials)
           if (!parsedCredentials.success) {
-            console.log("Validation error:", parsedCredentials.error)
-            return null
+            throw new AuthError("Invalid credentials format")
           }
 
           const { email, password } = parsedCredentials.data
@@ -32,56 +32,33 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
           })
 
-          console.log('Found user:', { 
-            email, 
-            hasPassword: !!user?.password,
-            isAdmin: user?.isAdmin 
-          })
-
           if (!user?.password) {
-            console.log('No password found for user')
-            return null
+            throw new AuthError("Invalid credentials")
           }
 
           const isValid = await verifyPassword(password, user.password)
-          console.log('Password verification result:', { isValid, email })
-
+          
           if (!isValid) {
-            return null
+            throw new AuthError("Invalid credentials")
           }
 
-          console.log('Password check:', { 
-            email,
-            inputPassword: password.substring(0, 3) + '...',
-            hashedPassword: user.password.substring(0, 10) + '...',
-            isValid: isValid 
-          })
-
-          if (isValid) {
-            const userData = {
-              id: user.id,
-              email: user.email,
-              name: user.name,
-              isAdmin: user.isAdmin
-            }
-            console.log('Auth successful, returning:', userData)
-            return userData
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            isAdmin: user.isAdmin
           }
-          return null
-        } catch (error: unknown) {
-          const err = error as Error;
-          console.error('Detailed auth error:', {
-            name: err.name,
-            message: err.message,
-            stack: err.stack
-          })
-          return null
+        } catch (error) {
+          console.error("Auth error:", error)
+          // Convert all errors to AuthError with generic message
+          throw new AuthError("Invalid credentials")
         }
       }
     })
   ],
   pages: {
-    signIn: "/login"
+    signIn: "/login",
+    error: "/login" // Redirect back to login on error
   },
   session: {
     strategy: "jwt",
@@ -103,8 +80,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session
     },
     async redirect({ url, baseUrl }) {
+      // Handle admin redirect
+      if (url.includes("/admin")) {
+        return `${baseUrl}/admin`
+      }
+      // Default redirects
       if (url.startsWith(baseUrl)) return url
-      if (url.startsWith('/')) return `${baseUrl}${url}`
+      if (url.startsWith("/")) return `${baseUrl}${url}`
       return baseUrl
     }
   }
