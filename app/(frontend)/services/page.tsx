@@ -48,27 +48,11 @@ export default function ServicesPage() {
               gradient: "from-blue-500 to-indigo-500"
             },
             {
-              title: "Generative AI",
-              icon: <Code className="h-8 w-8" />,
-              description: "Custom solutions for content generation, creative tasks, and automated content production using state-of-the-art AI models.",
-              features: ["Text Generation", "Image Synthesis", "Code Generation"],
-              href: "/services/generative-ai",
-              gradient: "from-purple-500 to-pink-500"
-            },
-            // {
-            //   title: "Smart Assistants",
-            //   icon: <MessageSquare className="h-8 w-8" />,
-            //   description: "Intelligent chatbots and virtual assistants that automate customer service and internal processes.",
-            //   features: ["Customer Service Bots", "Process Automation", "Virtual Assistants"],
-            //   href: "/services/smart-assistants",
-            //   gradient: "from-green-500 to-emerald-500"
-            // },
-            {
-              title: "Data Mining",
+              title: "Computer Vision",
               icon: <LineChart className="h-8 w-8" />,
-              description: "Advanced analytics and pattern recognition solutions that turn your data into actionable insights.",
-              features: ["Predictive Analytics", "Pattern Recognition", "Data Visualization"],
-              href: "/services/data-mining",
+              description: "Advanced computer vision solutions that enable machines to understand and process visual information from the real world.",
+              features: ["Visual Recognition", "Object Detection", "Image Analysis"],
+              href: "/services/computer-vision",
               gradient: "from-orange-500 to-red-500"
             }
           ].map((service, index) => (
