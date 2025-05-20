@@ -141,10 +141,10 @@ export default function CareersPage() {
                     height={400}
                     className="rounded-2xl shadow-2xl"
                   />
-                  <div className="absolute text-white -bottom-6 -right-6 bg-primary/10 backdrop-blur-sm border border-primary/20 p-6 rounded-2xl">
+                  {/* <div className="absolute text-white -bottom-6 -right-6 bg-primary/10 backdrop-blur-sm border border-primary/20 p-6 rounded-2xl">
                     <div className="text-4xl font-bold mb-2">50+</div>
                     <div className="text-sm">Team Members Globally</div>
-                  </div>
+                  </div> */}
                 </div>
               </FadeIn>
             </div>

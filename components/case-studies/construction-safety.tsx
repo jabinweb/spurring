@@ -62,13 +62,15 @@ export function ConstructionSafetyCaseStudy() {
             </h2> */}
 
           <div className="relative rounded-2xl overflow-hidden bg-muted/5 border p-6">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Spurring Ventures is working with Cornerstone Analytics, <Link href="https://timelapsesea.com/" className="text-primary hover:underline">Timelapse South East Asia</Link> and <Link href="https://buildcam.io" className="text-primary hover:underline">Buildcam</Link> to develop an AI-powered vision analysis platform designed to transform the construction industry. By leveraging advanced computer vision and deep learning algorithms, we are creating a solution that allows teams to detect and assess project risks, even in complex and dynamic environments.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              This cutting-edge AI technology provides data-driven insights that enhance decision-making, optimise resource allocation, and automate risk mitigation. With this new technology, construction project managers are equipped with the tools they need to drive operational efficiency and deliver superior project outcomes.
-            </p>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent -z-10" />
+            <div className="relative z-10">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Spurring Ventures is working with Cornerstone Analytics, <Link href="https://timelapsesea.com/" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Timelapse South East Asia</Link> and <Link href="https://buildcam.io" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Buildcam</Link> to develop an AI-powered vision analysis platform designed to transform the construction industry. By leveraging advanced computer vision and deep learning algorithms, we are creating a solution that allows teams to detect and assess project risks, even in complex and dynamic environments.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                This cutting-edge AI technology provides data-driven insights that enhance decision-making, optimise resource allocation, and automate risk mitigation. With this new technology, construction project managers are equipped with the tools they need to drive operational efficiency and deliver superior project outcomes.
+              </p>
+            </div>
           </div>
 
 
