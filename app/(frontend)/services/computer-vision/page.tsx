@@ -58,7 +58,7 @@ export default function ComputerVisionPage() {
               <Badge>Vision AI Solutions</Badge>
               <h2 className="text-3xl font-bold">Transform Your Business with Computer Vision</h2>
               <p className="text-lg text-muted-foreground">
-                Harness the power of Computer Vision to transform your business operations. We specialise in crafting AI-driven solutions that allow machines to interpret and understand visual data, enabling our clients to enhance efficiency, automate processes, and make smarter, data-driven decisions.
+                Harness the power of Computer Vision to transform your business operations. We specialise in crafting AI-driven solutions that allow machines to interpret and understand visual data, enabling our clients to enhance efficiency, automate processes, and make smarter, data-driven decisions. From object detection to image segmentation, our solutions are designed to provide accurate, real-time insights for diverse industries.
               </p>
             </div>
 
@@ -68,7 +68,7 @@ export default function ComputerVisionPage() {
               <LineChart className="w-16 h-16 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-4">Market Impact</h3>
               <p className="text-muted-foreground">
-                The global computer vision market is poised for significant growth, projected to expand to $175.72 billion by 2032. This surge is driven by the increasing adoption of AI-powered vision systems across various industries, including manufacturing, healthcare, retail, and automotive.
+                The global computer vision market is poised for significant growth, projected to expand to $175.72 billion by 2032. This surge is driven by the increasing adoption of AI-powered vision systems across various industries, including manufacturing, healthcare, retail, and automotive. Key applications such as object detection, facial recognition, and predictive maintenance are enhancing operational efficiency and enabling real-time decision-making.
               </p>
             </div>
           </div>
