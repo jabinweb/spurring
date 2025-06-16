@@ -66,9 +66,9 @@ export function Footer() {
               © 2024 Spurring Ventures India. 
             </p>
             <div className="flex items-center gap-4">
-              <p className="text-sm text-muted-foreground">
+              {/* <p className="text-sm text-muted-foreground">
                 Made with ❤️ by <a href="https://web.jabin.org">JabinWeb</a>
-              </p>
+              </p> */}
               <ModeToggle />
             </div>
           </div>
