@@ -29,7 +29,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="space-y-2">
                 <Building className="h-5 w-5 text-primary" />
-                <h3 className="font-semibold">Bangalore HQ</h3>
+                <h3 className="font-semibold">Bangalore, Hebbal HQ</h3>
                 <p className="text-sm text-muted-foreground">Our primary development hub</p>
               </div>
               <div className="space-y-2">

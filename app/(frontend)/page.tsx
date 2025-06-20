@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <OurCustomers />
       <About />
-      <ConstructionSafetyCaseStudy />
+      {/* <ConstructionSafetyCaseStudy /> */}
       {/* <IntegratedPlatform /> */}
       {/* <Services /> */}
       {/* <IndustrySolutions /> */}

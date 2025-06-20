@@ -32,7 +32,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-3xl font-bold mb-8">Contact Information</h2>
                 <div className="space-y-8">
-                  {/* <Card>
+                  <Card>
                     <CardContent className="p-6">
                       <div className="flex items-start">
                         <MapPin className="h-6 w-6 text-primary mr-4 mt-1" />
@@ -40,8 +40,7 @@ export default function ContactPage() {
                           <h3 className="font-semibold mb-2">Visit Us</h3>
                           <p className="text-muted-foreground">
                             Spurring Ventures India<br />
-                            123 Tech Park, Whitefield<br />
-                            Bangalore, Karnataka 560066<br />
+                            Hebbal, Bangalore, Karnataka 560024<br />
                             India
                           </p>
                         </div>
@@ -56,13 +55,12 @@ export default function ContactPage() {
                         <div>
                           <h3 className="font-semibold mb-2">Call Us</h3>
                           <p className="text-muted-foreground">
-                            +91 80 1234 5678<br />
-                            +91 98765 43210
+                            +91 87920 85827
                           </p>
                         </div>
                       </div>
                     </CardContent>
-                  </Card> */}
+                  </Card>
 
                   <Card>
                     <CardContent className="p-6">
