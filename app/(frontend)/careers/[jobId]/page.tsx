@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 export const dynamicParams = false
 export const dynamic = 'force-static'
 
-export default function JobPage({ params }: { params: { jobId: string } }) {
+export default async function JobPage(props: { params: Promise<{ jobId: string }> }) {
+  const params = await props.params;
   const job = jobs.find((j) => j.id === params.jobId)
 
   if (!job) {

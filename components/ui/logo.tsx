@@ -45,16 +45,10 @@ export function Logo({ size = "md", variant = "default" }: LogoProps) {
         </div>
         <div className="font-semibold tracking-tight">
           <div className={cn(
-            "text-lg leading-none",
+            "text-lg text-center leading-none",
             logoVariant === "light" ? "text-white" : "bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
           )}>
-            Spurring
-          </div>
-          <div className={cn(
-            "text-sm",
-            logoVariant === "light" ? "text-white/80" : "text-muted-foreground"
-          )}>
-            Ventures India
+            Spurring <br /> <span className="text-sm">Ventures</span>
           </div>
         </div>
       </Link>
@@ -84,16 +78,10 @@ export function Logo({ size = "md", variant = "default" }: LogoProps) {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <div className={cn(
-          "text-lg leading-none",
+          "text-lg text-center leading-none",
           logoVariant === "light" ? "text-white" : "bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
         )}>
-          Spurring
-        </div>
-        <div className={cn(
-          "text-sm",
-          logoVariant === "light" ? "text-white/80" : "text-muted-foreground"
-        )}>
-          Ventures India
+          Spurring <br /> <span className="text-sm">Ventures</span>
         </div>
       </motion.div>
     </Link>

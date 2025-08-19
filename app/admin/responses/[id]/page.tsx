@@ -9,7 +9,8 @@ import { ResponseActions } from "@/components/responses/response-actions"
 import styles from '@/styles/print.module.css'
 import { FormResponse } from "@/types/form"
 
-export default async function ResponsePage({ params }: { params: { id: string } }) {
+export default async function ResponsePage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const response = await prisma.formResponse.findUnique({
     where: { id: params.id }
   }) as FormResponse | null
@@ -28,7 +29,7 @@ export default async function ResponsePage({ params }: { params: { id: string } 
     if (typeof value === 'object') return null
 
     return (
-      <div key={key} className="py-3">
+      (<div key={key} className="py-3">
         <dt className="text-sm font-medium text-muted-foreground capitalize">
           {key.replace(/([A-Z])/g, ' $1').trim()}
         </dt>
@@ -39,8 +40,8 @@ export default async function ResponsePage({ params }: { params: { id: string } 
             value
           )}
         </dd>
-      </div>
-    )
+      </div>)
+    );
   }
 
   return (
