@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { HiringPopup } from "@/components/hiring-popup";
-import { WhatsAppChat } from "@/components/whatsapp-button";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
       <main className="min-h-screen">{children}</main>
       <Footer />
       <HiringPopup />
-      <WhatsAppChat />
+      <WhatsAppButton />
     </>
   );
 }

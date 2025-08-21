@@ -3,25 +3,14 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
-export function WhatsAppChat() {
-  const [isVisible, setIsVisible] = useState(false);
-  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+919876543210';
+export function WhatsAppButton() {
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+918792085827';
   const defaultMessage = process.env.NEXT_PUBLIC_WHATSAPP_DEFAULT_MESSAGE || 'Hi! I want to know more';
 
-  useEffect(() => {
-    const toggleVisibility = () => {
-      setIsVisible(window.scrollY > 300);
-    };
-
-    // Initial check
-    toggleVisibility();
-    
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-
   const handleClick = () => {
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+    // Remove any non-digit characters from the phone number
+    const formattedNumber = phoneNumber.replace(/\D/g, '');
+    const url = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(defaultMessage)}`;
     window.open(url, '_blank');
   };
 
@@ -32,7 +21,7 @@ export function WhatsAppChat() {
         "fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-lg transition-all duration-300 transform",
         "bg-green-500 hover:bg-green-600 hover:scale-110",
         "flex items-center justify-center gap-2 group",
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-24 opacity-0"
+        "translate-y-0 opacity-100"
       )}
     >
       {/* WhatsApp Icon */}
