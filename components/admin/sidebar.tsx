@@ -26,8 +26,7 @@ export function AdminSidebar({ className }: AdminSidebarProps) {
             <Link
               key={item.href}
               href={item.href}
-              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
-            >
+              className="flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors">
               <item.icon className="w-4 h-4" />
               {item.label}
             </Link>
@@ -43,5 +42,5 @@ export function AdminSidebar({ className }: AdminSidebarProps) {
         </form>
       </div>
     </div>
-  )
+  );
 }

@@ -66,7 +66,6 @@ export function CareerHeroSlider() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         </motion.div>
       </AnimatePresence>
-
       {/* Content */}
       <Container className="relative h-full flex items-center py-28">
         <div className="max-w-2xl">
@@ -91,7 +90,7 @@ export function CareerHeroSlider() {
               <div className="flex gap-4">
                 <Button size="lg" asChild>
                   <Link href="#positions">
-                    View Positions
+                    <span>View Positions</span>
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -132,5 +131,5 @@ export function CareerHeroSlider() {
         )}
       </Container>
     </section>
-  )
+  );
 }

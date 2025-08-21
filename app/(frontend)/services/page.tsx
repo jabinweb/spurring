@@ -34,7 +34,6 @@ export default function ServicesPage() {
           </Badge>
         </motion.div>
       </Hero>
-
       {/* Main Services Grid */}
       <Container className="py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -95,7 +94,6 @@ export default function ServicesPage() {
           ))}
         </div>
       </Container>
-
       {/* Process Section */}
       <section className="py-20 bg-muted/50">
         <Container>
@@ -133,5 +131,5 @@ export default function ServicesPage() {
         </Container>
       </section>
     </div>
-  )
+  );
 }

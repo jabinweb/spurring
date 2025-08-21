@@ -29,7 +29,7 @@ export default async function ResponsePage(props: { params: Promise<{ id: string
     if (typeof value === 'object') return null
 
     return (
-      (<div key={key} className="py-3">
+      <div key={key} className="py-3">
         <dt className="text-sm font-medium text-muted-foreground capitalize">
           {key.replace(/([A-Z])/g, ' $1').trim()}
         </dt>
@@ -40,7 +40,7 @@ export default async function ResponsePage(props: { params: Promise<{ id: string
             value
           )}
         </dd>
-      </div>)
+      </div>
     );
   }
 
@@ -50,8 +50,8 @@ export default async function ResponsePage(props: { params: Promise<{ id: string
       <main className="flex-1 p-8">
         <div className="max-w-3xl mx-auto">
           <div className={`flex justify-between items-center mb-6 ${styles.hiddenOnPrint}`}>
-            <Link 
-              href="/admin/responses" 
+            <Link
+              href="/admin/responses"
               className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -88,5 +88,5 @@ export default async function ResponsePage(props: { params: Promise<{ id: string
         </div>
       </main>
     </div>
-  )
+  );
 }

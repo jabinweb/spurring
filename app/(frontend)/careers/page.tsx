@@ -105,7 +105,6 @@ export default function CareersPage() {
   return (
     <div>
       <CareerHeroSlider />
-
       {/* Vision Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <Container>
@@ -151,7 +150,6 @@ export default function CareersPage() {
           </div>
         </Container>
       </section>
-
       {/* Perks Grid */}
       <section className="py-20 px-4 bg-muted/50">
         <Container>
@@ -179,7 +177,6 @@ export default function CareersPage() {
           </div>
         </Container>
       </section>
-
       {/* Work Culture Section */}
       {/* <section className="py-20">
         <Container>
@@ -205,7 +202,6 @@ export default function CareersPage() {
           </div>
         </Container>
       </section> */}
-
       {/* Benefits Section */}
       {/* <section className="py-20 px-4 bg-muted/50">
         <Container>
@@ -233,7 +229,6 @@ export default function CareersPage() {
           </div>
         </Container>
       </section> */}
-
       {/* Open Positions with Categories */}
       <section id="positions" className="py-20 bg-muted/50">
         <Container>
@@ -385,7 +380,7 @@ export default function CareersPage() {
                         <div className="flex flex-col md:items-end gap-4">
                           <Button asChild>
                             <Link href={`/careers/${job.id}`}>
-                              View Details
+                              <span>View Details</span>
                               <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                           </Button>
@@ -400,5 +395,5 @@ export default function CareersPage() {
         </Container>
       </section>
     </div>
-  )
+  );
 }

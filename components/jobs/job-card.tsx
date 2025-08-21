@@ -47,7 +47,7 @@ export function JobCard({ job, index }: JobCardProps) {
             </p>
             <Button className="w-full mt-4" asChild>
               <Link href={`/careers/${job.id}`}>
-                View Details
+                <span>View Details</span>
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -55,5 +55,5 @@ export function JobCard({ job, index }: JobCardProps) {
         </CardContent>
       </Card>
     </motion.div>
-  )
+  );
 }

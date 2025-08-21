@@ -60,7 +60,6 @@ export function JobDetails({ job }: JobDetailsProps) {
           </motion.div>
         </Container>
       </section>
-
       {/* Main Content */}
       <Container className="py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -151,7 +150,7 @@ export function JobDetails({ job }: JobDetailsProps) {
                     <h3 className="font-semibold mb-4">Quick Apply</h3>
                     <Button size="lg" className="w-full" asChild>
                       <Link href="/contact">
-                        <Send className="mr-2 h-4 w-4" />
+                        <span className="flex items-center"><Send className="mr-2 h-4 w-4" /></span>
                         Apply Now
                       </Link>
                     </Button>
@@ -194,5 +193,5 @@ export function JobDetails({ job }: JobDetailsProps) {
         </div>
       </Container>
     </div>
-  )
+  );
 }

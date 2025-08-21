@@ -77,7 +77,7 @@ export function Navigation() {
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
       isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent",
       isLightText && "text-white"
-    )}>  
+    )}>
       <div className="flex h-16 items-center px-4 max-w-7xl mx-auto">
         <Logo size="md" variant={isLightText ? "light" : "default"} />
         <div className="ml-auto flex items-center space-x-4">
@@ -109,8 +109,10 @@ export function Navigation() {
                       ))}
                       {services.length > 0 && (
                         <div className="col-span-2 mt-4 flex justify-end border-t pt-4">
-                          <NavigationMenuLink href="/services" className="text-sm font-medium text-primary flex items-center hover:underline">
-                            View All Services <ArrowRight className="ml-2 h-4 w-4" />
+                          <NavigationMenuLink asChild className="text-sm font-medium text-primary flex items-center hover:underline">
+                            <Link href="/services">
+                              <span className="flex items-center">View All Services <ArrowRight className="ml-2 h-4 w-4" /></span>
+                            </Link>
                           </NavigationMenuLink>
                         </div>
                       )}
@@ -120,18 +122,17 @@ export function Navigation() {
               ))}
               {navigationItems.map(({ title, href }) => (
                 <NavigationMenuItem key={title}>
-                  <Link href={href} legacyBehavior passHref>
-                    <NavigationMenuLink 
-                      className={cn(
-                        "px-4 py-2 rounded-md transition-colors",
-                        !isScrolled 
-                          ? "text-white hover:bg-white/10" // Always white when not scrolled (dark bg)
-                          : "hover:bg-accent hover:text-accent-foreground" // Default theme colors when scrolled
-                      )}
-                    >
-                      {title}
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink 
+                    asChild
+                    className={cn(
+                      "px-4 py-2 rounded-md transition-colors",
+                      !isScrolled 
+                        ? "text-white hover:bg-white/10" // Always white when not scrolled (dark bg)
+                        : "hover:bg-accent hover:text-accent-foreground" // Default theme colors when scrolled
+                    )}
+                  >
+                    <Link href={href}>{title}</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
@@ -154,8 +155,12 @@ export function Navigation() {
                 <div>
                   <p className="text-sm font-semibold text-muted-foreground uppercase">Services</p>
                   {services.map(({ title, href }) => (
-                    <Link key={title} href={href} className="block text-lg font-semibold text-foreground hover:text-primary mt-2">
-                      {title}
+                    <Link
+                      key={title}
+                      href={href}
+                      className="block text-lg font-semibold text-foreground hover:text-primary mt-2"
+                    >
+                      <span>{title}</span>
                     </Link>
                   ))}
                 </div>
@@ -172,8 +177,12 @@ export function Navigation() {
 
                 {/* Other Navigation Items */}
                 {navigationItems.map(({ title, href }) => (
-                  <Link key={title} href={href} className="text-lg font-semibold text-foreground hover:text-primary mt-4">
-                    {title}
+                  <Link
+                    key={title}
+                    href={href}
+                    className="text-lg font-semibold text-foreground hover:text-primary mt-4"
+                  >
+                    <span>{title}</span>
                   </Link>
                 ))}
               </div>
@@ -182,5 +191,5 @@ export function Navigation() {
         </div>
       </div>
     </div>
-  )
+  );
 }

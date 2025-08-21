@@ -76,7 +76,6 @@ export default function ProjectsPage() {
           </p>
         </div>
       </section>
-
       {/* Projects Grid */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -111,7 +110,7 @@ export default function ProjectsPage() {
                     </div>
                     <Button variant="outline" className="w-full" asChild>
                       <Link href={`/projects/${index}`}>
-                        View Details
+                        <span>View Details</span>
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
@@ -122,7 +121,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
-
       {/* Stats Section */}
       <section className="bg-muted py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -146,7 +144,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
-
     </div>
-  )
+  );
 }

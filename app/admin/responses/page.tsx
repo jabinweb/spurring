@@ -153,7 +153,7 @@ function ResponsesTable({ responses, loading, filter }: ResponsesTableProps) {
               <TableCell>
                 <Button variant="ghost" size="sm" asChild>
                   <Link href={`/admin/responses/${response.id}`}>
-                    <EyeIcon className="h-4 w-4 mr-2" />
+                    <span><EyeIcon className="h-4 w-4 mr-2" /></span>
                     View
                   </Link>
                 </Button>
@@ -163,5 +163,5 @@ function ResponsesTable({ responses, loading, filter }: ResponsesTableProps) {
         </TableBody>
       </Table>
     </Card>
-  )
+  );
 }

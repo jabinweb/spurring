@@ -13,13 +13,11 @@ export default function NotFound() {
         className="absolute inset-0 bg-grid-pattern opacity-[0.2]" 
         aria-hidden="true"
       />
-
       {/* Gradient Overlay */}
       <div 
         className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
         aria-hidden="true"
       />
-
       {/* Main Content */}
       <div className="relative z-10 px-4 py-10 w-full max-w-[600px] mx-auto">
         <div className="text-center">
@@ -81,5 +79,5 @@ export default function NotFound() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

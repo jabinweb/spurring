@@ -33,7 +33,10 @@ export function Logo({ size = "md", variant = "default" }: LogoProps) {
   // Static version for SSR
   if (!isMounted) {
     return (
-      <Link href="/" className="font-bold tracking-tight flex items-center gap-2">
+      <Link
+        href="/"
+        className="font-bold tracking-tight flex items-center gap-2"
+      >
         <div className={cn("relative aspect-square", sizes[size])}>
           <Image
             src="/images/spurring_logo_icon.png"
@@ -52,11 +55,13 @@ export function Logo({ size = "md", variant = "default" }: LogoProps) {
           </div>
         </div>
       </Link>
-    )
+    );
   }
 
   return (
-    <Link href="/" className="font-bold tracking-tight flex items-center gap-2">
+    <Link
+      href="/"
+      className="font-bold tracking-tight flex items-center gap-2">
       <motion.div
         className={cn("relative aspect-square", sizes[size])}
         whileHover={{ scale: 1.05 }}
@@ -70,7 +75,6 @@ export function Logo({ size = "md", variant = "default" }: LogoProps) {
           className="w-full h-full"
         />
       </motion.div>
-      
       <motion.div
         className="font-semibold tracking-tight"
         initial={{ opacity: 0, x: -10 }}
@@ -85,5 +89,5 @@ export function Logo({ size = "md", variant = "default" }: LogoProps) {
         </div>
       </motion.div>
     </Link>
-  )
+  );
 }

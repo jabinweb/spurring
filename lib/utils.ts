@@ -17,5 +17,5 @@ export const formatDate = (date: string | Date) => {
 
 export const formatMessage = (message: string) => {
   // Convert line breaks to HTML
-  return message.replace(/\n/g, '<br />')
+  return message.replace(/\n/g, '<br />');
 }

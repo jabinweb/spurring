@@ -53,7 +53,7 @@ export function CTA({
       {...(secondaryButtonHref ? { asChild: true } : {})}
     >
       {secondaryButtonHref ? (
-        <Link href={secondaryButtonHref}>{secondaryButtonText}</Link>
+        <Link href={secondaryButtonHref}><span>{secondaryButtonText}</span></Link>
       ) : (
         secondaryButtonText
       )}

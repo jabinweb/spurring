@@ -65,7 +65,6 @@ export default function BlogPage() {
         description="Insights and updates from the world of AI and technology"
         image="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80"
       />
-
       {/* Featured Post */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -102,7 +101,7 @@ export default function BlogPage() {
                   </p>
                   <Button asChild>
                     <Link href="/blog/future-of-ai">
-                      Read More
+                      <span>Read More</span>
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
@@ -112,7 +111,6 @@ export default function BlogPage() {
           </Card>
         </div>
       </section>
-
       {/* Blog Posts Grid */}
       <section className="pb-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -148,7 +146,7 @@ export default function BlogPage() {
                     <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                     <Button variant="outline" className="w-full" asChild>
                       <Link href={`/blog/${index}`}>
-                        Read More
+                        <span>Read More</span>
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
@@ -159,7 +157,6 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-
       {/* Newsletter Section */}
       <section className="bg-muted py-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
@@ -178,5 +175,5 @@ export default function BlogPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
