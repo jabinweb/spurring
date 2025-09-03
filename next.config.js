@@ -39,8 +39,14 @@ const nextConfig = {
     }
     return config;
   },
-  // Updated configuration for Next.js 15+
+  // Exclude bcryptjs from Edge Runtime
+  experimental: {
+    serverComponentsExternalPackages: ['bcryptjs']
+  },
+  // Keep bcryptjs as server external package for compatibility
   serverExternalPackages: ['bcryptjs'],
+  // Ensure proper standalone configuration with external dependencies
+  outputFileTracing: true,
 }
 
 module.exports = nextConfig

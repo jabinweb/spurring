@@ -21,27 +21,34 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
 
           const { email, password } = parsedCredentials.data
-          const user = await prisma.user.findUnique({ 
-            where: { email },
-            select: {
-              id: true,
-              email: true,
-              password: true,
-              name: true,
-              isAdmin: true
-            }
+          
+          // Use the API endpoint for password verification instead of direct bcrypt
+          // This approach avoids Edge Runtime incompatibility issues with bcryptjs
+          const response = await fetch(new URL('/api/auth/verify', process.env.NEXTAUTH_URL), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
           })
-
-          if (!user?.password) {
-            throw new AuthError("Invalid credentials")
-          }
-
-          const isValid = await verifyPassword(password, user.password)
-          console.log('Auth attempt:', { email, isValid })
-
-          if (!isValid) {
-            console.log('Password verification failed')
+          
+          if (!response.ok) {
+            console.log('Auth failed:', await response.text())
             return null
+          }
+          
+          const result = await response.json()
+          const user = result.user
+          
+          if (!user) {
+            console.log('No user returned from auth API')
+            return null
+          }
+          
+          // Return user data for session
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            isAdmin: user.isAdmin
           }
 
           return {

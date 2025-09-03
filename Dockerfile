@@ -31,4 +31,5 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Start the application with proper database initialization
-CMD ["sh", "-c", "npx prisma db push --accept-data-loss && npm start"]
+# Fix for "output: standalone" configuration - use the standalone server directly
+CMD ["sh", "-c", "npx prisma db push --accept-data-loss && node .next/standalone/server.js"]
