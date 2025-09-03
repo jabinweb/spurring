@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import bcrypt from 'bcryptjs'
+import { hashPassword } from './crypto'
 import { FormResponse, DashboardStats } from "@/types/form"
 
 const globalForPrisma = globalThis as unknown as {
@@ -69,7 +69,7 @@ export async function createUser(data: {
   name?: string
   isAdmin?: boolean
 }) {
-  const hashedPassword = await bcrypt.hash(data.password, 12)
+  const hashedPassword = await hashPassword(data.password)
   return await prisma.user.create({
     data: {
       ...data,

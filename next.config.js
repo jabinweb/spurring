@@ -39,10 +39,8 @@ const nextConfig = {
     }
     return config;
   },
-  // Reduce bundle size by excluding server-only packages from client bundle
-  experimental: {
-    serverComponentsExternalPackages: ['bcryptjs'],
-  },
+  // Updated configuration for Next.js 15+
+  serverExternalPackages: ['bcryptjs'],
 }
 
 module.exports = nextConfig

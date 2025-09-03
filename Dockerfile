@@ -2,14 +2,14 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Install git (needed for cloning)
-RUN apk add --no-cache git
+# Install git and curl (needed for cloning and health checks)
+RUN apk add --no-cache git curl
 
 # Clone the repository
 RUN git clone https://github.com/jabinweb/spurring.git .
 
-# Install dependencies with clean npm cache
-RUN npm ci --legacy-peer-deps --only=production && npm cache clean --force
+# Install ALL dependencies (including devDependencies for build)
+RUN npm ci --legacy-peer-deps
 
 # Generate Prisma client
 RUN npx prisma generate
@@ -17,8 +17,11 @@ RUN npx prisma generate
 # Build the application
 RUN npm run build
 
-# Remove dev dependencies and git to reduce image size
-RUN rm -rf .git node_modules/.cache
+# Remove dev dependencies after build to reduce image size
+RUN npm prune --production
+
+# Remove git and other unnecessary files to reduce image size
+RUN rm -rf .git node_modules/.cache npm-cache
 
 # Expose port
 EXPOSE 3000
