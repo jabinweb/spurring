@@ -1,24 +1,18 @@
 FROM node:18-alpine
 
-WORKDIR /app
-
-# Install git (needed for cloning)
+# Install git
 RUN apk add --no-cache git
+
+WORKDIR /app
 
 # Clone the repository
 RUN git clone https://github.com/jabinweb/spurring.git .
 
-# Install dependencies with clean npm cache
-RUN npm ci --legacy-peer-deps --only=production && npm cache clean --force
+# Install dependencies
+RUN npm install --legacy-peer-deps
 
-# Generate Prisma client
-RUN npx prisma generate
+# Generate Prisma client and build
+RUN npx prisma generate && npm run build
 
-# Build the application
-RUN npm run build
-
-# Remove dev dependencies and git to reduce image size
-RUN rm -rf .git node_modules/.cache
-
-# Start the application with proper database initialization
-CMD ["sh", "-c", "npx prisma db push --accept-data-loss && npm start"]
+# Start the application
+CMD ["sh", "-c", "npx prisma db push && npm start"]
