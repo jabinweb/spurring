@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
-import { hashPassword } from './crypto'
 import { FormResponse, DashboardStats } from "@/types/form"
+import { hashPassword } from "@/lib/crypto"
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined

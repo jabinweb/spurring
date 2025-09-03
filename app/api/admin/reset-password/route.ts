@@ -2,6 +2,9 @@ import { NextResponse } from "next/server"
 import prisma from "@/lib/db"
 import { hashPassword } from "@/lib/crypto"
 
+// Force Node.js runtime for crypto operations
+export const runtime = 'nodejs'
+
 export async function POST(req: Request) {
   try {
     const { email, newPassword, secretKey } = await req.json()

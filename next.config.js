@@ -25,9 +25,11 @@ const nextConfig = {
       }
     ]
   },
+  // Reduce bundle size by excluding server-only packages from client bundle
+  serverExternalPackages: ['bcryptjs', '@prisma/client'],
   // Optimize webpack configuration
-  webpack: (config, { isServer }) => {
-    // Ignore bcryptjs warnings for edge runtime
+  webpack: (config, { isServer, dev }) => {
+    // Handle bcryptjs for client-side bundling
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -35,18 +37,19 @@ const nextConfig = {
         fs: false,
         net: false,
         tls: false,
+        stream: false,
+        util: false,
+        buffer: false,
+        path: false,
+        os: false,
       };
+      // Exclude server-only packages from client bundle completely
+      config.externals = config.externals || [];
+      config.externals.push('bcryptjs', '@prisma/client');
     }
+    
     return config;
   },
-  // Exclude bcryptjs from Edge Runtime
-  experimental: {
-    serverComponentsExternalPackages: ['bcryptjs']
-  },
-  // Keep bcryptjs as server external package for compatibility
-  serverExternalPackages: ['bcryptjs'],
-  // Ensure proper standalone configuration with external dependencies
-  outputFileTracing: true,
 }
 
 module.exports = nextConfig

@@ -5,6 +5,9 @@ import prisma from "@/lib/db"
 import { verifyPassword } from "@/lib/crypto"
 import { AuthError } from "next-auth"
 
+// Force Node.js runtime for auth
+export const runtime = 'nodejs'
+
 const schema = z.object({
   email: z.string().email(),
   password: z.string().min(6)
@@ -21,34 +24,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
 
           const { email, password } = parsedCredentials.data
-          
-          // Use the API endpoint for password verification instead of direct bcrypt
-          // This approach avoids Edge Runtime incompatibility issues with bcryptjs
-          const response = await fetch(new URL('/api/auth/verify', process.env.NEXTAUTH_URL), {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
+          const user = await prisma.user.findUnique({ 
+            where: { email },
+            select: {
+              id: true,
+              email: true,
+              password: true,
+              name: true,
+              isAdmin: true
+            }
           })
-          
-          if (!response.ok) {
-            console.log('Auth failed:', await response.text())
-            return null
+
+          if (!user?.password) {
+            throw new AuthError("Invalid credentials")
           }
-          
-          const result = await response.json()
-          const user = result.user
-          
-          if (!user) {
-            console.log('No user returned from auth API')
+
+          const isValid = await verifyPassword(password, user.password)
+          console.log('Auth attempt:', { email, isValid })
+
+          if (!isValid) {
+            console.log('Password verification failed')
             return null
-          }
-          
-          // Return user data for session
-          return {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            isAdmin: user.isAdmin
           }
 
           return {

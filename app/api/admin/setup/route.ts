@@ -3,6 +3,9 @@ import { z } from "zod"
 import { hashPassword } from "@/lib/crypto"
 import { getFirstAdmin, createAdmin } from "@/lib/db"
 
+// Force Node.js runtime for crypto operations
+export const runtime = 'nodejs'
+
 const schema = z.object({
   email: z.string().email(),
   password: z.string().min(6)
