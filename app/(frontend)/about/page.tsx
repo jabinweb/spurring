@@ -53,27 +53,93 @@ export default function AboutPage() {
       </section>
 
             {/* Mission & Vision */}
-            <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <div className="flex items-center mb-6">
-                <Target className="h-8 w-8 text-primary mr-3" />
-                <h2 className="text-3xl font-bold">Our Mission</h2>
-              </div>
-              <p className="text-lg text-muted-foreground">
-              We deliver cutting-edge technology in an accessible and practical way for businesses of all sizes, across India and beyond.
-              </p>
-            </div>
-            <div>
-              <div className="flex items-center mb-6">
-                <Brain className="h-8 w-8 text-primary mr-3" />
-                <h2 className="text-3xl font-bold">Our Vision</h2>
-              </div>
-              <p className="text-lg text-muted-foreground">
-              To lead the AI revolution in India, delivering transformative results for clients and society worldwide.
-              </p>
-            </div>
+            <section className="py-20 px-4 bg-gradient-to-br from-background via-muted/30 to-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Vision & Mission</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our commitment to transforming businesses through AI innovation
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Vision */}
+            <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+              <CardContent className="p-0">
+                <div className="flex items-center mb-6">
+                  <div className="p-3 bg-primary/10 rounded-full mr-4">
+                    <Globe className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Our Vision</h3>
+                </div>
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  To be the trusted AI/ML innovation partner that delivers scalable, secure, and sustainable solutions, empowering enterprises to achieve reliability, agility, and growth, while aligning with global compliance, ESG, and digital transformation goals.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Mission */}
+            <Card className="p-8 bg-gradient-to-br from-secondary/5 to-secondary/10 border-secondary/20">
+              <CardContent className="p-0">
+                <div className="flex items-center mb-6">
+                  <div className="p-3 bg-secondary/10 rounded-full mr-4">
+                    <Target className="h-8 w-8 text-secondary" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Our Mission</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-full mt-1">
+                      <Building className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Build Foundational Capability</h4>
+                      <p className="text-sm text-muted-foreground">Equip teams with skills, tools, and environments to innovate confidently.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-full mt-1">
+                      <Brain className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Deliver Cutting-Edge Products</h4>
+                      <p className="text-sm text-muted-foreground">Define, develop, and deploy MVPs rapidly, ensuring customer value from Day 1.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-full mt-1">
+                      <TrendingUp className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Ensure Reliability</h4>
+                      <p className="text-sm text-muted-foreground">Maintain 99%+ uptime and world-class support as a baseline, not a goal.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-full mt-1">
+                      <Target className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Drive Market Traction</h4>
+                      <p className="text-sm text-muted-foreground">Achieve early pilots and market adoption with focused GTM strategies.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-full mt-1">
+                      <Globe className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Scale Responsibly</h4>
+                      <p className="text-sm text-muted-foreground">Grow with compliance, governance, and sustainable practices at the core.</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
