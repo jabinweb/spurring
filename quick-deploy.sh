@@ -73,7 +73,7 @@ fi
 
 # Create environment
 cat > .env << EOF
-DATABASE_URL=postgresql://postgres:${DB_PASSWORD}@spurring-db:5432/spurring
+DATABASE_URL=postgresql://postgres:${DB_PASSWORD}@db:5432/spurring
 POSTGRES_PASSWORD=${DB_PASSWORD}
 POSTGRES_DB=spurring
 POSTGRES_USER=postgres
