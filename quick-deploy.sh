@@ -25,8 +25,14 @@ fi
 DOMAIN="$1"
 EMAIL="$2"
 APP_DIR="/opt/spurring"
-DB_PASSWORD=$(openssl rand -base64 16)
-NEXTAUTH_SECRET=$(openssl rand -base64 32)
+if [ -f "$APP_DIR/.env" ]; then
+  echo "✅ Existing .env found — reusing credentials"
+  source "$APP_DIR/.env"
+else
+  echo "🆕 First install — generating secrets"
+  DB_PASSWORD=$(openssl rand -base64 16)
+  NEXTAUTH_SECRET=$(openssl rand -base64 32)
+fi
 
 echo -e "${BLUE}🚀 Starting Spurring deployment for $DOMAIN${NC}\n"
 
@@ -72,16 +78,19 @@ else
 fi
 
 # Create environment
+if [ ! -f .env ]; then
 cat > .env << EOF
 DATABASE_URL=postgresql://postgres:${DB_PASSWORD}@db:5432/spurring
 POSTGRES_PASSWORD=${DB_PASSWORD}
 POSTGRES_DB=spurring
 POSTGRES_USER=postgres
+AUTH_TRUST_HOST=true
 NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
 NEXTAUTH_URL=https://${DOMAIN}
 NODE_ENV=production
 PORT=3000
 EOF
+fi
 
 chmod 600 .env
 
