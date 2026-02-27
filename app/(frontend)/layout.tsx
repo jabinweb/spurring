@@ -22,7 +22,7 @@ export default function RootLayout({
       <Navigation />
       <main className="min-h-screen">{children}</main>
       <Footer />
-      <HiringPopup />
+      {/* <HiringPopup /> */}
       <WhatsAppButton />
     </>
   );
