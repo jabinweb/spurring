@@ -134,7 +134,7 @@ export default function CareersPage() {
               <FadeIn delay={0.2}>
                 <div className="relative">
                   <Image
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
+                    src="https://images.pexels.com/photos/7580827/pexels-photo-7580827.jpeg"
                     alt="Team Collaboration"
                     width={600}
                     height={400}

@@ -29,14 +29,14 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="space-y-2">
                 <Building className="h-5 w-5 text-primary" />
-                <h3 className="font-semibold">Bangalore, Hebbal HQ</h3>
+                <h3 className="font-semibold">Bangalore - Sanjay Nagar</h3>
                 <p className="text-sm text-muted-foreground">Our primary development hub</p>
               </div>
-              <div className="space-y-2">
+              {/* <div className="space-y-2">
                 <Globe className="h-5 w-5 text-primary" />
                 <h3 className="font-semibold">Global Presence</h3>
                 <p className="text-sm text-muted-foreground">International network & expertise</p>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="relative h-[400px] rounded-2xl overflow-hidden">
@@ -88,53 +88,53 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold">Our Mission</h3>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <div className="p-2 bg-primary/10 rounded-full mt-1">
                       <Building className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Build Foundational Capability</h4>
-                      <p className="text-sm text-muted-foreground">Equip teams with skills, tools, and environments to innovate confidently.</p>
+                      <h4 className="font-semibold text-foreground">Build Foundational Capability</h4>
+                      {/* <p className="text-sm text-muted-foreground">Equip teams with skills, tools, and environments to innovate confidently.</p> */}
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <div className="p-2 bg-primary/10 rounded-full mt-1">
                       <Brain className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Deliver Cutting-Edge Products</h4>
-                      <p className="text-sm text-muted-foreground">Define, develop, and deploy MVPs rapidly, ensuring customer value from Day 1.</p>
+                      <h4 className="font-semibold text-foreground">Deliver Cutting-Edge Products</h4>
+                      {/* <p className="text-sm text-muted-foreground">Define, develop, and deploy MVPs rapidly, ensuring customer value from Day 1.</p> */}
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <div className="p-2 bg-primary/10 rounded-full mt-1">
                       <TrendingUp className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Ensure Reliability</h4>
-                      <p className="text-sm text-muted-foreground">Maintain 99%+ uptime and world-class support as a baseline, not a goal.</p>
+                      <h4 className="font-semibold text-foreground">Ensure Reliability</h4>
+                      {/* <p className="text-sm text-muted-foreground">Maintain 99%+ uptime and world-class support as a baseline, not a goal.</p> */}
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <div className="p-2 bg-primary/10 rounded-full mt-1">
                       <Target className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Drive Market Traction</h4>
-                      <p className="text-sm text-muted-foreground">Achieve early pilots and market adoption with focused GTM strategies.</p>
+                      <h4 className="font-semibold text-foreground">Drive Market Traction</h4>
+                      {/* <p className="text-sm text-muted-foreground">Achieve early pilots and market adoption with focused GTM strategies.</p> */}
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <div className="p-2 bg-primary/10 rounded-full mt-1">
                       <Globe className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Scale Responsibly</h4>
-                      <p className="text-sm text-muted-foreground">Grow with compliance, governance, and sustainable practices at the core.</p>
+                      <h4 className="font-semibold text-foreground">Scale Responsibly</h4>
+                      {/* <p className="text-sm text-muted-foreground">Grow with compliance, governance, and sustainable practices at the core.</p> */}
                     </div>
                   </div>
                 </div>

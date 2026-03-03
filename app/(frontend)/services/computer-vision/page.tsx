@@ -47,7 +47,7 @@ export default function ComputerVisionPage() {
       <Hero
         title="Next-Generation Vision AI Solutions"
         description="Transform your business operations with advanced computer vision"
-        video="https://videos.pexels.com/video-files/3141210/3141210-sd_640_360_25fps.mp4"
+        video="https://videos.pexels.com/video-files/3129595/3129595-uhd_2560_1440_30fps.mp4"
       />
 
       {/* Overview Section */}
