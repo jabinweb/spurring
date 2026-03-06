@@ -54,7 +54,7 @@ export function ConstructionSafetyCaseStudy() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="order-2 lg:order-1 space-y-6"
           >
 
             {/* <h2 className="text-3xl font-bold">
@@ -100,7 +100,7 @@ export function ConstructionSafetyCaseStudy() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative h-full rounded-2xl overflow-hidden"
+            className="order-1 lg:order-2 relative w-full min-h-[260px] sm:min-h-[340px] lg:min-h-[520px] rounded-2xl overflow-hidden"
           >
             <Image
               src="/images/construction-ai.png"
